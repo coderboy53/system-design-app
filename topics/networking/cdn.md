@@ -1,0 +1,86 @@
+---
+id: cdn
+title: Content Delivery Network (CDN)
+module: networking
+order: 20
+est_minutes: 5
+timelines: [short, medium, long]
+tags: [networking, cdn, caching, edge, performance]
+prerequisites: [dns]
+related: [cache-locations, caching-overview, reverse-proxy]
+source: https://github.com/donnemartin/system-design-primer#content-delivery-network
+---
+
+# Content Delivery Network (CDN)
+
+<p align="center">
+  <img src="../assets/images/h9TAuGI.jpg" alt="CDN">
+  <br/>
+  <i><a href="https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/">Source: Why use a CDN</a></i>
+</p>
+
+A content delivery network (CDN) is a **globally distributed network of proxy servers**, serving
+content from locations closer to the user. Generally, static files such as HTML/CSS/JS, photos, and
+videos are served from CDN, although some CDNs such as Amazon's CloudFront support dynamic content.
+The site's [DNS](dns.md) resolution will tell clients which server to contact.
+
+Serving content from CDNs can significantly improve performance in two ways:
+
+* Users receive content from data centers **close to them**
+* Your servers **do not have to serve** requests that the CDN fulfills
+
+A CDN is a [cache](../caching/cache-locations.md#cdn-caching) — the distinction between push and
+pull below is a cache population strategy.
+
+## Push CDNs
+
+Push CDNs receive new content **whenever changes occur** on your server. You take full
+responsibility for providing content, uploading directly to the CDN and rewriting URLs to point to
+the CDN. You can configure when content expires and when it is updated. Content is uploaded only
+when it is new or changed, **minimizing traffic but maximizing storage**.
+
+Sites with a **small amount of traffic** or sites with content that **isn't often updated** work
+well with push CDNs. Content is placed on the CDNs once, instead of being re-pulled at regular
+intervals.
+
+## Pull CDNs
+
+Pull CDNs grab new content from your server **when the first user requests** the content. You leave
+the content on your server and rewrite URLs to point to the CDN. This results in a **slower first
+request** until the content is cached on the CDN.
+
+A [time-to-live (TTL)](https://en.wikipedia.org/wiki/Time_to_live) determines how long content is
+cached. Pull CDNs **minimize storage space** on the CDN, but can create **redundant traffic** if
+files expire and are pulled before they have actually changed.
+
+Sites with **heavy traffic** work well with pull CDNs, as traffic is spread out more evenly with
+only recently-requested content remaining on the CDN.
+
+## Push vs pull at a glance
+
+| | Push | Pull |
+|---|---|---|
+| Populated | when content changes | on first user request |
+| Storage on CDN | maximized | minimized |
+| Traffic to origin | minimized | redundant re-pulls on expiry |
+| First request | already fast | slow (cache miss) |
+| Best for | low traffic, rarely updated | heavy traffic |
+
+## Disadvantage(s): CDN
+
+* CDN costs could be significant depending on traffic, although this should be weighed against the additional costs you would incur not using a CDN.
+* Content might be **stale** if it is updated before the TTL expires it.
+* CDNs require **changing URLs** for static content to point to the CDN.
+
+## Source(s) and further reading
+
+* [Globally distributed content delivery](https://figshare.com/articles/Globally_distributed_content_delivery/6605972)
+* [The differences between push and pull CDNs](https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/)
+* [Wikipedia](https://en.wikipedia.org/wiki/Content_delivery_network)
+
+## Self-check
+
+1. In two ways, how does a CDN improve performance?
+2. Which CDN type suits a low-traffic site with rarely changing assets, and why?
+3. What is the cost of a pull CDN's first request, and what mitigates the redundant-traffic problem?
+4. Name three disadvantages of adding a CDN.

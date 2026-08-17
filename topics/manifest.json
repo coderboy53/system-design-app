@@ -1,0 +1,2880 @@
+{
+  "$schema_version": 1,
+  "name": "system-design-learning-path",
+  "description": "Content modules for a system design learning app, adapted from The System Design Primer (CC BY 4.0).",
+  "attribution": {
+    "source": "https://github.com/donnemartin/system-design-primer",
+    "author": "Donne Martin",
+    "license": "CC BY 4.0",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "details": "ATTRIBUTION.md"
+  },
+  "frontmatter_fields": [
+    "id",
+    "title",
+    "module",
+    "order",
+    "est_minutes",
+    "timelines",
+    "tags",
+    "prerequisites",
+    "related",
+    "source"
+  ],
+  "timelines": {
+    "short": {
+      "label": "Short timeline",
+      "goal": "Breadth with system design topics",
+      "practice": "Solve some interview questions",
+      "entry": "study-guide/short-timeline.md"
+    },
+    "medium": {
+      "label": "Medium timeline",
+      "goal": "Breadth and some depth with system design topics",
+      "practice": "Solve many interview questions",
+      "entry": "study-guide/medium-timeline.md"
+    },
+    "long": {
+      "label": "Long timeline",
+      "goal": "Breadth and more depth with system design topics",
+      "practice": "Solve most interview questions",
+      "entry": "study-guide/long-timeline.md"
+    }
+  },
+  "modules": [
+    {
+      "id": "root",
+      "title": "Root",
+      "count": 2,
+      "entries": [
+        "root",
+        "attribution"
+      ]
+    },
+    {
+      "id": "study-guide",
+      "title": "Study Guide",
+      "count": 6,
+      "entries": [
+        "study-guide",
+        "interview-approach",
+        "short-timeline",
+        "medium-timeline",
+        "long-timeline",
+        "flashcards"
+      ]
+    },
+    {
+      "id": "fundamentals",
+      "title": "Fundamentals",
+      "count": 7,
+      "entries": [
+        "fundamentals",
+        "start-here",
+        "performance-vs-scalability",
+        "latency-vs-throughput",
+        "cap-theorem",
+        "consistency-patterns",
+        "availability-patterns"
+      ]
+    },
+    {
+      "id": "networking",
+      "title": "Networking & Edge",
+      "count": 9,
+      "entries": [
+        "networking",
+        "dns",
+        "cdn",
+        "load-balancer",
+        "reverse-proxy",
+        "http",
+        "tcp-and-udp",
+        "rpc",
+        "rest"
+      ]
+    },
+    {
+      "id": "application",
+      "title": "Application Layer",
+      "count": 5,
+      "entries": [
+        "application",
+        "application-layer",
+        "microservices",
+        "service-discovery",
+        "asynchronism"
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data",
+      "count": 13,
+      "entries": [
+        "data",
+        "rdbms",
+        "replication",
+        "federation",
+        "sharding",
+        "denormalization",
+        "sql-tuning",
+        "nosql",
+        "key-value-store",
+        "document-store",
+        "wide-column-store",
+        "graph-database",
+        "sql-or-nosql"
+      ]
+    },
+    {
+      "id": "caching",
+      "title": "Caching",
+      "count": 5,
+      "entries": [
+        "caching",
+        "caching-overview",
+        "cache-locations",
+        "what-to-cache",
+        "cache-update-strategies"
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "count": 2,
+      "entries": [
+        "security",
+        "security-basics"
+      ]
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix",
+      "count": 9,
+      "entries": [
+        "appendix",
+        "back-of-the-envelope",
+        "powers-of-two",
+        "latency-numbers",
+        "additional-questions",
+        "real-world-architectures",
+        "company-architectures",
+        "engineering-blogs",
+        "under-development"
+      ]
+    },
+    {
+      "id": "exercises",
+      "title": "Exercises",
+      "count": 1,
+      "entries": [
+        "exercises"
+      ]
+    },
+    {
+      "id": "exercises/system-design",
+      "title": "System Design Exercises",
+      "count": 9,
+      "entries": [
+        "system-design-exercises",
+        "exercise-pastebin",
+        "exercise-twitter",
+        "exercise-web-crawler",
+        "exercise-mint",
+        "exercise-social-graph",
+        "exercise-query-cache",
+        "exercise-sales-rank",
+        "exercise-scaling-aws"
+      ]
+    },
+    {
+      "id": "exercises/object-oriented-design",
+      "title": "Object-Oriented Design Exercises",
+      "count": 7,
+      "entries": [
+        "ood-exercises",
+        "ood-hash-map",
+        "ood-lru-cache",
+        "ood-call-center",
+        "ood-deck-of-cards",
+        "ood-parking-lot",
+        "ood-online-chat"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "root",
+      "title": "System Design Learning Path",
+      "module": "root",
+      "order": 0,
+      "path": "README.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "entry-point"
+      ],
+      "prerequisites": [],
+      "related": [
+        "study-guide",
+        "start-here"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer",
+      "word_count": 1100,
+      "sections": [
+        "Start here",
+        "Study guide: pick your timeline",
+        "Index of system design topics",
+        "Exercises",
+        "Spaced repetition",
+        "Content conventions",
+        "License"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "attribution",
+      "title": "Attribution and License",
+      "module": "root",
+      "order": 900,
+      "path": "ATTRIBUTION.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "meta",
+        "license",
+        "attribution"
+      ],
+      "prerequisites": [],
+      "related": [
+        "root"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#license",
+      "word_count": 271,
+      "sections": [
+        "What changed in the adaptation",
+        "Onward attribution from the primer"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "study-guide",
+      "title": "Study Guide",
+      "module": "study-guide",
+      "order": 0,
+      "path": "study-guide/README.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "meta",
+        "interview-prep",
+        "planning"
+      ],
+      "prerequisites": [],
+      "related": [
+        "short-timeline",
+        "medium-timeline",
+        "long-timeline",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+      "word_count": 502,
+      "sections": [
+        "Q: For interviews, do I need to know everything here?",
+        "The three tracks",
+        "What each track covers",
+        "Also in this module",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "interview-approach",
+      "title": "How to Approach a System Design Interview Question",
+      "module": "study-guide",
+      "order": 5,
+      "path": "study-guide/interview-approach.md",
+      "est_minutes": 8,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "interview-prep",
+        "framework",
+        "process"
+      ],
+      "prerequisites": [],
+      "related": [
+        "study-guide",
+        "back-of-the-envelope",
+        "powers-of-two",
+        "latency-numbers"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question",
+      "word_count": 484,
+      "sections": [
+        "Step 1: Outline use cases, constraints, and assumptions",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Back-of-the-envelope calculations",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "short-timeline",
+      "title": "Short Timeline Track",
+      "module": "study-guide",
+      "order": 10,
+      "path": "study-guide/short-timeline.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short"
+      ],
+      "tags": [
+        "meta",
+        "track",
+        "planning"
+      ],
+      "prerequisites": [
+        "study-guide"
+      ],
+      "related": [
+        "medium-timeline",
+        "long-timeline",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+      "word_count": 389,
+      "sections": [
+        "1. Learn the process first",
+        "2. Breadth pass over the topics",
+        "3. Memorize the two reference tables",
+        "4. Work through **some** exercises",
+        "5. Skim, don't study, the context material",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "medium-timeline",
+      "title": "Medium Timeline Track",
+      "module": "study-guide",
+      "order": 20,
+      "path": "study-guide/medium-timeline.md",
+      "est_minutes": 4,
+      "timelines": [
+        "medium"
+      ],
+      "tags": [
+        "meta",
+        "track",
+        "planning"
+      ],
+      "prerequisites": [
+        "study-guide"
+      ],
+      "related": [
+        "short-timeline",
+        "long-timeline",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+      "word_count": 495,
+      "sections": [
+        "1. Complete the short track",
+        "2. Go deep on data",
+        "3. Go deep on caching and asynchronism",
+        "4. Go deep on the trade-off vocabulary",
+        "5. Work through **many** exercises",
+        "6. Read the context material properly",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "long-timeline",
+      "title": "Long Timeline Track",
+      "module": "study-guide",
+      "order": 30,
+      "path": "study-guide/long-timeline.md",
+      "est_minutes": 5,
+      "timelines": [
+        "long"
+      ],
+      "tags": [
+        "meta",
+        "track",
+        "planning"
+      ],
+      "prerequisites": [
+        "study-guide"
+      ],
+      "related": [
+        "short-timeline",
+        "medium-timeline",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+      "word_count": 485,
+      "sections": [
+        "1. Complete the medium track",
+        "2. Read the primary sources, not just the summaries",
+        "3. Cover every module, including the ones that are easy to skip",
+        "4. Study the topics the primer flags as under development",
+        "5. Work through **most** exercises",
+        "6. Work through **most** of the additional questions",
+        "7. Build the habit of reading architectures",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "flashcards",
+      "title": "Anki Flashcards and Spaced Repetition",
+      "module": "study-guide",
+      "order": 40,
+      "path": "study-guide/flashcards.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "meta",
+        "resources",
+        "spaced-repetition"
+      ],
+      "prerequisites": [],
+      "related": [
+        "study-guide"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#anki-flashcards",
+      "word_count": 133,
+      "sections": [
+        "Coding resource: Interactive Coding Challenges",
+        "In-app review queue"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "fundamentals",
+      "title": "Fundamentals",
+      "module": "fundamentals",
+      "order": 0,
+      "path": "fundamentals/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "tradeoffs"
+      ],
+      "prerequisites": [],
+      "related": [
+        "start-here"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#index-of-system-design-topics",
+      "word_count": 195,
+      "sections": [
+        "Modules",
+        "Where this leads"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "start-here",
+      "title": "System Design Topics: Start Here",
+      "module": "fundamentals",
+      "order": 10,
+      "path": "fundamentals/start-here.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "foundations",
+        "scalability",
+        "orientation"
+      ],
+      "prerequisites": [],
+      "related": [
+        "performance-vs-scalability",
+        "latency-vs-throughput",
+        "cap-theorem"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#system-design-topics-start-here",
+      "word_count": 202,
+      "sections": [
+        "Step 1: Review the scalability video lecture",
+        "Step 2: Review the scalability article",
+        "Next steps",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "performance-vs-scalability",
+      "title": "Performance vs Scalability",
+      "module": "fundamentals",
+      "order": 20,
+      "path": "fundamentals/performance-vs-scalability.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "tradeoffs",
+        "scalability",
+        "performance"
+      ],
+      "prerequisites": [
+        "start-here"
+      ],
+      "related": [
+        "latency-vs-throughput",
+        "cap-theorem",
+        "load-balancer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#performance-vs-scalability",
+      "word_count": 243,
+      "sections": [
+        "Why the distinction matters",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "latency-vs-throughput",
+      "title": "Latency vs Throughput",
+      "module": "fundamentals",
+      "order": 30,
+      "path": "fundamentals/latency-vs-throughput.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "tradeoffs",
+        "performance",
+        "metrics"
+      ],
+      "prerequisites": [
+        "performance-vs-scalability"
+      ],
+      "related": [
+        "cap-theorem",
+        "asynchronism",
+        "latency-numbers"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#latency-vs-throughput",
+      "word_count": 165,
+      "sections": [
+        "Where the trade-off shows up",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "cap-theorem",
+      "title": "Availability vs Consistency (CAP Theorem)",
+      "module": "fundamentals",
+      "order": 40,
+      "path": "fundamentals/cap-theorem.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "tradeoffs",
+        "distributed-systems",
+        "consistency",
+        "availability",
+        "cap"
+      ],
+      "prerequisites": [
+        "latency-vs-throughput"
+      ],
+      "related": [
+        "consistency-patterns",
+        "availability-patterns",
+        "nosql",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#availability-vs-consistency",
+      "word_count": 345,
+      "sections": [
+        "CP — consistency and partition tolerance",
+        "AP — availability and partition tolerance",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "consistency-patterns",
+      "title": "Consistency Patterns",
+      "module": "fundamentals",
+      "order": 50,
+      "path": "fundamentals/consistency-patterns.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "consistency",
+        "distributed-systems",
+        "tradeoffs"
+      ],
+      "prerequisites": [
+        "cap-theorem"
+      ],
+      "related": [
+        "availability-patterns",
+        "replication",
+        "nosql",
+        "cache-update-strategies"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#consistency-patterns",
+      "word_count": 386,
+      "sections": [
+        "Weak consistency",
+        "Eventual consistency",
+        "Strong consistency",
+        "At a glance",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "availability-patterns",
+      "title": "Availability Patterns",
+      "module": "fundamentals",
+      "order": 60,
+      "path": "fundamentals/availability-patterns.md",
+      "est_minutes": 9,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "availability",
+        "failover",
+        "replication",
+        "reliability",
+        "math"
+      ],
+      "prerequisites": [
+        "cap-theorem"
+      ],
+      "related": [
+        "consistency-patterns",
+        "replication",
+        "load-balancer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#availability-patterns",
+      "word_count": 576,
+      "sections": [
+        "Fail-over",
+        "Replication",
+        "Availability in numbers",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "networking",
+      "title": "Networking & Edge",
+      "module": "networking",
+      "order": 0,
+      "path": "networking/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "networking",
+        "communication"
+      ],
+      "prerequisites": [
+        "fundamentals"
+      ],
+      "related": [
+        "dns",
+        "cdn",
+        "load-balancer",
+        "reverse-proxy"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#communication",
+      "word_count": 279,
+      "sections": [
+        "The request path",
+        "Communication protocols",
+        "Where this leads"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "dns",
+      "title": "Domain Name System (DNS)",
+      "module": "networking",
+      "order": 10,
+      "path": "networking/dns.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "dns",
+        "edge",
+        "routing"
+      ],
+      "prerequisites": [
+        "start-here"
+      ],
+      "related": [
+        "cdn",
+        "load-balancer",
+        "consistency-patterns"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#domain-name-system",
+      "word_count": 383,
+      "sections": [
+        "Record types",
+        "Managed DNS and traffic routing",
+        "Disadvantage(s): DNS",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "cdn",
+      "title": "Content Delivery Network (CDN)",
+      "module": "networking",
+      "order": 20,
+      "path": "networking/cdn.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "cdn",
+        "caching",
+        "edge",
+        "performance"
+      ],
+      "prerequisites": [
+        "dns"
+      ],
+      "related": [
+        "cache-locations",
+        "caching-overview",
+        "reverse-proxy"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#content-delivery-network",
+      "word_count": 520,
+      "sections": [
+        "Push CDNs",
+        "Pull CDNs",
+        "Push vs pull at a glance",
+        "Disadvantage(s): CDN",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "load-balancer",
+      "title": "Load Balancer",
+      "module": "networking",
+      "order": 30,
+      "path": "networking/load-balancer.md",
+      "est_minutes": 8,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "load-balancing",
+        "scalability",
+        "availability",
+        "horizontal-scaling"
+      ],
+      "prerequisites": [
+        "availability-patterns"
+      ],
+      "related": [
+        "reverse-proxy",
+        "tcp-and-udp",
+        "http",
+        "application-layer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#load-balancer",
+      "word_count": 699,
+      "sections": [
+        "Additional benefits",
+        "Routing metrics",
+        "Layer 4 load balancing",
+        "Layer 7 load balancing",
+        "Horizontal scaling",
+        "Disadvantage(s): load balancer",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "reverse-proxy",
+      "title": "Reverse Proxy (Web Server)",
+      "module": "networking",
+      "order": 40,
+      "path": "networking/reverse-proxy.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "proxy",
+        "security",
+        "caching"
+      ],
+      "prerequisites": [
+        "load-balancer"
+      ],
+      "related": [
+        "load-balancer",
+        "cache-locations",
+        "application-layer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server",
+      "word_count": 342,
+      "sections": [
+        "Additional benefits",
+        "Load balancer vs reverse proxy",
+        "Disadvantage(s): reverse proxy",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "http",
+      "title": "Hypertext Transfer Protocol (HTTP)",
+      "module": "networking",
+      "order": 50,
+      "path": "networking/http.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "protocols",
+        "http",
+        "communication"
+      ],
+      "prerequisites": [],
+      "related": [
+        "tcp-and-udp",
+        "rest",
+        "rpc",
+        "load-balancer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#hypertext-transfer-protocol-http",
+      "word_count": 299,
+      "sections": [
+        "Common HTTP verbs",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "tcp-and-udp",
+      "title": "TCP and UDP",
+      "module": "networking",
+      "order": 60,
+      "path": "networking/tcp-and-udp.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "protocols",
+        "tcp",
+        "udp",
+        "transport"
+      ],
+      "prerequisites": [
+        "http"
+      ],
+      "related": [
+        "http",
+        "rpc",
+        "load-balancer",
+        "consistency-patterns"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#transmission-control-protocol-tcp",
+      "word_count": 493,
+      "sections": [
+        "Transmission control protocol (TCP)",
+        "User datagram protocol (UDP)",
+        "Source(s) and further reading: TCP and UDP",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "rpc",
+      "title": "Remote Procedure Call (RPC)",
+      "module": "networking",
+      "order": 70,
+      "path": "networking/rpc.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "communication",
+        "rpc",
+        "apis",
+        "microservices"
+      ],
+      "prerequisites": [
+        "http",
+        "tcp-and-udp"
+      ],
+      "related": [
+        "rest",
+        "microservices",
+        "service-discovery"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc",
+      "word_count": 428,
+      "sections": [
+        "RPC is a request-response protocol",
+        "Sample RPC calls",
+        "Choose a native library (aka SDK) when",
+        "Disadvantage(s): RPC",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "rest",
+      "title": "Representational State Transfer (REST)",
+      "module": "networking",
+      "order": 80,
+      "path": "networking/rest.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "networking",
+        "communication",
+        "rest",
+        "apis"
+      ],
+      "prerequisites": [
+        "http",
+        "rpc"
+      ],
+      "related": [
+        "rpc",
+        "http",
+        "load-balancer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest",
+      "word_count": 629,
+      "sections": [
+        "Four qualities of a RESTful interface",
+        "Sample REST calls",
+        "Disadvantage(s): REST",
+        "RPC and REST calls comparison",
+        "Source(s) and further reading: REST and RPC",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "application",
+      "title": "Application Layer",
+      "module": "application",
+      "order": 0,
+      "path": "application/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "application",
+        "architecture"
+      ],
+      "prerequisites": [
+        "networking"
+      ],
+      "related": [
+        "application-layer",
+        "microservices",
+        "service-discovery",
+        "asynchronism"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#application-layer",
+      "word_count": 176,
+      "sections": [
+        "Modules",
+        "Where this leads"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "application-layer",
+      "title": "Application Layer (Platform Layer)",
+      "module": "application",
+      "order": 10,
+      "path": "application/application-layer.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "application",
+        "architecture",
+        "separation-of-concerns",
+        "scalability"
+      ],
+      "prerequisites": [
+        "load-balancer"
+      ],
+      "related": [
+        "microservices",
+        "service-discovery",
+        "asynchronism",
+        "reverse-proxy"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#application-layer",
+      "word_count": 244,
+      "sections": [
+        "Related concepts",
+        "Disadvantage(s): application layer",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "microservices",
+      "title": "Microservices",
+      "module": "application",
+      "order": 20,
+      "path": "application/microservices.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "application",
+        "architecture",
+        "microservices"
+      ],
+      "prerequisites": [
+        "application-layer"
+      ],
+      "related": [
+        "service-discovery",
+        "rpc",
+        "rest",
+        "application-layer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#microservices",
+      "word_count": 201,
+      "sections": [
+        "What this implies",
+        "Disadvantage(s)",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "service-discovery",
+      "title": "Service Discovery",
+      "module": "application",
+      "order": 30,
+      "path": "application/service-discovery.md",
+      "est_minutes": 3,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "application",
+        "architecture",
+        "service-discovery",
+        "operations"
+      ],
+      "prerequisites": [
+        "microservices"
+      ],
+      "related": [
+        "microservices",
+        "key-value-store",
+        "http",
+        "application-layer"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#service-discovery",
+      "word_count": 169,
+      "sections": [
+        "Why it exists",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "asynchronism",
+      "title": "Asynchronism",
+      "module": "application",
+      "order": 40,
+      "path": "application/asynchronism.md",
+      "est_minutes": 7,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "application",
+        "asynchronism",
+        "queues",
+        "throughput",
+        "back-pressure"
+      ],
+      "prerequisites": [
+        "application-layer",
+        "latency-vs-throughput"
+      ],
+      "related": [
+        "latency-vs-throughput",
+        "microservices",
+        "caching-overview"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#asynchronism",
+      "word_count": 542,
+      "sections": [
+        "Message queues",
+        "Task queues",
+        "Back pressure",
+        "Disadvantage(s): asynchronism",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "data",
+      "title": "Data",
+      "module": "data",
+      "order": 0,
+      "path": "data/README.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "database",
+        "storage"
+      ],
+      "prerequisites": [
+        "fundamentals"
+      ],
+      "related": [
+        "rdbms",
+        "nosql",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#database",
+      "word_count": 378,
+      "sections": [
+        "Relational",
+        "Non-relational",
+        "Choosing",
+        "The scaling ladder"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "rdbms",
+      "title": "Relational Database Management System (RDBMS)",
+      "module": "data",
+      "order": 10,
+      "path": "data/rdbms.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "acid",
+        "transactions"
+      ],
+      "prerequisites": [
+        "consistency-patterns"
+      ],
+      "related": [
+        "replication",
+        "federation",
+        "sharding",
+        "denormalization",
+        "sql-tuning",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms",
+      "word_count": 251,
+      "sections": [
+        "ACID",
+        "Techniques to scale a relational database",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "replication",
+      "title": "Database Replication",
+      "module": "data",
+      "order": 20,
+      "path": "data/replication.md",
+      "est_minutes": 7,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "replication",
+        "availability",
+        "scaling"
+      ],
+      "prerequisites": [
+        "rdbms",
+        "availability-patterns"
+      ],
+      "related": [
+        "federation",
+        "sharding",
+        "availability-patterns",
+        "consistency-patterns"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#master-slave-replication",
+      "word_count": 541,
+      "sections": [
+        "Master-slave replication",
+        "Master-master replication",
+        "Disadvantage(s): replication",
+        "At a glance",
+        "Source(s) and further reading: replication",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "federation",
+      "title": "Federation (Functional Partitioning)",
+      "module": "data",
+      "order": 30,
+      "path": "data/federation.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "scaling",
+        "partitioning"
+      ],
+      "prerequisites": [
+        "rdbms"
+      ],
+      "related": [
+        "sharding",
+        "replication",
+        "denormalization"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#federation",
+      "word_count": 232,
+      "sections": [
+        "Disadvantage(s): federation",
+        "Source(s) and further reading: federation",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "sharding",
+      "title": "Sharding",
+      "module": "data",
+      "order": 40,
+      "path": "data/sharding.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "scaling",
+        "partitioning",
+        "sharding",
+        "consistent-hashing"
+      ],
+      "prerequisites": [
+        "federation"
+      ],
+      "related": [
+        "federation",
+        "replication",
+        "denormalization",
+        "under-development"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#sharding",
+      "word_count": 359,
+      "sections": [
+        "Disadvantage(s): sharding",
+        "Source(s) and further reading: sharding",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "denormalization",
+      "title": "Denormalization",
+      "module": "data",
+      "order": 50,
+      "path": "data/denormalization.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "scaling",
+        "reads",
+        "joins"
+      ],
+      "prerequisites": [
+        "sharding"
+      ],
+      "related": [
+        "sql-tuning",
+        "federation",
+        "sharding",
+        "what-to-cache"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#denormalization",
+      "word_count": 220,
+      "sections": [
+        "Disadvantage(s): denormalization",
+        "Source(s) and further reading: denormalization",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "sql-tuning",
+      "title": "SQL Tuning",
+      "module": "data",
+      "order": 60,
+      "path": "data/sql-tuning.md",
+      "est_minutes": 7,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "performance",
+        "indices",
+        "schema",
+        "benchmarking"
+      ],
+      "prerequisites": [
+        "rdbms"
+      ],
+      "related": [
+        "denormalization",
+        "sharding",
+        "caching-overview",
+        "performance-vs-scalability"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#sql-tuning",
+      "word_count": 490,
+      "sections": [
+        "Tighten up the schema",
+        "Use good indices",
+        "Avoid expensive joins",
+        "Partition tables",
+        "Tune the query cache",
+        "Source(s) and further reading: SQL tuning",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "nosql",
+      "title": "NoSQL",
+      "module": "data",
+      "order": 70,
+      "path": "data/nosql.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "nosql",
+        "base",
+        "consistency"
+      ],
+      "prerequisites": [
+        "rdbms",
+        "cap-theorem"
+      ],
+      "related": [
+        "key-value-store",
+        "document-store",
+        "wide-column-store",
+        "graph-database",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#nosql",
+      "word_count": 297,
+      "sections": [
+        "BASE",
+        "The four store types",
+        "Source(s) and further reading: NoSQL",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "key-value-store",
+      "title": "Key-Value Store",
+      "module": "data",
+      "order": 80,
+      "path": "data/key-value-store.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "nosql",
+        "key-value",
+        "cache"
+      ],
+      "prerequisites": [
+        "nosql"
+      ],
+      "related": [
+        "document-store",
+        "caching-overview",
+        "cache-locations",
+        "service-discovery"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#key-value-store",
+      "word_count": 187,
+      "sections": [
+        "Source(s) and further reading: key-value store",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "document-store",
+      "title": "Document Store",
+      "module": "data",
+      "order": 90,
+      "path": "data/document-store.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "nosql",
+        "document-store"
+      ],
+      "prerequisites": [
+        "key-value-store"
+      ],
+      "related": [
+        "key-value-store",
+        "wide-column-store",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#document-store",
+      "word_count": 215,
+      "sections": [
+        "Source(s) and further reading: document store",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "wide-column-store",
+      "title": "Wide Column Store",
+      "module": "data",
+      "order": 100,
+      "path": "data/wide-column-store.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "nosql",
+        "wide-column",
+        "bigtable",
+        "cassandra"
+      ],
+      "prerequisites": [
+        "nosql"
+      ],
+      "related": [
+        "key-value-store",
+        "document-store",
+        "real-world-architectures"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#wide-column-store",
+      "word_count": 220,
+      "sections": [
+        "Source(s) and further reading: wide column store",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "graph-database",
+      "title": "Graph Database",
+      "module": "data",
+      "order": 110,
+      "path": "data/graph-database.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "nosql",
+        "graph",
+        "relationships"
+      ],
+      "prerequisites": [
+        "nosql"
+      ],
+      "related": [
+        "key-value-store",
+        "rest",
+        "sql-or-nosql"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#graph-database",
+      "word_count": 173,
+      "sections": [
+        "Source(s) and further reading: graph",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "sql-or-nosql",
+      "title": "SQL or NoSQL",
+      "module": "data",
+      "order": 120,
+      "path": "data/sql-or-nosql.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "database",
+        "sql",
+        "nosql",
+        "tradeoffs",
+        "decision"
+      ],
+      "prerequisites": [
+        "rdbms",
+        "nosql"
+      ],
+      "related": [
+        "rdbms",
+        "nosql",
+        "cap-theorem",
+        "key-value-store"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#sql-or-nosql",
+      "word_count": 245,
+      "sections": [
+        "Reasons for SQL",
+        "Reasons for NoSQL",
+        "Sample data well-suited for NoSQL",
+        "Source(s) and further reading: SQL or NoSQL",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "caching",
+      "title": "Caching",
+      "module": "caching",
+      "order": 0,
+      "path": "caching/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "caching",
+        "performance"
+      ],
+      "prerequisites": [
+        "data"
+      ],
+      "related": [
+        "caching-overview",
+        "cache-locations",
+        "what-to-cache",
+        "cache-update-strategies"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#cache",
+      "word_count": 207,
+      "sections": [
+        "Modules",
+        "The three questions",
+        "Where this leads"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "caching-overview",
+      "title": "Caching Overview",
+      "module": "caching",
+      "order": 10,
+      "path": "caching/caching-overview.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "caching",
+        "performance",
+        "invalidation"
+      ],
+      "prerequisites": [
+        "data"
+      ],
+      "related": [
+        "cache-locations",
+        "what-to-cache",
+        "cache-update-strategies",
+        "cdn"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#cache",
+      "word_count": 313,
+      "sections": [
+        "The three decisions",
+        "Disadvantage(s): cache",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "cache-locations",
+      "title": "Where to Cache",
+      "module": "caching",
+      "order": 20,
+      "path": "caching/cache-locations.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "caching",
+        "architecture",
+        "redis",
+        "memcached"
+      ],
+      "prerequisites": [
+        "caching-overview"
+      ],
+      "related": [
+        "cdn",
+        "reverse-proxy",
+        "key-value-store",
+        "what-to-cache"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#client-caching",
+      "word_count": 358,
+      "sections": [
+        "Client caching",
+        "CDN caching",
+        "Web server caching",
+        "Database caching",
+        "Application caching",
+        "Levels of caching",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "what-to-cache",
+      "title": "What to Cache",
+      "module": "caching",
+      "order": 30,
+      "path": "caching/what-to-cache.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "caching",
+        "invalidation",
+        "granularity"
+      ],
+      "prerequisites": [
+        "cache-locations"
+      ],
+      "related": [
+        "cache-update-strategies",
+        "denormalization",
+        "caching-overview"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#caching-at-the-database-query-level",
+      "word_count": 245,
+      "sections": [
+        "Caching at the database query level",
+        "Caching at the object level",
+        "Suggestions of what to cache",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "cache-update-strategies",
+      "title": "When to Update the Cache",
+      "module": "caching",
+      "order": 40,
+      "path": "caching/cache-update-strategies.md",
+      "est_minutes": 8,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "caching",
+        "invalidation",
+        "patterns",
+        "cache-aside",
+        "write-through",
+        "write-behind",
+        "refresh-ahead"
+      ],
+      "prerequisites": [
+        "what-to-cache"
+      ],
+      "related": [
+        "consistency-patterns",
+        "caching-overview",
+        "cache-locations",
+        "cdn"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#when-to-update-the-cache",
+      "word_count": 714,
+      "sections": [
+        "Cache-aside",
+        "Write-through",
+        "Write-behind (write-back)",
+        "Refresh-ahead",
+        "At a glance",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "module": "security",
+      "order": 0,
+      "path": "security/README.md",
+      "est_minutes": 1,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "security"
+      ],
+      "prerequisites": [],
+      "related": [
+        "security-basics"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#security",
+      "word_count": 45,
+      "sections": [],
+      "has_self_check": false
+    },
+    {
+      "id": "security-basics",
+      "title": "Security Basics",
+      "module": "security",
+      "order": 10,
+      "path": "security/security-basics.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "security",
+        "xss",
+        "sql-injection",
+        "least-privilege",
+        "encryption"
+      ],
+      "prerequisites": [],
+      "related": [
+        "rest",
+        "rdbms",
+        "reverse-proxy"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#security",
+      "word_count": 206,
+      "sections": [
+        "Where security shows up elsewhere in this path",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix",
+      "module": "appendix",
+      "order": 0,
+      "path": "appendix/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "reference"
+      ],
+      "prerequisites": [],
+      "related": [
+        "powers-of-two",
+        "latency-numbers",
+        "back-of-the-envelope"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#appendix",
+      "word_count": 238,
+      "sections": [
+        "Reference tables",
+        "Practice and reading"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "back-of-the-envelope",
+      "title": "Back-of-the-Envelope Calculations",
+      "module": "appendix",
+      "order": 10,
+      "path": "appendix/back-of-the-envelope.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "estimation",
+        "interview-prep",
+        "math"
+      ],
+      "prerequisites": [],
+      "related": [
+        "powers-of-two",
+        "latency-numbers",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#back-of-the-envelope-calculations",
+      "word_count": 443,
+      "sections": [
+        "The method",
+        "Conversion guide",
+        "Worked example",
+        "Reference tables",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "powers-of-two",
+      "title": "Powers of Two Table",
+      "module": "appendix",
+      "order": 20,
+      "path": "appendix/powers-of-two.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "estimation",
+        "math"
+      ],
+      "prerequisites": [],
+      "related": [
+        "latency-numbers",
+        "back-of-the-envelope",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#powers-of-two-table",
+      "word_count": 152,
+      "sections": [
+        "How to use it",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "latency-numbers",
+      "title": "Latency Numbers Every Programmer Should Know",
+      "module": "appendix",
+      "order": 30,
+      "path": "appendix/latency-numbers.md",
+      "est_minutes": 4,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "estimation",
+        "latency",
+        "performance"
+      ],
+      "prerequisites": [],
+      "related": [
+        "powers-of-two",
+        "back-of-the-envelope",
+        "latency-vs-throughput"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know",
+      "word_count": 300,
+      "sections": [
+        "Handy metrics based on the numbers above",
+        "Latency numbers visualized",
+        "Why these numbers decide designs",
+        "Source(s) and further reading",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "additional-questions",
+      "title": "Additional System Design Interview Questions",
+      "module": "appendix",
+      "order": 40,
+      "path": "appendix/additional-questions.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "practice",
+        "interview-prep"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "real-world-architectures",
+        "company-architectures",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#additional-system-design-interview-questions",
+      "word_count": 342,
+      "sections": [
+        "How many to do"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "real-world-architectures",
+      "title": "Real World Architectures",
+      "module": "appendix",
+      "order": 50,
+      "path": "appendix/real-world-architectures.md",
+      "est_minutes": 6,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "architectures",
+        "papers",
+        "reading"
+      ],
+      "prerequisites": [],
+      "related": [
+        "company-architectures",
+        "engineering-blogs",
+        "wide-column-store",
+        "under-development"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#real-world-architectures",
+      "word_count": 406,
+      "sections": [
+        "How this connects back"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "company-architectures",
+      "title": "Company Architectures",
+      "module": "appendix",
+      "order": 60,
+      "path": "appendix/company-architectures.md",
+      "est_minutes": 5,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "architectures",
+        "reading",
+        "interview-prep"
+      ],
+      "prerequisites": [],
+      "related": [
+        "real-world-architectures",
+        "engineering-blogs"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#company-architectures",
+      "word_count": 397,
+      "sections": [
+        "Related exercises"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "engineering-blogs",
+      "title": "Company Engineering Blogs",
+      "module": "appendix",
+      "order": 70,
+      "path": "appendix/engineering-blogs.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "reading",
+        "interview-prep"
+      ],
+      "prerequisites": [],
+      "related": [
+        "company-architectures",
+        "real-world-architectures"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#company-engineering-blogs",
+      "word_count": 227,
+      "sections": [
+        "Source(s) and further reading"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "under-development",
+      "title": "Under Development",
+      "module": "appendix",
+      "order": 80,
+      "path": "appendix/under-development.md",
+      "est_minutes": 2,
+      "timelines": [
+        "long"
+      ],
+      "tags": [
+        "reference",
+        "gaps",
+        "advanced"
+      ],
+      "prerequisites": [
+        "sharding"
+      ],
+      "related": [
+        "sharding",
+        "real-world-architectures",
+        "long-timeline"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#under-development",
+      "word_count": 205,
+      "sections": [
+        "Distributed computing with MapReduce",
+        "Consistent hashing",
+        "Scatter gather",
+        "Contributing",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercises",
+      "title": "Exercises",
+      "module": "exercises",
+      "order": 0,
+      "path": "exercises/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "exercise",
+        "practice"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "system-design-exercises",
+        "ood-exercises",
+        "additional-questions"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#system-design-interview-questions-with-solutions",
+      "word_count": 166,
+      "sections": [
+        "Sets",
+        "How many to do"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "system-design-exercises",
+      "title": "System Design Exercises",
+      "module": "exercises/system-design",
+      "order": 0,
+      "path": "exercises/system-design/README.md",
+      "est_minutes": 3,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "exercise",
+        "system-design",
+        "practice"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "exercises",
+        "additional-questions",
+        "interview-approach"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#system-design-interview-questions-with-solutions",
+      "word_count": 331,
+      "sections": [
+        "Suggested order",
+        "The one instruction that matters"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "exercise-pastebin",
+      "title": "Design Pastebin.com (or Bit.ly)",
+      "module": "exercises/system-design",
+      "order": 10,
+      "path": "exercises/system-design/pastebin/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "url-shortener",
+        "sql",
+        "object-store",
+        "mapreduce"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "rdbms",
+        "key-value-store",
+        "sql-or-nosql",
+        "cache-update-strategies",
+        "back-of-the-envelope"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md",
+      "word_count": 1740,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-twitter",
+      "title": "Design the Twitter Timeline and Search",
+      "module": "exercises/system-design",
+      "order": 20,
+      "path": "exercises/system-design/twitter/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "feed",
+        "fanout",
+        "search",
+        "nosql"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "caching-overview",
+        "asynchronism",
+        "denormalization",
+        "sharding",
+        "graph-database"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/twitter/README.md",
+      "word_count": 2023,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-web-crawler",
+      "title": "Design a Web Crawler",
+      "module": "exercises/system-design",
+      "order": 30,
+      "path": "exercises/system-design/web-crawler/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "crawler",
+        "queues",
+        "dedup",
+        "mapreduce"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "asynchronism",
+        "nosql",
+        "caching-overview",
+        "back-of-the-envelope"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/web_crawler/README.md",
+      "word_count": 1763,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-mint",
+      "title": "Design Mint.com",
+      "module": "exercises/system-design",
+      "order": 40,
+      "path": "exercises/system-design/mint/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "etl",
+        "queues",
+        "categorization",
+        "sql"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "asynchronism",
+        "rdbms",
+        "sharding",
+        "caching-overview"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/mint/README.md",
+      "word_count": 1992,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-social-graph",
+      "title": "Design the Data Structures for a Social Network",
+      "module": "exercises/system-design",
+      "order": 50,
+      "path": "exercises/system-design/social-graph/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "graph",
+        "shortest-path",
+        "sharding"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "graph-database",
+        "sharding",
+        "caching-overview",
+        "asynchronism"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/social_graph/README.md",
+      "word_count": 1323,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-query-cache",
+      "title": "Design a Key-Value Store for a Search Engine",
+      "module": "exercises/system-design",
+      "order": 60,
+      "path": "exercises/system-design/query-cache/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "cache",
+        "lru",
+        "key-value"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "caching-overview",
+        "cache-update-strategies",
+        "key-value-store",
+        "cache-locations"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/query_cache/README.md",
+      "word_count": 1369,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-sales-rank",
+      "title": "Design Amazon's Sales Ranking by Category",
+      "module": "exercises/system-design",
+      "order": 70,
+      "path": "exercises/system-design/sales-rank/README.md",
+      "est_minutes": 25,
+      "timelines": [
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "mapreduce",
+        "analytics",
+        "sql"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "asynchronism",
+        "denormalization",
+        "sql-tuning",
+        "under-development"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/sales_rank/README.md",
+      "word_count": 1338,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "exercise-scaling-aws",
+      "title": "Design a System That Scales to Millions of Users on AWS",
+      "module": "exercises/system-design",
+      "order": 80,
+      "path": "exercises/system-design/scaling-aws/README.md",
+      "est_minutes": 30,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "system-design",
+        "aws",
+        "scaling-ladder",
+        "capstone"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "load-balancer",
+        "replication",
+        "sharding",
+        "caching-overview",
+        "asynchronism",
+        "availability-patterns"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/scaling_aws/README.md",
+      "word_count": 2536,
+      "sections": [
+        "Step 1: Outline use cases and constraints",
+        "Step 2: Create a high level design",
+        "Step 3: Design core components",
+        "Step 4: Scale the design",
+        "Additional talking points",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-exercises",
+      "title": "Object-Oriented Design Exercises",
+      "module": "exercises/object-oriented-design",
+      "order": 0,
+      "path": "exercises/object-oriented-design/README.md",
+      "est_minutes": 2,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "index",
+        "exercise",
+        "ood",
+        "practice"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "exercises",
+        "system-design-exercises"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer#object-oriented-design-interview-questions-with-solutions",
+      "word_count": 247,
+      "sections": [
+        "Suggested order",
+        "Contribute"
+      ],
+      "has_self_check": false
+    },
+    {
+      "id": "ood-hash-map",
+      "title": "Design a Hash Map",
+      "module": "exercises/object-oriented-design",
+      "order": 10,
+      "path": "exercises/object-oriented-design/hash-map.md",
+      "est_minutes": 20,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "hash-table",
+        "data-structures"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "key-value-store",
+        "caching-overview"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/hash_table/hash_map.ipynb",
+      "word_count": 151,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-lru-cache",
+      "title": "Design an LRU Cache",
+      "module": "exercises/object-oriented-design",
+      "order": 20,
+      "path": "exercises/object-oriented-design/lru-cache.md",
+      "est_minutes": 20,
+      "timelines": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "cache",
+        "lru",
+        "data-structures"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "cache-locations",
+        "cache-update-strategies",
+        "caching-overview"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/lru_cache/lru_cache.ipynb",
+      "word_count": 136,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-call-center",
+      "title": "Design a Call Center",
+      "module": "exercises/object-oriented-design",
+      "order": 30,
+      "path": "exercises/object-oriented-design/call-center.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "escalation",
+        "inheritance"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "asynchronism",
+        "microservices"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/call_center/call_center.ipynb",
+      "word_count": 225,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-deck-of-cards",
+      "title": "Design a Deck of Cards",
+      "module": "exercises/object-oriented-design",
+      "order": 40,
+      "path": "exercises/object-oriented-design/deck-of-cards.md",
+      "est_minutes": 20,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "inheritance",
+        "polymorphism"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb",
+      "word_count": 158,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-parking-lot",
+      "title": "Design a Parking Lot",
+      "module": "exercises/object-oriented-design",
+      "order": 50,
+      "path": "exercises/object-oriented-design/parking-lot.md",
+      "est_minutes": 25,
+      "timelines": [
+        "medium",
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "inheritance",
+        "allocation"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/parking_lot/parking_lot.ipynb",
+      "word_count": 157,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    },
+    {
+      "id": "ood-online-chat",
+      "title": "Design an Online Chat",
+      "module": "exercises/object-oriented-design",
+      "order": 60,
+      "path": "exercises/object-oriented-design/online-chat.md",
+      "est_minutes": 25,
+      "timelines": [
+        "long"
+      ],
+      "tags": [
+        "exercise",
+        "ood",
+        "chat",
+        "social-graph"
+      ],
+      "prerequisites": [
+        "interview-approach"
+      ],
+      "related": [
+        "exercise-social-graph",
+        "asynchronism"
+      ],
+      "source": "https://github.com/donnemartin/system-design-primer/blob/master/solutions/object_oriented_design/online_chat/online_chat.ipynb",
+      "word_count": 191,
+      "sections": [
+        "Constraints and assumptions",
+        "Solution",
+        "Self-check"
+      ],
+      "has_self_check": true
+    }
+  ]
+}
