@@ -92,6 +92,10 @@ func LogoutHandler(c *gin.Context) {
 		logrus.Error("Failed to convert token value to string")
 	}
 	currentSession.Clear()
+	err := currentSession.Save()
+	if err != nil {
+		logrus.Error("Failed to clear session with error: ", err)
+	}
 	http.PostForm("https://oauth2.googleapis.com/revoke", url.Values{"token": {token}})
-	c.Redirect(http.StatusNoContent, "/")
+	c.Redirect(http.StatusFound, "/")
 }
