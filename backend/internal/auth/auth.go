@@ -13,7 +13,7 @@ func newOAuth2Config() *oauth2.Config {
 	ctx := context.Background()
 	provider, err := oidc.NewProvider(ctx, "https://accounts.google.com")
 	if err != nil {
-		logrus.Error("Error accessing provider details, ", err)
+		logrus.Fatal("Error accessing provider details, ", err)
 		return nil
 	}
 	oauth2Config := &oauth2.Config{
