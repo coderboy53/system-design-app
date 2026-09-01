@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/coderboy53/system-design-app/internal/auth"
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,12 +13,12 @@ func handlerRoutes(r *gin.Engine) {
 	r.GET(
 		"/",
 		func(c *gin.Context) {
-			c.JSON(
-				http.StatusOK,
-				gin.H{
-					"message": "Welcome to app",
-				},
-			)
+			currentSession := sessions.Default(c)
+			if currentSession.Get("userid") == nil {
+				c.Status(http.StatusUnauthorized)
+			} else {
+				c.Status(http.StatusOK)
+			}
 		},
 	)
 	r.GET(
@@ -27,5 +28,9 @@ func handlerRoutes(r *gin.Engine) {
 	r.GET(
 		"/api/callback",
 		auth.CallbackHandler,
+	)
+	r.POST(
+		"/api/logout",
+		auth.LogoutHandler,
 	)
 }
