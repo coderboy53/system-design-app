@@ -1,6 +1,7 @@
 package server
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/coderboy53/system-design-app/internal/platform/db"
@@ -29,5 +30,11 @@ func initializeRedis() redis.Store {
 		logrus.Error("Failed to create session store with error: ", err)
 		return nil
 	}
+	store.Options(sessions.Options{
+		MaxAge:   21600,
+		HttpOnly: true,
+		Secure:   true,
+		SameSite: http.SameSiteLaxMode,
+	})
 	return store
 }
