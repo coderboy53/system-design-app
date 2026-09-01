@@ -33,7 +33,7 @@ func initializeRedis() redis.Store {
 	store.Options(sessions.Options{
 		MaxAge:   21600,
 		HttpOnly: true,
-		Secure:   true,
+		Secure:   false,
 		SameSite: http.SameSiteLaxMode,
 	})
 	return store
