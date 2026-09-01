@@ -31,6 +31,7 @@ func initializeRedis() redis.Store {
 		return nil
 	}
 	store.Options(sessions.Options{
+		Path:     "/",
 		MaxAge:   21600,
 		HttpOnly: true,
 		Secure:   false,
