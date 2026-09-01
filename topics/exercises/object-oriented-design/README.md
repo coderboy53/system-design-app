@@ -2,6 +2,7 @@
 id: ood-exercises
 title: Object-Oriented Design Exercises
 module: exercises/object-oriented-design
+module_order: 110
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

@@ -2,6 +2,7 @@
 id: fundamentals
 title: Fundamentals
 module: fundamentals
+module_order: 20
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

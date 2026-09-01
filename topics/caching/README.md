@@ -2,6 +2,7 @@
 id: caching
 title: Caching
 module: caching
+module_order: 60
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

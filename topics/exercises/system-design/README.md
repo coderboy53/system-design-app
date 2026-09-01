@@ -2,6 +2,7 @@
 id: system-design-exercises
 title: System Design Exercises
 module: exercises/system-design
+module_order: 100
 order: 0
 est_minutes: 3
 timelines: [short, medium, long]

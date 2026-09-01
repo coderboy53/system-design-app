@@ -2,6 +2,7 @@
 id: appendix
 title: Appendix
 module: appendix
+module_order: 80
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

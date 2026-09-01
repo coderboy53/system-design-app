@@ -2,6 +2,7 @@
 id: networking
 title: Networking & Edge
 module: networking
+module_order: 30
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

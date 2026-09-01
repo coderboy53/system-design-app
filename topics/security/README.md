@@ -2,6 +2,7 @@
 id: security
 title: Security
 module: security
+module_order: 70
 order: 0
 est_minutes: 1
 timelines: [short, medium, long]

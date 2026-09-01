@@ -2,6 +2,7 @@
 id: root
 title: System Design Learning Path
 module: root
+module_order: 0
 order: 0
 est_minutes: 5
 timelines: [short, medium, long]
@@ -207,6 +208,7 @@ Every module file carries frontmatter with a stable shape:
 id: cap-theorem                    # unique slug, stable across edits
 title: Availability vs Consistency # display title
 module: fundamentals               # parent module directory
+module_order: 20                   # sort order of the module itself (index files only)
 order: 30                          # sort order within the module
 est_minutes: 8                     # estimated read time
 timelines: [short, medium, long]   # which study tracks include this
@@ -220,6 +222,13 @@ source: https://github.com/donnemartin/system-design-primer#cap-theorem
 * `id` is the join key. The backend should treat it as the primary key; filenames may move.
 * `prerequisites` and `related` reference other `id`s, forming the graph the frontend can render
   as a dependency map or "up next" rail.
+* `order` sorts entries **within** a module; `module_order` sorts the **modules** against each
+  other. Both are spaced by 10 so a new entry or module can be slotted in without renumbering.
+  `order: 0` is reserved for a module's own `README.md`; `order: 900` parks an entry at the end.
+* `module_order` is declared only on module index files (`*/README.md`) — that file is the module's
+  metadata home. It is mirrored into `manifest.json` under both `modules[]` and the matching index
+  entry, and `modules[]`/`entries[]` are kept sorted by it, so consumers never depend on JSON array
+  position for ordering.
 * `timelines` drives the short/medium/long track filters.
 * Images are local under [`assets/images/`](assets/images) — nothing loads from a remote host.
 

@@ -2,6 +2,7 @@
 id: data
 title: Data
 module: data
+module_order: 50
 order: 0
 est_minutes: 3
 timelines: [short, medium, long]

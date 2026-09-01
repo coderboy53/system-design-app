@@ -13,6 +13,7 @@
     "id",
     "title",
     "module",
+    "module_order",
     "order",
     "est_minutes",
     "timelines",
@@ -45,6 +46,7 @@
     {
       "id": "root",
       "title": "Root",
+      "module_order": 0,
       "count": 2,
       "entries": [
         "root",
@@ -54,6 +56,7 @@
     {
       "id": "study-guide",
       "title": "Study Guide",
+      "module_order": 10,
       "count": 6,
       "entries": [
         "study-guide",
@@ -67,6 +70,7 @@
     {
       "id": "fundamentals",
       "title": "Fundamentals",
+      "module_order": 20,
       "count": 7,
       "entries": [
         "fundamentals",
@@ -81,6 +85,7 @@
     {
       "id": "networking",
       "title": "Networking & Edge",
+      "module_order": 30,
       "count": 9,
       "entries": [
         "networking",
@@ -97,6 +102,7 @@
     {
       "id": "application",
       "title": "Application Layer",
+      "module_order": 40,
       "count": 5,
       "entries": [
         "application",
@@ -109,6 +115,7 @@
     {
       "id": "data",
       "title": "Data",
+      "module_order": 50,
       "count": 13,
       "entries": [
         "data",
@@ -129,6 +136,7 @@
     {
       "id": "caching",
       "title": "Caching",
+      "module_order": 60,
       "count": 5,
       "entries": [
         "caching",
@@ -141,6 +149,7 @@
     {
       "id": "security",
       "title": "Security",
+      "module_order": 70,
       "count": 2,
       "entries": [
         "security",
@@ -150,6 +159,7 @@
     {
       "id": "appendix",
       "title": "Appendix",
+      "module_order": 80,
       "count": 9,
       "entries": [
         "appendix",
@@ -166,6 +176,7 @@
     {
       "id": "exercises",
       "title": "Exercises",
+      "module_order": 90,
       "count": 1,
       "entries": [
         "exercises"
@@ -174,6 +185,7 @@
     {
       "id": "exercises/system-design",
       "title": "System Design Exercises",
+      "module_order": 100,
       "count": 9,
       "entries": [
         "system-design-exercises",
@@ -190,6 +202,7 @@
     {
       "id": "exercises/object-oriented-design",
       "title": "Object-Oriented Design Exercises",
+      "module_order": 110,
       "count": 7,
       "entries": [
         "ood-exercises",
@@ -207,6 +220,7 @@
       "id": "root",
       "title": "System Design Learning Path",
       "module": "root",
+      "module_order": 0,
       "order": 0,
       "path": "README.md",
       "est_minutes": 5,
@@ -270,6 +284,7 @@
       "id": "study-guide",
       "title": "Study Guide",
       "module": "study-guide",
+      "module_order": 10,
       "order": 0,
       "path": "study-guide/README.md",
       "est_minutes": 6,
@@ -479,6 +494,7 @@
       "id": "fundamentals",
       "title": "Fundamentals",
       "module": "fundamentals",
+      "module_order": 20,
       "order": 0,
       "path": "fundamentals/README.md",
       "est_minutes": 2,
@@ -721,6 +737,7 @@
       "id": "networking",
       "title": "Networking & Edge",
       "module": "networking",
+      "module_order": 30,
       "order": 0,
       "path": "networking/README.md",
       "est_minutes": 2,
@@ -1062,6 +1079,7 @@
       "id": "application",
       "title": "Application Layer",
       "module": "application",
+      "module_order": 40,
       "order": 0,
       "path": "application/README.md",
       "est_minutes": 2,
@@ -1244,6 +1262,7 @@
       "id": "data",
       "title": "Data",
       "module": "data",
+      "module_order": 50,
       "order": 0,
       "path": "data/README.md",
       "est_minutes": 3,
@@ -1726,6 +1745,7 @@
       "id": "caching",
       "title": "Caching",
       "module": "caching",
+      "module_order": 60,
       "order": 0,
       "path": "caching/README.md",
       "est_minutes": 2,
@@ -1914,6 +1934,7 @@
       "id": "security",
       "title": "Security",
       "module": "security",
+      "module_order": 70,
       "order": 0,
       "path": "security/README.md",
       "est_minutes": 1,
@@ -1973,6 +1994,7 @@
       "id": "appendix",
       "title": "Appendix",
       "module": "appendix",
+      "module_order": 80,
       "order": 0,
       "path": "appendix/README.md",
       "est_minutes": 2,
@@ -2263,6 +2285,7 @@
       "id": "exercises",
       "title": "Exercises",
       "module": "exercises",
+      "module_order": 90,
       "order": 0,
       "path": "exercises/README.md",
       "est_minutes": 2,
@@ -2296,6 +2319,7 @@
       "id": "system-design-exercises",
       "title": "System Design Exercises",
       "module": "exercises/system-design",
+      "module_order": 100,
       "order": 0,
       "path": "exercises/system-design/README.md",
       "est_minutes": 3,
@@ -2652,6 +2676,7 @@
       "id": "ood-exercises",
       "title": "Object-Oriented Design Exercises",
       "module": "exercises/object-oriented-design",
+      "module_order": 110,
       "order": 0,
       "path": "exercises/object-oriented-design/README.md",
       "est_minutes": 2,

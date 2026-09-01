@@ -2,6 +2,7 @@
 id: exercises
 title: Exercises
 module: exercises
+module_order: 90
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]

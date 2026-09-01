@@ -2,6 +2,7 @@
 id: study-guide
 title: Study Guide
 module: study-guide
+module_order: 10
 order: 0
 est_minutes: 6
 timelines: [short, medium, long]

@@ -2,6 +2,7 @@
 id: application
 title: Application Layer
 module: application
+module_order: 40
 order: 0
 est_minutes: 2
 timelines: [short, medium, long]
