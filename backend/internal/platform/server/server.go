@@ -1,6 +1,7 @@
 package server
 
 import (
+	"database/sql"
 	"net/http"
 	"os"
 
@@ -11,14 +12,20 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+type App struct {
+	Db     *sql.DB
+	Router *gin.Engine
+}
+
 // initializes the gin Engine, then sets up the routes and initializes connection to DB
 func StartServer() {
-	r := gin.Default()
-	db.InitializeDB()
+	app := App{}
+	app.Router = gin.Default()
+	app.Db = db.InitializeDB()
 	redisStore := initializeRedis()
-	r.Use(sessions.Sessions("appsessions", redisStore))
-	handlerRoutes(r)
-	err := r.Run("localhost:9000")
+	app.Router.Use(sessions.Sessions("appsessions", redisStore))
+	app.handlerRoutes()
+	err := app.Router.Run("localhost:9000")
 	if err != nil {
 		logrus.Fatal("Failed to start gin engine with error: ", err)
 	}

@@ -4,13 +4,15 @@ import (
 	"net/http"
 
 	"github.com/coderboy53/system-design-app/internal/auth"
+	"github.com/coderboy53/system-design-app/internal/modules"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
-func handlerRoutes(r *gin.Engine) {
+func (app *App) handlerRoutes() {
+	h := modules.NewHandlers(app.Db)
 	// temp root endpoint for now
-	r.GET(
+	app.Router.GET(
 		"/",
 		func(c *gin.Context) {
 			currentSession := sessions.Default(c)
@@ -21,16 +23,20 @@ func handlerRoutes(r *gin.Engine) {
 			}
 		},
 	)
-	r.GET(
+	app.Router.GET(
 		"/api/login",
 		auth.LoginHandler,
 	)
-	r.GET(
+	app.Router.GET(
 		"/api/callback",
 		auth.CallbackHandler,
 	)
-	r.POST(
+	app.Router.POST(
 		"/api/logout",
 		auth.LogoutHandler,
 	)
+	app.Router.GET(
+		"/api/module",
+		.GetModules,
+	)	
 }
