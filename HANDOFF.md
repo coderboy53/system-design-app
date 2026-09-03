@@ -26,7 +26,7 @@ under `topics/` is shared truth — changes there need agreement.
 |---|---|---|
 | 1 | How is module ordering stored? | New `module_order` frontmatter field on module index files, ingested into a DB column. **Implemented** — see below. |
 | 2 | Derive module order from `manifest.json` array position instead? | No. Array position is implicit and one `json.Unmarshal` into a map away from silently scrambling the curriculum. Declare explicitly, sort in SQL. |
-| 3 | Separate `topics` package from `modules`? | No. One package (`internal/content/`) — a module has no behavior without its topics, and ingestion parses both in one pass. |
+| 3 | Separate `topics` package from `modules`? | No. One package, kept as `internal/modules/` (not renamed to `content/`) — high level this domain is about modules, and a module has no behavior without its topics, and ingestion parses both in one pass. |
 | 4 | One model or two? | Two structs, `Module` and `Topic`, in the same package. |
 | 5 | `prerequisites` at module or topic level? | Topic level. Already present and already complete — no content change needed. Module-level prereqs are a derived query. |
 | 6 | `pq.StringArray` or `[]string`? | `[]string` in the struct, `pq.Array(&f)` at the scan site — keeps the driver out of the models. |
@@ -170,22 +170,23 @@ One package, not a `modules` + `topics` split. Rationale: strip the topics out a
 Ingestion produces both from one frontmatter parse. Every read path joins both.
 
 ```
-backend/internal/content/
+backend/internal/modules/
     models.go     Module, Topic
     ingest.go     walk topics/, parse frontmatter, upsert   ← the shared parser
-    content.go    ListModules, GetModule, GetTopic, Path(timeline), Next(topicID)
+    modules.go    ListModules, GetModule, GetTopic, Path(timeline), Next(topicID)
     handlers.go   GET /api/modules, /api/modules/:id, /api/topics/:id
 ```
 
-Matches the existing `auth`/`user` convention (`models.go` / `<domain>.go` / `handlers.go`). Renaming
-the stub `modules` package is free now and won't be later.
+Matches the existing `auth`/`user` convention (`models.go` / `<domain>.go` / `handlers.go`). Kept the
+existing `modules` package name rather than renaming to `content` — at a high level this domain is
+about modules, even though the package also holds `Topic`.
 
 **If you split anyway:** keep the dependency one-directional, `modules → topics`, with
 `Topic.ModuleID` as a plain `string` (which is what `module: fundamentals` already is). Put a
 `*Module` on `Topic` and you have an import cycle with no clean fix short of a third types package.
 
 **Later features that *should* be their own packages:** `internal/progress/`, `internal/flashcards/`,
-exercise submissions. Those are separate domains with user-scoped writes; they import `content`.
+exercise submissions. Those are separate domains with user-scoped writes; they import `modules`.
 
 ### Models
 
