@@ -1,0 +1,38 @@
+{
+  "id": "networking",
+  "title": "Networking & Edge",
+  "module_id": "networking",
+  "order": 0,
+  "is_index": true,
+  "path": "networking/README.md",
+  "est_minutes": 2,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "index",
+    "networking",
+    "communication"
+  ],
+  "prerequisites": [
+    "fundamentals"
+  ],
+  "related": [
+    "dns",
+    "cdn",
+    "load-balancer",
+    "reverse-proxy"
+  ],
+  "sections": [
+    "The request path",
+    "Communication protocols",
+    "Where this leads"
+  ],
+  "has_self_check": false,
+  "word_count": 279,
+  "source": "https://github.com/donnemartin/system-design-primer#communication",
+  "body": "# Networking & Edge\n\n<p align=\"center\">\n  <img src=\"../assets/images/5KeocQs.jpg\" alt=\"OSI 7 layer model\">\n  <br/>\n  <i><a href=\"http://www.escotal.com/osilayer.html\">Source: OSI 7 layer model</a></i>\n</p>\n\nEverything between the user typing a URL and your application code running: name resolution, edge\ncaching, traffic distribution, and the protocols services use to talk to each other.\n\n## Where this leads\n\n* [Layer 4 vs layer 7 load balancing](load-balancer.md#layer-4-load-balancing) only makes sense once you know [TCP](tcp-and-udp.md#transmission-control-protocol-tcp) and [HTTP](http.md).\n* CDNs are a kind of [cache](../caching/cache-locations.md#cdn-caching).\n* Reverse proxies are also [web server caches](../caching/cache-locations.md#web-server-caching).\n* Behind the load balancer sits the [application layer](../application/application-layer.md).\n"
+}

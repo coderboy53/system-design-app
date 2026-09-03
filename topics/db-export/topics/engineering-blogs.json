@@ -1,0 +1,32 @@
+{
+  "id": "engineering-blogs",
+  "title": "Company Engineering Blogs",
+  "module_id": "appendix",
+  "order": 70,
+  "is_index": false,
+  "path": "appendix/engineering-blogs.md",
+  "est_minutes": 3,
+  "summary": "Ongoing reading, and prep for a specific company",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "reference",
+    "reading",
+    "interview-prep"
+  ],
+  "prerequisites": [],
+  "related": [
+    "company-architectures",
+    "real-world-architectures"
+  ],
+  "sections": [
+    "Source(s) and further reading"
+  ],
+  "has_self_check": false,
+  "word_count": 227,
+  "source": "https://github.com/donnemartin/system-design-primer#company-engineering-blogs",
+  "body": "# Company Engineering Blogs\n\n> Architectures for companies you are interviewing with.\n>\n> **Questions you encounter might be from the same domain.**\n\nThat second line is the reason this is a **✔ for every timeline**, including the short one. Reading\na few posts from your target company's blog is the highest-leverage hour of prep available.\n\n* [Airbnb Engineering](http://nerds.airbnb.com/)\n* [Atlassian Developers](https://developer.atlassian.com/blog/)\n* [AWS Blog](https://aws.amazon.com/blogs/aws/)\n* [Bitly Engineering Blog](http://word.bitly.com/)\n* [Box Blogs](https://blog.box.com/blog/category/engineering)\n* [Cloudera Developer Blog](http://blog.cloudera.com/)\n* [Dropbox Tech Blog](https://tech.dropbox.com/)\n* [Engineering at Quora](https://www.quora.com/q/quoraengineering)\n* [Ebay Tech Blog](http://www.ebaytechblog.com/)\n* [Evernote Tech Blog](https://blog.evernote.com/tech/)\n* [Etsy Code as Craft](http://codeascraft.com/)\n* [Facebook Engineering](https://www.facebook.com/Engineering)\n* [Flickr Code](http://code.flickr.net/)\n* [Foursquare Engineering Blog](http://engineering.foursquare.com/)\n* [GitHub Engineering Blog](https://github.blog/category/engineering)\n* [Google Research Blog](http://googleresearch.blogspot.com/)\n* [Groupon Engineering Blog](https://engineering.groupon.com/)\n* [Heroku Engineering Blog](https://engineering.heroku.com/)\n* [Hubspot Engineering Blog](http://product.hubspot.com/blog/topic/engineering)\n* [High Scalability](http://highscalability.com/)\n* [Instagram Engineering](http://instagram-engineering.tumblr.com/)\n* [Intel Software Blog](https://software.intel.com/en-us/blogs/)\n* [Jane Street Tech Blog](https://blogs.janestreet.com/category/ocaml/)\n* [LinkedIn Engineering](http://engineering.linkedin.com/blog)\n* [Microsoft Engineering](https://engineering.microsoft.com/)\n* [Microsoft Python Engineering](https://blogs.msdn.microsoft.com/pythonengineering/)\n* [Netflix Tech Blog](http://techblog.netflix.com/)\n* [Paypal Developer Blog](https://developer.paypal.com/community/blog/)\n* [Pinterest Engineering Blog](https://medium.com/@Pinterest_Engineering)\n* [Reddit Blog](http://www.redditblog.com/)\n* [Salesforce Engineering Blog](https://developer.salesforce.com/blogs/engineering/)\n* [Slack Engineering Blog](https://slack.engineering/)\n* [Spotify Labs](https://labs.spotify.com/)\n* [Stripe Engineering Blog](https://stripe.com/blog/engineering)\n* [Twilio Engineering Blog](http://www.twilio.com/engineering)\n* [Twitter Engineering](https://blog.twitter.com/engineering/)\n* [Uber Engineering Blog](http://eng.uber.com/)\n* [Yahoo Engineering Blog](http://yahooeng.tumblr.com/)\n* [Yelp Engineering Blog](http://engineeringblog.yelp.com/)\n* [Zynga Engineering Blog](https://www.zynga.com/blogs/engineering)\n\n## Source(s) and further reading\n\nLooking to add a blog? To avoid duplicating work, consider adding your company blog to:\n\n* [kilimchoi/engineering-blogs](https://github.com/kilimchoi/engineering-blogs)\n"
+}

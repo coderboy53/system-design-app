@@ -1,0 +1,32 @@
+{
+  "id": "attribution",
+  "title": "Attribution and License",
+  "module_id": "root",
+  "order": 900,
+  "is_index": false,
+  "path": "ATTRIBUTION.md",
+  "est_minutes": 3,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "meta",
+    "license",
+    "attribution"
+  ],
+  "prerequisites": [],
+  "related": [
+    "root"
+  ],
+  "sections": [
+    "What changed in the adaptation",
+    "Onward attribution from the primer"
+  ],
+  "has_self_check": false,
+  "word_count": 271,
+  "source": "https://github.com/donnemartin/system-design-primer#license",
+  "body": "# Attribution\n\nAll content under `topics/` is adapted from **[The System Design Primer](https://github.com/donnemartin/system-design-primer)**\nby [Donne Martin](https://github.com/donnemartin).\n\n```\nCopyright 2017 Donne Martin\n\nCreative Commons Attribution 4.0 International License (CC BY 4.0)\n\nhttp://creativecommons.org/licenses/by/4.0/\n```\n\nThe full license text as shipped with the source repository is preserved at\n[`assets/PRIMER-LICENSE.txt`](assets/PRIMER-LICENSE.txt).\n\n## What changed in the adaptation\n\nThe primer is a single ~1,800 line `README.md` plus a `solutions/` folder. This path restructures\nthat material without altering its substance:\n\n* **Split** the monolithic README into one file per concept, so the app can serve a module at a time.\n* **Added** YAML frontmatter to every file (`id`, `title`, `module`, `order`, `est_minutes`,\n  `timelines`, `tags`, `prerequisites`, `related`, `source`) for indexing and routing.\n* **Rewrote** intra-document anchor links (`#sharding`) as relative file links (`../data/sharding.md`)\n  so every cross-reference resolves inside this content tree.\n* **Localized** all images. The primer's `images/` folder plus the diagrams the solution files\n  hot-linked from `i.imgur.com` are vendored into [`assets/images/`](assets/images). No module\n  fetches from a remote host.\n* **Converted** the object-oriented design Jupyter notebooks to markdown with their Python solutions inline.\n* **Added** a `Self-check` section to each concept module. These questions are derived from the\n  primer's own content and exist to feed a spaced-repetition queue.\n* **Added** [`manifest.json`](manifest.json), a machine-readable index of every module.\n\nEvery module's frontmatter carries a `source:` field pointing at the exact section of the upstream\nprimer it derives from.\n\n## Onward attribution from the primer\n\nThe primer itself credits:\n\n* [Hired in tech](http://www.hiredintech.com/system-design/the-system-design-process/)\n* [Cracking the coding interview](https://www.amazon.com/dp/0984782850/)\n* [High scalability](http://highscalability.com/)\n* [checkcheckzz/system-design-interview](https://github.com/checkcheckzz/system-design-interview)\n* [shashank88/system_design](https://github.com/shashank88/system_design)\n* [mmcgrana/services-engineering](https://github.com/mmcgrana/services-engineering)\n* [System design cheat sheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)\n* [A distributed systems reading list](http://dancres.github.io/Pages/)\n* [Cracking the system design interview](http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview)\n\nIndividual diagrams retain their original source attribution inline in the module that uses them.\n"
+}

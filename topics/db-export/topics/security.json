@@ -1,0 +1,28 @@
+{
+  "id": "security",
+  "title": "Security",
+  "module_id": "security",
+  "order": 0,
+  "is_index": true,
+  "path": "security/README.md",
+  "est_minutes": 1,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "index",
+    "security"
+  ],
+  "prerequisites": [],
+  "related": [
+    "security-basics"
+  ],
+  "sections": [],
+  "has_self_check": false,
+  "word_count": 45,
+  "source": "https://github.com/donnemartin/system-design-primer#security",
+  "body": "# Security\n\n> The primer notes this section could use updates and invites\n> [contributions](https://github.com/donnemartin/system-design-primer#contributing).\n"
+}

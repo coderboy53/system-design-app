@@ -1,0 +1,39 @@
+{
+  "id": "medium-timeline",
+  "title": "Medium Timeline Track",
+  "module_id": "study-guide",
+  "order": 20,
+  "is_index": false,
+  "path": "study-guide/medium-timeline.md",
+  "est_minutes": 4,
+  "summary": "",
+  "timelines": [
+    "medium"
+  ],
+  "tags": [
+    "meta",
+    "track",
+    "planning"
+  ],
+  "prerequisites": [
+    "study-guide"
+  ],
+  "related": [
+    "short-timeline",
+    "long-timeline",
+    "interview-approach"
+  ],
+  "sections": [
+    "1. Complete the short track",
+    "2. Go deep on data",
+    "3. Go deep on caching and asynchronism",
+    "4. Go deep on the trade-off vocabulary",
+    "5. Work through **many** exercises",
+    "6. Read the context material properly",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 495,
+  "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+  "body": "# Medium Timeline Track\n\n> **Goal: breadth and some depth.** Practice by solving **many** interview questions.\n\nEverything in the [short timeline](short-timeline.md), plus depth in the areas that come up most:\ndata storage, caching, and asynchronism.\n\n## 1. Complete the short track\n\nDo the full breadth pass and the two reference tables first. Depth without breadth leaves holes an\ninterviewer will find.\n\n* [Short timeline track](short-timeline.md)\n\n## 2. Go deep on data\n\nThis is where most design interviews spend their time. Read every sub-module, including the\ndisadvantages sections, and be able to justify picking one technique over another.\n\n* [Relational database management system (RDBMS)](../data/rdbms.md) — know ACID cold\n* [Replication](../data/replication.md) — master-slave vs master-master, and the disadvantages shared by both\n* [Federation](../data/federation.md)\n* [Sharding](../data/sharding.md) — including rebalancing and consistent hashing\n* [Denormalization](../data/denormalization.md)\n* [SQL tuning](../data/sql-tuning.md) — schema, indices, joins, partitioning, query cache\n* [NoSQL](../data/nosql.md) — BASE, and all four store types: [key-value](../data/key-value-store.md), [document](../data/document-store.md), [wide column](../data/wide-column-store.md), [graph](../data/graph-database.md)\n* [SQL or NoSQL](../data/sql-or-nosql.md) — be able to argue either side\n\n## 3. Go deep on caching and asynchronism\n\n* [Caching overview](../caching/caching-overview.md) and its disadvantages\n* [Where to cache](../caching/cache-locations.md)\n* [What to cache](../caching/what-to-cache.md) — query level vs object level\n* [When to update the cache](../caching/cache-update-strategies.md) — all four strategies with their failure modes\n* [Asynchronism](../application/asynchronism.md) — message queues, task queues, back pressure\n\n## 4. Go deep on the trade-off vocabulary\n\nYou will be asked to defend a choice. These modules are the vocabulary for doing that.\n\n* [Availability vs consistency (CAP theorem)](../fundamentals/cap-theorem.md)\n* [Consistency patterns](../fundamentals/consistency-patterns.md)\n* [Availability patterns](../fundamentals/availability-patterns.md) — including [availability in numbers](../fundamentals/availability-patterns.md#availability-in-numbers) and the parallel vs sequence math\n* [Load balancer](../networking/load-balancer.md) — layer 4 vs layer 7, and [horizontal scaling](../networking/load-balancer.md#horizontal-scaling)\n* [RPC](../networking/rpc.md) vs [REST](../networking/rest.md) — including the side-by-side call comparison\n\n## 5. Work through **many** exercises\n\nAim for most of the system design set. Work each one end to end using the\n[four-step framework](interview-approach.md) *before* reading the solution.\n\n* [Design Pastebin.com (or Bit.ly)](../exercises/system-design/pastebin/README.md)\n* [Design the Twitter timeline and search](../exercises/system-design/twitter/README.md)\n* [Design a web crawler](../exercises/system-design/web-crawler/README.md)\n* [Design Mint.com](../exercises/system-design/mint/README.md)\n* [Design a key-value store for a search engine](../exercises/system-design/query-cache/README.md)\n* [Design a system that scales to millions of users on AWS](../exercises/system-design/scaling-aws/README.md)\n\nAnd **many** object-oriented design questions:\n\n* [Hash map](../exercises/object-oriented-design/hash-map.md), [LRU cache](../exercises/object-oriented-design/lru-cache.md), [call center](../exercises/object-oriented-design/call-center.md), [deck of cards](../exercises/object-oriented-design/deck-of-cards.md)\n\n## 6. Read the context material properly\n\n* Several [real world architectures](../appendix/real-world-architectures.md) — identify shared principles, common technologies, and patterns; study what problems each component solves, where it works and where it doesn't; review the lessons learned\n* [Company architectures](../appendix/company-architectures.md) for your target companies\n* Articles from the [company engineering blogs](../appendix/engineering-blogs.md)\n* Work through **many** of the [additional system design interview questions](../appendix/additional-questions.md)\n\n## Self-check\n\n1. Given a read-heavy workload with a 100:1 read-to-write ratio, which scaling techniques would you reach for and in what order?\n2. When does write-through beat cache-aside, and when does the reverse hold?\n3. Two components each at 99.9% availability: what is the total in sequence, and in parallel?\n4. Name three reasons to pick NoSQL and three to pick SQL.\n"
+}

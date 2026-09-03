@@ -1,0 +1,38 @@
+{
+  "id": "short-timeline",
+  "title": "Short Timeline Track",
+  "module_id": "study-guide",
+  "order": 10,
+  "is_index": false,
+  "path": "study-guide/short-timeline.md",
+  "est_minutes": 4,
+  "summary": "",
+  "timelines": [
+    "short"
+  ],
+  "tags": [
+    "meta",
+    "track",
+    "planning"
+  ],
+  "prerequisites": [
+    "study-guide"
+  ],
+  "related": [
+    "medium-timeline",
+    "long-timeline",
+    "interview-approach"
+  ],
+  "sections": [
+    "1. Learn the process first",
+    "2. Breadth pass over the topics",
+    "3. Memorize the two reference tables",
+    "4. Work through **some** exercises",
+    "5. Skim, don't study, the context material",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 389,
+  "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+  "body": "# Short Timeline Track\n\n> **Goal: breadth.** Practice by solving **some** interview questions.\n\nYou have days, not weeks. Optimize for being able to say something sensible about any component\nthat comes up, and for having a repeatable process when you get a question cold.\n\n## 1. Learn the process first\n\nDo this before any topic reading — it is what you are actually graded on.\n\n* [How to approach a system design interview question](interview-approach.md)\n\n## 2. Breadth pass over the topics\n\nRead every module once. Do not stop to go deep. The goal is that no term in the interview is new.\n\n* [Fundamentals](../fundamentals/README.md) — [start here](../fundamentals/start-here.md), [performance vs scalability](../fundamentals/performance-vs-scalability.md), [latency vs throughput](../fundamentals/latency-vs-throughput.md), [CAP theorem](../fundamentals/cap-theorem.md), [consistency patterns](../fundamentals/consistency-patterns.md), [availability patterns](../fundamentals/availability-patterns.md)\n* [Networking & edge](../networking/README.md) — [DNS](../networking/dns.md), [CDN](../networking/cdn.md), [load balancer](../networking/load-balancer.md), [reverse proxy](../networking/reverse-proxy.md), [HTTP](../networking/http.md), [TCP and UDP](../networking/tcp-and-udp.md), [RPC](../networking/rpc.md), [REST](../networking/rest.md)\n* [Application layer](../application/README.md) — [application layer](../application/application-layer.md), [microservices](../application/microservices.md), [service discovery](../application/service-discovery.md), [asynchronism](../application/asynchronism.md)\n* [Data](../data/README.md) — [RDBMS](../data/rdbms.md), [replication](../data/replication.md), [federation](../data/federation.md), [sharding](../data/sharding.md), [denormalization](../data/denormalization.md), [SQL tuning](../data/sql-tuning.md), [NoSQL](../data/nosql.md), [SQL or NoSQL](../data/sql-or-nosql.md)\n* [Caching](../caching/README.md) — [overview](../caching/caching-overview.md), [where](../caching/cache-locations.md), [what](../caching/what-to-cache.md), [when to update](../caching/cache-update-strategies.md)\n* [Security](../security/security-basics.md)\n\n## 3. Memorize the two reference tables\n\nYou may be asked to estimate by hand. These are the only two things worth rote-memorizing.\n\n* [Powers of two table](../appendix/powers-of-two.md)\n* [Latency numbers every programmer should know](../appendix/latency-numbers.md)\n* [Back-of-the-envelope calculations](../appendix/back-of-the-envelope.md)\n\n## 4. Work through **some** exercises\n\nPick two or three. [Pastebin](../exercises/system-design/pastebin/README.md) and\n[scaling to millions of users on AWS](../exercises/system-design/scaling-aws/README.md) give the\nbest coverage per hour — the first exercises the whole four-step process on a small surface, the\nsecond walks the entire scaling ladder.\n\n* [Design Pastebin.com (or Bit.ly)](../exercises/system-design/pastebin/README.md)\n* [Design a system that scales to millions of users on AWS](../exercises/system-design/scaling-aws/README.md)\n* [Design the Twitter timeline and search](../exercises/system-design/twitter/README.md)\n\nAnd **some** object-oriented design questions:\n\n* [Design an LRU cache](../exercises/object-oriented-design/lru-cache.md)\n* [Design a hash map](../exercises/object-oriented-design/hash-map.md)\n\n## 5. Skim, don't study, the context material\n\n* A few [real world architectures](../appendix/real-world-architectures.md)\n* A few articles from the [company engineering blogs](../appendix/engineering-blogs.md) for the companies you are interviewing with\n* Skim the [additional system design interview questions](../appendix/additional-questions.md) list so the problem statements aren't a surprise\n\n## Self-check\n\n1. Can you name the four steps of the interview framework without looking?\n2. For each component in the breadth list, can you give one sentence on what problem it solves and one disadvantage?\n3. Can you convert \"10 million writes per month\" into writes per second from memory?\n"
+}

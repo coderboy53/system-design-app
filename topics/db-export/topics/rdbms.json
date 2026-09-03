@@ -1,0 +1,41 @@
+{
+  "id": "rdbms",
+  "title": "Relational Database Management System (RDBMS)",
+  "module_id": "data",
+  "order": 10,
+  "is_index": false,
+  "path": "data/rdbms.md",
+  "est_minutes": 4,
+  "summary": "What does ACID guarantee, and what are the ways to scale SQL?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "acid",
+    "transactions"
+  ],
+  "prerequisites": [
+    "consistency-patterns"
+  ],
+  "related": [
+    "replication",
+    "federation",
+    "sharding",
+    "denormalization",
+    "sql-tuning",
+    "sql-or-nosql"
+  ],
+  "sections": [
+    "ACID",
+    "Techniques to scale a relational database",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 251,
+  "source": "https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms",
+  "body": "# Relational Database Management System (RDBMS)\n\n<p align=\"center\">\n  <img src=\"../assets/images/Xkm5CXz.png\" alt=\"Database\">\n  <br/>\n  <i><a href=\"https://www.youtube.com/watch?v=kKjm4ehYiMs\">Source: Scaling up to your first 10 million users</a></i>\n</p>\n\nA relational database like SQL is a **collection of data items organized in tables**.\n\n## ACID\n\n**ACID** is a set of properties of relational database\n[transactions](https://en.wikipedia.org/wiki/Database_transaction).\n\n* **Atomicity** — each transaction is all or nothing\n* **Consistency** — any transaction will bring the database from one valid state to another\n* **Isolation** — executing transactions concurrently has the same results as if the transactions were executed serially\n* **Durability** — once a transaction has been committed, it will remain so\n\nACID is what [strong consistency](../fundamentals/consistency-patterns.md#strong-consistency) looks\nlike at the database level. Compare with [BASE](nosql.md), the NoSQL counterpart, which chooses\navailability instead.\n\n## Techniques to scale a relational database\n\nThere are many techniques to scale a relational database:\n\n* **[Master-slave replication](replication.md#master-slave-replication)** — scale reads\n* **[Master-master replication](replication.md#master-master-replication)** — scale reads and writes\n* **[Federation](federation.md)** — split by function\n* **[Sharding](sharding.md)** — split by key\n* **[Denormalization](denormalization.md)** — avoid expensive joins\n* **[SQL tuning](sql-tuning.md)** — get more out of what you have\n\nEach of these is covered in its own module. They compose: a real system typically tunes first,\nreplicates second, and only shards when the earlier steps run out.\n\n## Self-check\n\n1. Expand ACID and define each property in one line.\n2. Which consistency pattern does an ACID database implement?\n3. List the six techniques for scaling a relational database, and say whether each targets reads, writes, or both.\n"
+}

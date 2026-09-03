@@ -1,0 +1,41 @@
+{
+  "id": "cap-theorem",
+  "title": "Availability vs Consistency (CAP Theorem)",
+  "module_id": "fundamentals",
+  "order": 40,
+  "is_index": false,
+  "path": "fundamentals/cap-theorem.md",
+  "est_minutes": 6,
+  "summary": "Which two guarantees can I actually have?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "tradeoffs",
+    "distributed-systems",
+    "consistency",
+    "availability",
+    "cap"
+  ],
+  "prerequisites": [
+    "latency-vs-throughput"
+  ],
+  "related": [
+    "consistency-patterns",
+    "availability-patterns",
+    "nosql",
+    "sql-or-nosql"
+  ],
+  "sections": [
+    "CP — consistency and partition tolerance",
+    "AP — availability and partition tolerance",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 345,
+  "source": "https://github.com/donnemartin/system-design-primer#availability-vs-consistency",
+  "body": "# Availability vs Consistency (CAP Theorem)\n\n<p align=\"center\">\n  <img src=\"../assets/images/bgLMI2u.png\" alt=\"CAP theorem\">\n  <br/>\n  <i><a href=\"https://robertgreiner.com/cap-theorem-revisited\">Source: CAP theorem revisited</a></i>\n</p>\n\nIn a distributed computer system, you can only support **two of the following three guarantees**:\n\n* **Consistency** — every read receives the most recent write or an error\n* **Availability** — every request receives a response, without guarantee that it contains the most recent version of the information\n* **Partition Tolerance** — the system continues to operate despite arbitrary partitioning due to network failures\n\n*Networks aren't reliable, so you'll need to support partition tolerance. You'll need to make a\nsoftware trade-off between consistency and availability.*\n\nThat last point is the practical takeaway: **P is not optional**, so the real choice is CP or AP.\n\n## CP — consistency and partition tolerance\n\nWaiting for a response from the partitioned node might result in a **timeout error**. CP is a good\nchoice if your business needs require **atomic reads and writes**.\n\nThink: financial ledgers, inventory decrements, anything where serving stale data is worse than\nserving an error. See [strong consistency](consistency-patterns.md#strong-consistency) and\n[RDBMS transactions](../data/rdbms.md).\n\n## AP — availability and partition tolerance\n\nResponses return the **most readily available version** of the data available on any node, which\nmight not be the latest. Writes might take some time to propagate when the partition is resolved.\n\nAP is a good choice if the business needs to allow for\n[eventual consistency](consistency-patterns.md#eventual-consistency), or when the system needs to\ncontinue working despite external errors.\n\nThink: social feeds, view counters, [DNS](../networking/dns.md). See [NoSQL and BASE](../data/nosql.md), which explicitly\nchooses availability over consistency.\n\n## Source(s) and further reading\n\n* [CAP theorem revisited](https://robertgreiner.com/cap-theorem-revisited/)\n* [A plain english introduction to CAP theorem](http://ksat.me/a-plain-english-introduction-to-cap-theorem)\n* [CAP FAQ](https://github.com/henryr/cap-faq)\n* [The CAP theorem](https://www.youtube.com/watch?v=k-Yaq8AHlFA)\n\n## Self-check\n\n1. State the three CAP guarantees and define each precisely.\n2. Why is partition tolerance effectively mandatory in a real distributed system?\n3. What does a CP system do when a node is partitioned away, and when is that the right behavior?\n4. What does an AP system return during a partition, and what happens once the partition heals?\n"
+}

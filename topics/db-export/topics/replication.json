@@ -1,0 +1,44 @@
+{
+  "id": "replication",
+  "title": "Database Replication",
+  "module_id": "data",
+  "order": 20,
+  "is_index": false,
+  "path": "data/replication.md",
+  "est_minutes": 7,
+  "summary": "Master-slave vs master-master, and the costs both share",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "replication",
+    "availability",
+    "scaling"
+  ],
+  "prerequisites": [
+    "rdbms",
+    "availability-patterns"
+  ],
+  "related": [
+    "federation",
+    "sharding",
+    "availability-patterns",
+    "consistency-patterns"
+  ],
+  "sections": [
+    "Master-slave replication",
+    "Master-master replication",
+    "Disadvantage(s): replication",
+    "At a glance",
+    "Source(s) and further reading: replication",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 541,
+  "source": "https://github.com/donnemartin/system-design-primer#master-slave-replication",
+  "body": "# Database Replication\n\nReplication is one of the two complementary\n[availability patterns](../fundamentals/availability-patterns.md), and one of the primary techniques\nfor scaling a [relational database](rdbms.md).\n\n## Master-slave replication\n\nThe master serves **reads and writes**, replicating writes to one or more slaves, which serve\n**only reads**. Slaves can also replicate to additional slaves in a **tree-like fashion**. If the\nmaster goes offline, the system can continue to operate in **read-only mode** until a slave is\npromoted to a master or a new master is provisioned.\n\n<p align=\"center\">\n  <img src=\"../assets/images/C9ioGtn.png\" alt=\"Master-slave replication\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/jboner/scalability-availability-stability-patterns/\">Source: Scalability, availability, stability, patterns</a></i>\n</p>\n\nThis is the read-scaling workhorse: it fits the common 100:1 or 1000:1 read-to-write ratio, and\npairs naturally with [active-passive fail-over](../fundamentals/availability-patterns.md#active-passive).\n\n### Disadvantage(s): master-slave replication\n\n* Additional logic is needed to **promote a slave to a master**.\n* See [Disadvantage(s): replication](#disadvantages-replication) for points related to **both** master-slave and master-master.\n\n## Master-master replication\n\nBoth masters serve **reads and writes** and coordinate with each other on writes. If either master\ngoes down, the system can continue to operate with **both reads and writes**.\n\n<p align=\"center\">\n  <img src=\"../assets/images/krAHLGg.png\" alt=\"Master-master replication\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/jboner/scalability-availability-stability-patterns/\">Source: Scalability, availability, stability, patterns</a></i>\n</p>\n\nThis is the database analogue of [active-active fail-over](../fundamentals/availability-patterns.md#active-active).\n\n### Disadvantage(s): master-master replication\n\n* You'll need a [load balancer](../networking/load-balancer.md) or you'll need to change your\n  application logic to determine **where to write**.\n* Most master-master systems are either **loosely consistent** (violating [ACID](rdbms.md)) or have\n  **increased write latency** due to synchronization.\n* **Conflict resolution** comes more into play as more write nodes are added and as latency increases.\n* See [Disadvantage(s): replication](#disadvantages-replication) for points related to **both** master-slave and master-master.\n\n## Disadvantage(s): replication\n\nThese apply to **both** topologies:\n\n* There is a potential for **loss of data** if the master fails before any newly written data can be replicated to other nodes.\n* Writes are replayed to the read replicas. If there are a lot of writes, the **read replicas can get bogged down with replaying writes** and can't do as many reads.\n* The more read slaves, the more you have to replicate, which leads to **greater replication lag**.\n* On some systems, writing to the master can spawn multiple threads to write in parallel, whereas **read replicas only support writing sequentially with a single thread**.\n* Replication adds **more hardware and additional complexity**.\n\n## At a glance\n\n| | Master-slave | Master-master |\n|---|---|---|\n| Writes served by | master only | both masters |\n| Reads served by | master + slaves | both masters |\n| If a node dies | read-only until promotion | reads and writes continue |\n| Extra machinery | promotion logic | write routing, conflict resolution |\n| Consistency cost | replication lag on reads | loose consistency or write latency |\n\n## Source(s) and further reading: replication\n\n* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)\n* [Multi-master replication](https://en.wikipedia.org/wiki/Multi-master_replication)\n\n## Self-check\n\n1. What happens to writes in a master-slave setup when the master goes offline?\n2. Why does adding more read replicas eventually make replication lag worse rather than better?\n3. What two problems does master-master introduce that master-slave does not?\n4. Name the data-loss window that both topologies share.\n5. Why can replicas fall behind on replaying writes even when they have spare capacity for reads?\n"
+}

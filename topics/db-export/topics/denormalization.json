@@ -1,0 +1,40 @@
+{
+  "id": "denormalization",
+  "title": "Denormalization",
+  "module_id": "data",
+  "order": 50,
+  "is_index": false,
+  "path": "data/denormalization.md",
+  "est_minutes": 4,
+  "summary": "Trading write performance for read performance",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "scaling",
+    "reads",
+    "joins"
+  ],
+  "prerequisites": [
+    "sharding"
+  ],
+  "related": [
+    "sql-tuning",
+    "federation",
+    "sharding",
+    "what-to-cache"
+  ],
+  "sections": [
+    "Disadvantage(s): denormalization",
+    "Source(s) and further reading: denormalization",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 220,
+  "source": "https://github.com/donnemartin/system-design-primer#denormalization",
+  "body": "# Denormalization\n\nDenormalization attempts to **improve read performance at the expense of some write performance**.\nRedundant copies of the data are written in multiple tables to **avoid expensive joins**. Some RDBMS\nsuch as [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL) and Oracle support\n[materialized views](https://en.wikipedia.org/wiki/Materialized_view) which handle the work of\nstoring redundant information and keeping redundant copies consistent.\n\nOnce data becomes distributed with techniques such as [federation](federation.md) and\n[sharding](sharding.md), managing joins **across data centers** further increases complexity.\nDenormalization might circumvent the need for such complex joins.\n\n**In most systems, reads can heavily outnumber writes 100:1 or even 1000:1.** A read resulting in a\ncomplex database join can be very expensive, spending a significant amount of time on disk\noperations. That ratio is the entire argument for the trade.\n\n## Disadvantage(s): denormalization\n\n* **Data is duplicated.**\n* **Constraints** can help redundant copies of information stay in sync, which increases complexity of the database design.\n* A denormalized database under **heavy write load** might perform worse than its normalized counterpart.\n\n## Source(s) and further reading: denormalization\n\n* [Denormalization](https://en.wikipedia.org/wiki/Denormalization)\n\n## Self-check\n\n1. What is traded for what in denormalization, and what read-to-write ratio makes the trade worthwhile?\n2. Why does denormalization become more attractive after you federate or shard?\n3. What do materialized views automate?\n4. Under what workload does a denormalized schema perform worse than a normalized one?\n"
+}

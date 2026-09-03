@@ -1,0 +1,43 @@
+{
+  "id": "asynchronism",
+  "title": "Asynchronism",
+  "module_id": "application",
+  "order": 40,
+  "is_index": false,
+  "path": "application/asynchronism.md",
+  "est_minutes": 7,
+  "summary": "How do I get slow work off the request path?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "application",
+    "asynchronism",
+    "queues",
+    "throughput",
+    "back-pressure"
+  ],
+  "prerequisites": [
+    "application-layer",
+    "latency-vs-throughput"
+  ],
+  "related": [
+    "latency-vs-throughput",
+    "microservices",
+    "caching-overview"
+  ],
+  "sections": [
+    "Message queues",
+    "Task queues",
+    "Back pressure",
+    "Disadvantage(s): asynchronism",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 542,
+  "source": "https://github.com/donnemartin/system-design-primer#asynchronism",
+  "body": "# Asynchronism\n\n<p align=\"center\">\n  <img src=\"../assets/images/54GYsSx.png\" alt=\"Asynchronism\">\n  <br/>\n  <i><a href=\"http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer\">Source: Intro to architecting systems for scale</a></i>\n</p>\n\nAsynchronous workflows help **reduce request times for expensive operations** that would otherwise\nbe performed in-line. They can also help by doing **time-consuming work in advance**, such as\nperiodic aggregation of data.\n\nThis is the primary lever for trading\n[latency against throughput](../fundamentals/latency-vs-throughput.md).\n\n## Message queues\n\nMessage queues **receive, hold, and deliver messages**. If an operation is too slow to perform\ninline, you can use a message queue with the following workflow:\n\n* An application **publishes a job** to the queue, then notifies the user of job status\n* A **worker picks up the job** from the queue, processes it, then signals the job is complete\n\nThe user is **not blocked** and the job is processed in the background. During this time, the client\nmight optionally do a small amount of processing to make it seem like the task has completed. For\nexample, if posting a tweet, the tweet could be instantly posted to your timeline, but it could take\nsome time before your tweet is actually delivered to all of your followers.\n\n**[Redis](https://redis.io/)** is useful as a simple message broker but **messages can be lost**.\n\n**[RabbitMQ](https://www.rabbitmq.com/)** is popular but requires you to adapt to the 'AMQP' protocol\nand **manage your own nodes**.\n\n**[Amazon SQS](https://aws.amazon.com/sqs/)** is hosted but can have **high latency** and has the\npossibility of **messages being delivered twice**.\n\n## Task queues\n\nTask queues **receive tasks and their related data, run them, then deliver their results**. They can\nsupport **scheduling** and can be used to run **computationally-intensive jobs** in the background.\n\n**[Celery](https://docs.celeryproject.org/en/stable/)** has support for scheduling and primarily has\nPython support.\n\n## Back pressure\n\nIf queues start to grow significantly, the **queue size can become larger than memory**, resulting\nin cache misses, disk reads, and even slower performance.\n[Back pressure](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html)\ncan help by **limiting the queue size**, thereby maintaining a high throughput rate and good\nresponse times for jobs already in the queue.\n\nOnce the queue fills up, clients get a **server busy or HTTP 503** status code to try again later.\nClients can retry the request at a later time, perhaps with\n[exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff).\n\n> Back pressure is a deliberate choice to fail some requests fast rather than degrade every request.\n> Without it, an overloaded queue takes the whole system down with it.\n\n## Disadvantage(s): asynchronism\n\n* Use cases such as **inexpensive calculations and realtime workflows** might be better suited for\n  synchronous operations, as introducing queues can add **delays and complexity**.\n\n## Source(s) and further reading\n\n* [It's all a numbers game](https://www.youtube.com/watch?v=1KRYH75wgy4)\n* [Applying back pressure when overloaded](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html)\n* [Little's law](https://en.wikipedia.org/wiki/Little%27s_law)\n* [What is the difference between a message queue and a task queue?](https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function)\n\n## Self-check\n\n1. Describe the publish/worker workflow of a message queue, and what the user sees while it runs.\n2. Name the trade-off of Redis, RabbitMQ, and SQS as brokers — one weakness each.\n3. What is the difference between a message queue and a task queue?\n4. What goes wrong when a queue grows past memory, and what does back pressure do about it?\n5. What status code do clients get when back pressure kicks in, and how should they respond?\n6. When is asynchronism the wrong choice?\n"
+}

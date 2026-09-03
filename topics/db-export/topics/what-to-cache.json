@@ -1,0 +1,38 @@
+{
+  "id": "what-to-cache",
+  "title": "What to Cache",
+  "module_id": "caching",
+  "order": 30,
+  "is_index": false,
+  "path": "caching/what-to-cache.md",
+  "est_minutes": 4,
+  "summary": "Query results or assembled objects?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "caching",
+    "invalidation",
+    "granularity"
+  ],
+  "prerequisites": [
+    "cache-locations"
+  ],
+  "related": [
+    "cache-update-strategies",
+    "denormalization",
+    "caching-overview"
+  ],
+  "sections": [
+    "Caching at the database query level",
+    "Caching at the object level",
+    "Suggestions of what to cache",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 245,
+  "source": "https://github.com/donnemartin/system-design-primer#caching-at-the-database-query-level",
+  "body": "# What to Cache\n\nTwo general granularities: **database queries** and **objects**.\n\n## Caching at the database query level\n\nWhenever you query the database, **hash the query as a key** and store the result to the cache.\n\nThis approach suffers from **expiration issues**:\n\n* Hard to **delete a cached result with complex queries**\n* If one piece of data changes such as a table cell, you need to **delete all cached queries that might include the changed cell**\n\nThat second point is the killer. Query-level caching looks simple and becomes unmaintainable exactly\nwhen the schema gets interesting.\n\n## Caching at the object level\n\nSee your data as an **object**, similar to what you do with your application code. Have your\napplication **assemble the dataset** from the database into a class instance or data structure(s):\n\n* **Remove the object from cache if its underlying data has changed**\n* Allows for **asynchronous processing**: workers assemble objects by consuming the latest cached object\n\nObject-level invalidation is tractable because the ownership is clear — one object, one owner, one\nplace to invalidate.\n\n## Suggestions of what to cache\n\n* User sessions\n* Fully rendered web pages\n* Activity streams\n* User graph data\n\n## Self-check\n\n1. How is the cache key formed when caching at the query level?\n2. Give the two expiration problems query-level caching runs into.\n3. What makes object-level invalidation more tractable?\n4. What does object-level caching enable for background workers?\n5. Name four things worth caching.\n"
+}

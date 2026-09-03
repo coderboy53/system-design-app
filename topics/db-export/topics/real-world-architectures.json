@@ -1,0 +1,35 @@
+{
+  "id": "real-world-architectures",
+  "title": "Real World Architectures",
+  "module_id": "appendix",
+  "order": 50,
+  "is_index": false,
+  "path": "appendix/real-world-architectures.md",
+  "est_minutes": 6,
+  "summary": "How MapReduce, Bigtable, Dynamo, GFS, Kafka etc. actually work",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "reference",
+    "architectures",
+    "papers",
+    "reading"
+  ],
+  "prerequisites": [],
+  "related": [
+    "company-architectures",
+    "engineering-blogs",
+    "wide-column-store",
+    "under-development"
+  ],
+  "sections": [
+    "How this connects back"
+  ],
+  "has_self_check": false,
+  "word_count": 406,
+  "source": "https://github.com/donnemartin/system-design-primer#real-world-architectures",
+  "body": "# Real World Architectures\n\n> Articles on how real world systems are designed.\n\n<p align=\"center\">\n  <img src=\"../assets/images/TcUo2fw.png\" alt=\"Twitter timelines at scale\">\n  <br/>\n  <i><a href=\"https://www.infoq.com/presentations/Twitter-Timeline-Scalability\">Source: Twitter timelines at scale</a></i>\n</p>\n\n**Don't focus on nitty gritty details for the following articles. Instead:**\n\n* **Identify shared principles**, common technologies, and patterns within these articles\n* **Study what problems are solved** by each component, where it works, where it doesn't\n* **Review the lessons learned**\n\n| Type | System | Reference(s) |\n|---|---|---|\n| Data processing | **MapReduce** — Distributed data processing from Google | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf) |\n| Data processing | **Spark** — Distributed data processing from Databricks | [slideshare.net](http://www.slideshare.net/AGrishchenko/apache-spark-architecture) |\n| Data processing | **Storm** — Distributed data processing from Twitter | [slideshare.net](http://www.slideshare.net/previa/storm-16094009) |\n| | | |\n| Data store | **Bigtable** — Distributed column-oriented database from Google | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) |\n| Data store | **HBase** — Open source implementation of Bigtable | [slideshare.net](http://www.slideshare.net/alexbaranau/intro-to-hbase) |\n| Data store | **Cassandra** — Distributed column-oriented database from Facebook | [slideshare.net](http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666) |\n| Data store | **DynamoDB** — Document-oriented database from Amazon | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) |\n| Data store | **MongoDB** — Document-oriented database | [slideshare.net](http://www.slideshare.net/mdirolf/introduction-to-mongodb) |\n| Data store | **Spanner** — Globally-distributed database from Google | [research.google.com](http://research.google.com/archive/spanner-osdi2012.pdf) |\n| Data store | **Memcached** — Distributed memory caching system | [slideshare.net](http://www.slideshare.net/oemebamo/introduction-to-memcached) |\n| Data store | **Redis** — Distributed memory caching system with persistence and value types | [slideshare.net](http://www.slideshare.net/dvirsky/introduction-to-redis) |\n| | | |\n| File system | **Google File System (GFS)** — Distributed file system | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf) |\n| File system | **Hadoop File System (HDFS)** — Open source implementation of GFS | [apache.org](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) |\n| | | |\n| Misc | **Chubby** — Lock service for loosely-coupled distributed systems from Google | [research.google.com](http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf) |\n| Misc | **Dapper** — Distributed systems tracing infrastructure | [research.google.com](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf) |\n| Misc | **Kafka** — Pub/sub message queue from LinkedIn | [slideshare.net](http://www.slideshare.net/mumrah/kafka-talk-tri-hug) |\n| Misc | **Zookeeper** — Centralized infrastructure and services enabling synchronization | [slideshare.net](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) |\n\n## How this connects back\n\n* **Bigtable, HBase, Cassandra** are the [wide column stores](../data/wide-column-store.md).\n* **DynamoDB, MongoDB** are the [document stores](../data/document-store.md).\n* **Memcached, Redis** are the [application caches](../caching/cache-locations.md#application-caching)\n  and [key-value stores](../data/key-value-store.md).\n* **Kafka** is the [message queue](../application/asynchronism.md#message-queues) at scale.\n* **Zookeeper** is [service discovery](../application/service-discovery.md) and coordination.\n* **MapReduce** appears in the [pastebin](../exercises/system-design/pastebin/README.md) and\n  [sales rank](../exercises/system-design/sales-rank/README.md) exercises, and is on the\n  [under development](under-development.md) list.\n\nReading these is a **✔ for every timeline** — short, medium, and long.\n"
+}

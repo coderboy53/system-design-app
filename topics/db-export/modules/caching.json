@@ -1,0 +1,8 @@
+{
+  "id": "caching",
+  "title": "Caching",
+  "module_order": 60,
+  "parent_module_id": null,
+  "topic_count": 4,
+  "overview": "# Caching\n\n<p align=\"center\">\n  <img src=\"../assets/images/Q6z24La.png\" alt=\"Cache\">\n  <br/>\n  <i><a href=\"http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html\">Source: Scalable system design patterns</a></i>\n</p>\n\nThe cheapest way to make a system faster, and the hardest thing to keep correct.\n\n## The three questions\n\nEvery caching decision decomposes into the same three questions, which is why the modules are split\nthis way:\n\n1. **Where** does the cache live? → [cache-locations.md](cache-locations.md)\n2. **What** granularity do you store? → [what-to-cache.md](what-to-cache.md)\n3. **When** does it get written or invalidated? → [cache-update-strategies.md](cache-update-strategies.md)\n\n## Where this leads\n\n* A [CDN](../networking/cdn.md) is a cache; push vs pull is its update strategy.\n* A [reverse proxy](../networking/reverse-proxy.md) is a web server cache.\n* [Redis and Memcached](../data/key-value-store.md) are the usual application cache.\n* Cache consistency is a direct application of [consistency patterns](../fundamentals/consistency-patterns.md).\n"
+}

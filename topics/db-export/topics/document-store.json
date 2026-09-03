@@ -1,0 +1,36 @@
+{
+  "id": "document-store",
+  "title": "Document Store",
+  "module_id": "data",
+  "order": 90,
+  "is_index": false,
+  "path": "data/document-store.md",
+  "est_minutes": 3,
+  "summary": "Abstraction: key-value store with documents as values",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "nosql",
+    "document-store"
+  ],
+  "prerequisites": [
+    "key-value-store"
+  ],
+  "related": [
+    "key-value-store",
+    "wide-column-store",
+    "sql-or-nosql"
+  ],
+  "sections": [
+    "Source(s) and further reading: document store",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 215,
+  "source": "https://github.com/donnemartin/system-design-primer#document-store",
+  "body": "# Document Store\n\n> **Abstraction: key-value store with documents stored as values**\n\nA document store is centered around **documents** (XML, JSON, binary, etc), where a document stores\n**all information for a given object**. Document stores provide APIs or a query language to query\nbased on the **internal structure of the document itself**.\n\n*Note: many [key-value stores](key-value-store.md) include features for working with a value's\nmetadata, blurring the lines between these two storage types.*\n\nBased on the underlying implementation, documents are organized by **collections, tags, metadata, or\ndirectories**. Although documents can be organized or grouped together, **documents may have fields\nthat are completely different from each other**.\n\nSome document stores like [MongoDB](https://www.mongodb.com/mongodb-architecture) and\n[CouchDB](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/) also provide a SQL-like\nlanguage to perform complex queries.\n[DynamoDB](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) supports\nboth key-values and documents.\n\nDocument stores provide **high flexibility** and are often used for working with **occasionally\nchanging data**.\n\n## Source(s) and further reading: document store\n\n* [Document-oriented database](https://en.wikipedia.org/wiki/Document-oriented_database)\n* [MongoDB architecture](https://www.mongodb.com/mongodb-architecture)\n* [CouchDB architecture](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)\n* [Elasticsearch architecture](https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up)\n\n## Self-check\n\n1. What does a document store let you query that a plain key-value store does not?\n2. What does it mean that documents in a collection may have completely different fields?\n3. What workload shape are document stores good for?\n4. Name two document stores that also offer a SQL-like query language.\n"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "http",
+  "title": "Hypertext Transfer Protocol (HTTP)",
+  "module_id": "networking",
+  "order": 50,
+  "is_index": false,
+  "path": "networking/http.md",
+  "est_minutes": 4,
+  "summary": "Request/response encoding over TCP or UDP",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "networking",
+    "protocols",
+    "http",
+    "communication"
+  ],
+  "prerequisites": [],
+  "related": [
+    "tcp-and-udp",
+    "rest",
+    "rpc",
+    "load-balancer"
+  ],
+  "sections": [
+    "Common HTTP verbs",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 299,
+  "source": "https://github.com/donnemartin/system-design-primer#hypertext-transfer-protocol-http",
+  "body": "# Hypertext Transfer Protocol (HTTP)\n\n<p align=\"center\">\n  <img src=\"../assets/images/5KeocQs.jpg\" alt=\"OSI 7 layer model\">\n  <br/>\n  <i><a href=\"http://www.escotal.com/osilayer.html\">Source: OSI 7 layer model</a></i>\n</p>\n\nHTTP is a method for **encoding and transporting data between a client and a server**. It is a\n**request/response protocol**: clients issue requests and servers issue responses with relevant\ncontent and completion status info about the request. HTTP is **self-contained**, allowing requests\nand responses to flow through many intermediate routers and servers that perform load balancing,\ncaching, encryption, and compression.\n\nThat self-contained property is exactly what makes [layer 7 load balancing](load-balancer.md#layer-7-load-balancing),\n[reverse proxies](reverse-proxy.md), and [CDNs](cdn.md) possible.\n\nA basic HTTP request consists of a **verb (method)** and a **resource (endpoint)**.\n\n## Common HTTP verbs\n\n| Verb | Description | Idempotent* | Safe | Cacheable |\n|---|---|---|---|---|\n| GET | Reads a resource | Yes | Yes | Yes |\n| POST | Creates a resource or triggers a process that handles data | No | No | Yes if response contains freshness info |\n| PUT | Creates or replaces a resource | Yes | No | No |\n| PATCH | Partially updates a resource | No | No | Yes if response contains freshness info |\n| DELETE | Deletes a resource | Yes | No | No |\n\n\\* *Idempotent: can be called many times without different outcomes.*\n\nHTTP is an **application layer** protocol relying on lower-level protocols such as\n[**TCP** and **UDP**](tcp-and-udp.md).\n\n## Source(s) and further reading\n\n* [What is HTTP?](https://www.nginx.com/resources/glossary/http/)\n* [Difference between HTTP and TCP](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol)\n* [Difference between PUT and PATCH](https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1)\n\n## Self-check\n\n1. Which HTTP verbs are idempotent? Which are safe?\n2. Why is PATCH not idempotent while PUT is?\n3. What does \"HTTP is self-contained\" enable in the infrastructure between client and server?\n4. Which lower-level protocols does HTTP rely on?\n"
+}

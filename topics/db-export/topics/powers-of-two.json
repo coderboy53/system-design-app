@@ -1,0 +1,35 @@
+{
+  "id": "powers-of-two",
+  "title": "Powers of Two Table",
+  "module_id": "appendix",
+  "order": 20,
+  "is_index": false,
+  "path": "appendix/powers-of-two.md",
+  "est_minutes": 2,
+  "summary": "Converting between bytes, KB, MB, GB, TB",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "reference",
+    "estimation",
+    "math"
+  ],
+  "prerequisites": [],
+  "related": [
+    "latency-numbers",
+    "back-of-the-envelope",
+    "interview-approach"
+  ],
+  "sections": [
+    "How to use it",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 152,
+  "source": "https://github.com/donnemartin/system-design-primer#powers-of-two-table",
+  "body": "# Powers of Two Table\n\n```\nPower           Exact Value         Approx Value        Bytes\n---------------------------------------------------------------\n7                             128\n8                             256\n10                           1024   1 thousand           1 KB\n16                         65,536                       64 KB\n20                      1,048,576   1 million            1 MB\n30                  1,073,741,824   1 billion            1 GB\n32                  4,294,967,296                        4 GB\n40              1,099,511,627,776   1 trillion           1 TB\n```\n\n## How to use it\n\nThe whole table collapses to one fact worth memorizing: **2^10 ≈ 1 thousand**, and every additional\n10 in the exponent multiplies by another thousand. So 2^20 ≈ 1 million (1 MB), 2^30 ≈ 1 billion\n(1 GB), 2^40 ≈ 1 trillion (1 TB).\n\nTwo more worth knowing on sight:\n\n* 2^8 = 256 — one byte, and why `VARCHAR(255)` is [the largest length countable in 8 bits](../data/sql-tuning.md#tighten-up-the-schema).\n* 2^32 ≈ 4 billion — the range of a 32-bit `INT`, and why [`INT` handles numbers up to about 4 billion](../data/sql-tuning.md#tighten-up-the-schema).\n\n## Source(s) and further reading\n\n* [Powers of two](https://en.wikipedia.org/wiki/Power_of_two)\n\n## Self-check\n\n1. Approximately what value is 2^20, and how many bytes is that?\n2. How many rows can a 32-bit auto-increment primary key address?\n3. A record is 1.27 KB and you write 10 million per month. Roughly how many GB per month?\n"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "service-discovery",
+  "title": "Service Discovery",
+  "module_id": "application",
+  "order": 30,
+  "is_index": false,
+  "path": "application/service-discovery.md",
+  "est_minutes": 3,
+  "summary": "How do services find each other?",
+  "timelines": [
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "application",
+    "architecture",
+    "service-discovery",
+    "operations"
+  ],
+  "prerequisites": [
+    "microservices"
+  ],
+  "related": [
+    "microservices",
+    "key-value-store",
+    "http",
+    "application-layer"
+  ],
+  "sections": [
+    "Why it exists",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 169,
+  "source": "https://github.com/donnemartin/system-design-primer#service-discovery",
+  "body": "# Service Discovery\n\nSystems such as [Consul](https://www.consul.io/docs/index.html),\n[Etcd](https://coreos.com/etcd/docs/latest), and\n[Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) can help\nservices find each other by **keeping track of registered names, addresses, and ports**.\n\n[Health checks](https://www.consul.io/intro/getting-started/checks.html) help verify service\nintegrity and are often done using an [HTTP](../networking/http.md) endpoint.\n\nBoth Consul and Etcd have a built-in [key-value store](../data/key-value-store.md) that can be\nuseful for storing config values and other shared data.\n\n## Why it exists\n\nIn a [microservices](microservices.md) deployment, instances come and go — autoscaling, deploys,\nfailures. Hardcoding addresses stops working the moment servers are\n[cloned](../networking/load-balancer.md#horizontal-scaling). The discovery layer is the moving\naddress book, and the health check is what keeps dead instances out of it — the same job a\n[load balancer](../networking/load-balancer.md) does for a fixed pool.\n\n## Source(s) and further reading\n\n* [Consul documentation](https://www.consul.io/docs/index.html)\n* [Etcd documentation](https://coreos.com/etcd/docs/latest)\n* [Introduction to Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper)\n\n## Self-check\n\n1. What three pieces of information does a service registry track?\n2. How are health checks typically implemented, and what do they prevent?\n3. Why do Consul and Etcd ship a key-value store alongside discovery?\n"
+}

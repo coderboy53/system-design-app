@@ -1,0 +1,37 @@
+{
+  "id": "under-development",
+  "title": "Under Development",
+  "module_id": "appendix",
+  "order": 80,
+  "is_index": false,
+  "path": "appendix/under-development.md",
+  "est_minutes": 2,
+  "summary": "Topics the primer hasn't covered yet but interviews still ask",
+  "timelines": [
+    "long"
+  ],
+  "tags": [
+    "reference",
+    "gaps",
+    "advanced"
+  ],
+  "prerequisites": [
+    "sharding"
+  ],
+  "related": [
+    "sharding",
+    "real-world-architectures",
+    "long-timeline"
+  ],
+  "sections": [
+    "Distributed computing with MapReduce",
+    "Consistent hashing",
+    "Scatter gather",
+    "Contributing",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 205,
+  "source": "https://github.com/donnemartin/system-design-primer#under-development",
+  "body": "# Under Development\n\nThe primer flags these sections as in-progress. They are **not covered in depth anywhere in this\npath**, and that is a gap you should close from primary sources if you are on the\n[long timeline](../study-guide/long-timeline.md) — all three come up in real interviews.\n\n## Distributed computing with MapReduce\n\nReferenced in passing by the [pastebin](../exercises/system-design/pastebin/README.md) and\n[sales rank](../exercises/system-design/sales-rank/README.md) exercises, which use MapReduce jobs to\ncompute analytics offline.\n\n* [MapReduce paper (Google)](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf)\n* [Spark architecture](http://www.slideshare.net/AGrishchenko/apache-spark-architecture)\n\n## Consistent hashing\n\nReferenced by [sharding](../data/sharding.md) as the technique that reduces how much data moves when\nyou rebalance shards.\n\n* [The magic of consistent hashing](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html)\n* [Dynamo paper (Amazon)](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) — consistent hashing in production\n\n## Scatter gather\n\nThe pattern behind fan-out reads across shards or services: send the request to N nodes in parallel,\ncombine the responses. It is what makes [sharded](../data/sharding.md) queries and\n[search](additional-questions.md) work, and its cost is that the slowest node sets the latency.\n\n## Contributing\n\nThe primer welcomes [contributions](https://github.com/donnemartin/system-design-primer#contributing)\nto complete these sections.\n\n## Self-check\n\n1. Why does consistent hashing reduce data transfer during shard rebalancing?\n2. In a scatter-gather read, what determines the overall latency?\n3. Where does MapReduce show up in the exercises in this path, and what job does it do there?\n"
+}

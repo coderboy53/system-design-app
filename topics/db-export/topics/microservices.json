@@ -1,0 +1,39 @@
+{
+  "id": "microservices",
+  "title": "Microservices",
+  "module_id": "application",
+  "order": 20,
+  "is_index": false,
+  "path": "application/microservices.md",
+  "est_minutes": 3,
+  "summary": "How small should the services be?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "application",
+    "architecture",
+    "microservices"
+  ],
+  "prerequisites": [
+    "application-layer"
+  ],
+  "related": [
+    "service-discovery",
+    "rpc",
+    "rest",
+    "application-layer"
+  ],
+  "sections": [
+    "What this implies",
+    "Disadvantage(s)",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 201,
+  "source": "https://github.com/donnemartin/system-design-primer#microservices",
+  "body": "# Microservices\n\nRelated to the [application layer](application-layer.md) discussion are\n[microservices](https://en.wikipedia.org/wiki/Microservices), which can be described as a suite of\n**independently deployable, small, modular services**. Each service runs a unique process and\ncommunicates through a well-defined, lightweight mechanism to serve a business\ngoal.<sup>[1](https://smartbear.com/learn/api-design/what-are-microservices)</sup>\n\nPinterest, for example, could have the following microservices: user profile, follower, feed,\nsearch, photo upload, etc.\n\n## What this implies\n\n* Services need a way to locate each other — see [service discovery](service-discovery.md).\n* Internal communication is typically [RPC](../networking/rpc.md) for performance; external\n  interfaces are typically [REST](../networking/rest.md).\n* Each service can be [scaled horizontally](../networking/load-balancer.md#horizontal-scaling) on\n  its own, which is the point.\n* Long-running work between services belongs on a [queue](asynchronism.md#message-queues), not on\n  a synchronous call chain.\n\n## Disadvantage(s)\n\n* Microservices add **complexity in terms of deployments and operations**.\n* Loosely coupled services require a **different architectural, operations, and process approach**\n  than a monolith.\n\n## Source(s) and further reading\n\n* [What are microservices](https://smartbear.com/learn/api-design/what-are-microservices)\n* [Here's what you need to know about building microservices](https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/)\n* [Service oriented architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)\n\n## Self-check\n\n1. Define a microservice in terms of deployability, size, and communication.\n2. Give a plausible microservice decomposition for a photo-sharing product.\n3. What operational cost do you accept in exchange for independent deployability?\n"
+}

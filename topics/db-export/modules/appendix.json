@@ -1,0 +1,8 @@
+{
+  "id": "appendix",
+  "title": "Appendix",
+  "module_order": 80,
+  "parent_module_id": null,
+  "topic_count": 8,
+  "overview": "# Appendix\n\nYou'll sometimes be asked to do **'back-of-the-envelope' estimates**. For example, you might need to\ndetermine how long it will take to generate 100 image thumbnails from disk, or how much memory a\ndata structure will take. The **powers of two table** and **latency numbers every programmer should\nknow** are handy references.\n"
+}

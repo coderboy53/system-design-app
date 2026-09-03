@@ -1,0 +1,37 @@
+{
+  "id": "application",
+  "title": "Application Layer",
+  "module_id": "application",
+  "order": 0,
+  "is_index": true,
+  "path": "application/README.md",
+  "est_minutes": 2,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "index",
+    "application",
+    "architecture"
+  ],
+  "prerequisites": [
+    "networking"
+  ],
+  "related": [
+    "application-layer",
+    "microservices",
+    "service-discovery",
+    "asynchronism"
+  ],
+  "sections": [
+    "Modules",
+    "Where this leads"
+  ],
+  "has_self_check": false,
+  "word_count": 176,
+  "source": "https://github.com/donnemartin/system-design-primer#application-layer",
+  "body": "# Application Layer\n\n<p align=\"center\">\n  <img src=\"../assets/images/yB5SYwm.png\" alt=\"Application layer\">\n  <br/>\n  <i><a href=\"http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer\">Source: Intro to architecting systems for scale</a></i>\n</p>\n\nWhat sits behind the [load balancer](../networking/load-balancer.md): the platform tier, how it is\ndecomposed into services, how those services find each other, and how work gets pushed off the\nrequest path.\n\n## Where this leads\n\n* Services are stateless so they can be [horizontally scaled](../networking/load-balancer.md#horizontal-scaling); state moves to the [database](../data/README.md) or a [cache](../caching/README.md).\n* Internal service calls typically use [RPC](../networking/rpc.md); public ones use [REST](../networking/rest.md).\n* Asynchronism is the main lever for trading [latency for throughput](../fundamentals/latency-vs-throughput.md).\n"
+}

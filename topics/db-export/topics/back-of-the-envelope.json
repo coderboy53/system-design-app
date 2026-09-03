@@ -1,0 +1,39 @@
+{
+  "id": "back-of-the-envelope",
+  "title": "Back-of-the-Envelope Calculations",
+  "module_id": "appendix",
+  "order": 10,
+  "is_index": false,
+  "path": "appendix/back-of-the-envelope.md",
+  "est_minutes": 4,
+  "summary": "The method, plus the conversion cheat sheet",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "reference",
+    "estimation",
+    "interview-prep",
+    "math"
+  ],
+  "prerequisites": [],
+  "related": [
+    "powers-of-two",
+    "latency-numbers",
+    "interview-approach"
+  ],
+  "sections": [
+    "The method",
+    "Conversion guide",
+    "Worked example",
+    "Reference tables",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 443,
+  "source": "https://github.com/donnemartin/system-design-primer#back-of-the-envelope-calculations",
+  "body": "# Back-of-the-Envelope Calculations\n\nYou might be asked to do some estimates by hand — for example, how long it will take to generate\n100 image thumbnails from disk, or how much memory a data structure will take.\n\n**Clarify with your interviewer whether you should run back-of-the-envelope usage calculations**\nbefore spending time on them.\n\n## The method\n\nThis is [step 1 of the interview framework](../study-guide/interview-approach.md#step-1-outline-use-cases-constraints-and-assumptions)\nmade numeric. Work in this order:\n\n1. **State the assumptions.** Number of users, reads per month, writes per month, read-to-write ratio.\n2. **Size a single unit.** Bytes per row, per paste, per tweet — sum the individual fields.\n3. **Multiply out to storage.** Per month, then extrapolate to 3 or 5 years.\n4. **Convert to per-second rates.** This is where the conversion guide below does the work.\n5. **Sanity-check against latency.** Use the [latency numbers](latency-numbers.md) to see whether\n   the resulting rate is comfortable, needs a [cache](../caching/README.md), or needs\n   [sharding](../data/sharding.md).\n\n## Conversion guide\n\n* **2.5 million seconds per month**\n* 1 request per second = **2.5 million requests per month**\n* 40 requests per second = **100 million requests per month**\n* 400 requests per second = **1 billion requests per month**\n\nMemorize the first line and the rest is division. (2.5 million ≈ 30 days × 86,400 s.)\n\n## Worked example\n\nFrom the [pastebin exercise](../exercises/system-design/pastebin/README.md):\n\n* **Assumptions:** 10 million users, 10 million paste writes/month, 100 million paste reads/month, 10:1 read-to-write.\n* **Size per paste:** 1 KB content + `shortlink` 7 bytes + `expiration_length_in_minutes` 4 bytes +\n  `created_at` 5 bytes + `paste_path` 255 bytes ≈ **1.27 KB**.\n* **Storage:** 1.27 KB × 10 million = **12.7 GB of new paste content per month** → **~450 GB in\n  3 years**, ~360 million shortlinks in 3 years.\n* **Rates:** 10 million writes/month ÷ 2.5 million s = **4 writes per second**; 100 million\n  reads/month = **40 reads per second**.\n* **Sanity check:** 40 reads/s of 1.27 KB is trivially cacheable; 4 writes/s fits a single\n  [master-slave](../data/replication.md#master-slave-replication) pair. No sharding needed yet — and\n  saying so out loud is the point of the exercise.\n\n## Reference tables\n\n* [Powers of two table](powers-of-two.md) — byte conversions\n* [Latency numbers every programmer should know](latency-numbers.md) — what is fast\n\n## Source(s) and further reading\n\n* [Use back of the envelope calculations](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)\n\n## Self-check\n\n1. How many seconds are in a month, to the precision you'd use in an interview?\n2. Convert 1 billion requests per month into requests per second.\n3. A record is 500 bytes and you write 50 million per month. How much new storage per month, and per year?\n4. After computing a rate, what is the next thing you check it against?\n"
+}

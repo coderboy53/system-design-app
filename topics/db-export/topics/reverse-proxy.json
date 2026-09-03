@@ -1,0 +1,40 @@
+{
+  "id": "reverse-proxy",
+  "title": "Reverse Proxy (Web Server)",
+  "module_id": "networking",
+  "order": 40,
+  "is_index": false,
+  "path": "networking/reverse-proxy.md",
+  "est_minutes": 4,
+  "summary": "Single public face for internal services; security, compression, caching",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "networking",
+    "proxy",
+    "security",
+    "caching"
+  ],
+  "prerequisites": [
+    "load-balancer"
+  ],
+  "related": [
+    "load-balancer",
+    "cache-locations",
+    "application-layer"
+  ],
+  "sections": [
+    "Additional benefits",
+    "Load balancer vs reverse proxy",
+    "Disadvantage(s): reverse proxy",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 342,
+  "source": "https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server",
+  "body": "# Reverse Proxy (Web Server)\n\n<p align=\"center\">\n  <img src=\"../assets/images/n41Azff.png\" alt=\"Reverse proxy\">\n  <br/>\n  <i><a href=\"https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg\">Source: Wikipedia</a></i>\n</p>\n\nA reverse proxy is a web server that **centralizes internal services and provides unified interfaces\nto the public**. Requests from clients are forwarded to a server that can fulfill them, before the\nreverse proxy returns the server's response to the client.\n\n## Additional benefits\n\n* **Increased security** — hide information about backend servers, blacklist IPs, limit number of connections per client\n* **Increased scalability and flexibility** — clients only see the reverse proxy's IP, allowing you to scale servers or change their configuration\n* **SSL termination** — decrypt incoming requests and encrypt server responses so backend servers do not have to perform these potentially expensive operations\n    * Removes the need to install [X.509 certificates](https://en.wikipedia.org/wiki/X.509) on each server\n* **Compression** — compress server responses\n* **Caching** — return the response for cached requests (see [web server caching](../caching/cache-locations.md#web-server-caching))\n* **Static content** — serve static content directly: HTML/CSS/JS, photos, videos, etc.\n\n## Load balancer vs reverse proxy\n\n* Deploying a [**load balancer**](load-balancer.md) is useful when you have **multiple servers**. Often, load balancers route traffic to a set of servers serving the same function.\n* **Reverse proxies** can be useful even with **just one** web server or application server, opening up the benefits described above.\n* Solutions such as **NGINX** and **HAProxy** can support both layer 7 reverse proxying and load balancing.\n\n## Disadvantage(s): reverse proxy\n\n* Introducing a reverse proxy results in **increased complexity**.\n* A single reverse proxy is a **single point of failure**; configuring multiple reverse proxies (i.e. a [failover](https://en.wikipedia.org/wiki/Failover)) further increases complexity.\n\n## Source(s) and further reading\n\n* [Reverse proxy vs load balancer](https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/)\n* [NGINX architecture](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)\n* [HAProxy architecture guide](http://www.haproxy.org/download/1.2/doc/architecture.txt)\n* [Wikipedia](https://en.wikipedia.org/wiki/Reverse_proxy)\n\n## Self-check\n\n1. What does a reverse proxy give you that a bare application server does not?\n2. When is a reverse proxy worth deploying even with a single backend server?\n3. What is the practical difference between a load balancer and a reverse proxy, given NGINX can be both?\n4. Name two disadvantages.\n"
+}

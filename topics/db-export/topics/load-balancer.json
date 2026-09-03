@@ -1,0 +1,45 @@
+{
+  "id": "load-balancer",
+  "title": "Load Balancer",
+  "module_id": "networking",
+  "order": 30,
+  "is_index": false,
+  "path": "networking/load-balancer.md",
+  "est_minutes": 8,
+  "summary": "Spreads requests across servers, terminates SSL, enables horizontal scaling",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "networking",
+    "load-balancing",
+    "scalability",
+    "availability",
+    "horizontal-scaling"
+  ],
+  "prerequisites": [
+    "availability-patterns"
+  ],
+  "related": [
+    "reverse-proxy",
+    "tcp-and-udp",
+    "http",
+    "application-layer"
+  ],
+  "sections": [
+    "Additional benefits",
+    "Routing metrics",
+    "Layer 4 load balancing",
+    "Layer 7 load balancing",
+    "Horizontal scaling",
+    "Disadvantage(s): load balancer",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 699,
+  "source": "https://github.com/donnemartin/system-design-primer#load-balancer",
+  "body": "# Load Balancer\n\n<p align=\"center\">\n  <img src=\"../assets/images/h81n9iK.png\" alt=\"Load balancer\">\n  <br/>\n  <i><a href=\"http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html\">Source: Scalable system design patterns</a></i>\n</p>\n\nLoad balancers **distribute incoming client requests** to computing resources such as application\nservers and databases. In each case, the load balancer returns the response from the computing\nresource to the appropriate client. Load balancers are effective at:\n\n* Preventing requests from going to **unhealthy servers**\n* Preventing **overloading** resources\n* Helping to eliminate a **single point of failure**\n\nLoad balancers can be implemented with **hardware** (expensive) or with **software** such as HAProxy.\n\n## Additional benefits\n\n* **SSL termination** — decrypt incoming requests and encrypt server responses so backend servers do\n  not have to perform these potentially expensive operations.\n    * Removes the need to install [X.509 certificates](https://en.wikipedia.org/wiki/X.509) on each server\n* **Session persistence** — issue cookies and route a specific client's requests to the same instance\n  if the web apps do not keep track of sessions\n\nTo protect against failures, it's common to set up **multiple load balancers**, either in\n[active-passive](../fundamentals/availability-patterns.md#active-passive) or\n[active-active](../fundamentals/availability-patterns.md#active-active) mode.\n\n## Routing metrics\n\nLoad balancers can route traffic based on various metrics, including:\n\n* Random\n* Least loaded\n* Session/cookies\n* [Round robin or weighted round robin](https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb)\n* [Layer 4](#layer-4-load-balancing)\n* [Layer 7](#layer-7-load-balancing)\n\n## Layer 4 load balancing\n\nLayer 4 load balancers look at info at the **transport layer** to decide how to distribute requests.\nGenerally, this involves the source and destination IP addresses and ports in the header, **but not\nthe contents of the packet**. Layer 4 load balancers forward network packets to and from the\nupstream server, performing\n[Network Address Translation (NAT)](https://web.archive.org/web/20240117134735/https://www.nginx.com/resources/glossary/layer-4-load-balancing/).\n\nSee [TCP and UDP](tcp-and-udp.md) for what lives at this layer.\n\n## Layer 7 load balancing\n\nLayer 7 load balancers look at the **application layer** to decide how to distribute requests. This\ncan involve contents of the header, message, and cookies. Layer 7 load balancers **terminate**\nnetwork traffic, read the message, make a load-balancing decision, then open a connection to the\nselected server. For example, a layer 7 load balancer can direct video traffic to servers that host\nvideos while directing more sensitive user billing traffic to security-hardened servers.\n\nSee [HTTP](http.md) for what lives at this layer.\n\n**At the cost of flexibility, layer 4 load balancing requires less time and computing resources than\nlayer 7**, although the performance impact can be minimal on modern commodity hardware.\n\n## Horizontal scaling\n\nLoad balancers can also help with **horizontal scaling**, improving performance and availability.\nScaling out using commodity machines is more cost efficient and results in higher availability than\nscaling up a single server on more expensive hardware, called **vertical scaling**. It is also\neasier to hire for talent working on commodity hardware than it is for specialized enterprise\nsystems.\n\n### Disadvantage(s): horizontal scaling\n\n* Scaling horizontally introduces complexity and involves **cloning servers**\n    * Servers should be **stateless**: they should not contain any user-related data like sessions or profile pictures\n    * Sessions can be stored in a centralized data store such as a [database](../data/README.md) (SQL, NoSQL) or a persistent [cache](../caching/README.md) (Redis, Memcached)\n* **Downstream servers** such as caches and databases need to handle more simultaneous connections as upstream servers scale out\n\n## Disadvantage(s): load balancer\n\n* The load balancer can become a **performance bottleneck** if it does not have enough resources or if it is not configured properly.\n* Introducing a load balancer to help eliminate a single point of failure results in **increased complexity**.\n* A single load balancer is **itself a single point of failure**; configuring multiple load balancers further increases complexity.\n\n## Source(s) and further reading\n\n* [NGINX architecture](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)\n* [HAProxy architecture guide](http://www.haproxy.org/download/1.2/doc/architecture.txt)\n* [Scalability](https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)\n* [Wikipedia](https://en.wikipedia.org/wiki/Load_balancing_(computing))\n* [Layer 4 load balancing](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)\n* [Layer 7 load balancing](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)\n* [ELB listener config](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)\n\n## Self-check\n\n1. Name three problems a load balancer solves.\n2. What does SSL termination buy you, and what does it cost?\n3. What information does a layer 4 balancer see that a layer 7 balancer does not use, and vice versa?\n4. Why must horizontally scaled servers be stateless, and where do sessions go instead?\n5. Why is vertical scaling generally worse than horizontal scaling for availability?\n6. A load balancer removes a single point of failure — so why is it also one?\n"
+}

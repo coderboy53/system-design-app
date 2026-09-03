@@ -1,0 +1,40 @@
+{
+  "id": "application-layer",
+  "title": "Application Layer (Platform Layer)",
+  "module_id": "application",
+  "order": 10,
+  "is_index": false,
+  "path": "application/application-layer.md",
+  "est_minutes": 4,
+  "summary": "Why separate the web tier from the platform tier?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "application",
+    "architecture",
+    "separation-of-concerns",
+    "scalability"
+  ],
+  "prerequisites": [
+    "load-balancer"
+  ],
+  "related": [
+    "microservices",
+    "service-discovery",
+    "asynchronism",
+    "reverse-proxy"
+  ],
+  "sections": [
+    "Related concepts",
+    "Disadvantage(s): application layer",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 244,
+  "source": "https://github.com/donnemartin/system-design-primer#application-layer",
+  "body": "# Application Layer (Platform Layer)\n\n<p align=\"center\">\n  <img src=\"../assets/images/yB5SYwm.png\" alt=\"Application layer\">\n  <br/>\n  <i><a href=\"http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer\">Source: Intro to architecting systems for scale</a></i>\n</p>\n\nSeparating out the **web layer** from the **application layer** (also known as the platform layer)\nallows you to **scale and configure both layers independently**. Adding a new API results in adding\napplication servers without necessarily adding additional web servers.\n\nThe **single responsibility principle** advocates for small and autonomous services that work\ntogether. Small teams with small services can plan more aggressively for rapid growth.\n\nWorkers in the application layer also help enable [asynchronism](asynchronism.md).\n\n## Related concepts\n\n* [Microservices](microservices.md) — the decomposition this layer enables\n* [Service discovery](service-discovery.md) — how those services locate one another\n* [Reverse proxy](../networking/reverse-proxy.md) — the web layer this is separated from\n\n## Disadvantage(s): application layer\n\n* Adding an application layer with loosely coupled services requires a **different approach from an\n  architectural, operations, and process viewpoint** (vs a monolithic system).\n* Microservices can add **complexity in terms of deployments and operations**.\n\n## Source(s) and further reading\n\n* [Intro to architecting systems for scale](http://lethain.com/introduction-to-architecting-systems-for-scale)\n* [Crack the system design interview](http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview)\n* [Service oriented architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)\n* [Introduction to Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper)\n* [Here's what you need to know about building microservices](https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/)\n\n## Self-check\n\n1. What do you gain by separating the web layer from the application layer?\n2. What does the single responsibility principle advocate at the service level, and what team-level benefit follows?\n3. Name the two disadvantages of introducing an application layer.\n"
+}

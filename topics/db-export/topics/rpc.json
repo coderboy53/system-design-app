@@ -1,0 +1,43 @@
+{
+  "id": "rpc",
+  "title": "Remote Procedure Call (RPC)",
+  "module_id": "networking",
+  "order": 70,
+  "is_index": false,
+  "path": "networking/rpc.md",
+  "est_minutes": 6,
+  "summary": "Exposing **behaviors**; typical for internal calls",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "networking",
+    "communication",
+    "rpc",
+    "apis",
+    "microservices"
+  ],
+  "prerequisites": [
+    "http",
+    "tcp-and-udp"
+  ],
+  "related": [
+    "rest",
+    "microservices",
+    "service-discovery"
+  ],
+  "sections": [
+    "RPC is a request-response protocol",
+    "Sample RPC calls",
+    "Choose a native library (aka SDK) when",
+    "Disadvantage(s): RPC",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 428,
+  "source": "https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc",
+  "body": "# Remote Procedure Call (RPC)\n\n<p align=\"center\">\n  <img src=\"../assets/images/iF4Mkb5.png\" alt=\"RPC\">\n  <br/>\n  <i><a href=\"http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview\">Source: Crack the system design interview</a></i>\n</p>\n\nIn an RPC, a client causes a procedure to execute **on a different address space**, usually a remote\nserver. The procedure is coded as if it were a local procedure call, abstracting away the details of\nhow to communicate with the server from the client program. Remote calls are usually **slower and\nless reliable** than local calls, so it is helpful to distinguish RPC calls from local calls.\nPopular RPC frameworks include [Protobuf](https://developers.google.com/protocol-buffers/),\n[Thrift](https://thrift.apache.org/), and [Avro](https://avro.apache.org/docs/current/).\n\n## RPC is a request-response protocol\n\n* **Client program** — calls the client stub procedure. The parameters are pushed onto the stack like a local procedure call.\n* **Client stub procedure** — marshals (packs) procedure id and arguments into a request message.\n* **Client communication module** — OS sends the message from the client to the server.\n* **Server communication module** — OS passes the incoming packets to the server stub procedure.\n* **Server stub procedure** — unmarshals the results, calls the server procedure matching the procedure id, and passes the given arguments.\n* The server response repeats the steps above in reverse order.\n\n## Sample RPC calls\n\n```\nGET /someoperation?data=anId\n\nPOST /anotheroperation\n{\n  \"data\":\"anId\";\n  \"anotherdata\": \"another value\"\n}\n```\n\n**RPC is focused on exposing behaviors.** RPCs are often used for performance reasons with\n**internal communications**, as you can hand-craft native calls to better fit your use cases. This\npairs with [microservices](../application/microservices.md) and\n[service discovery](../application/service-discovery.md).\n\n## Choose a native library (aka SDK) when\n\n* You know your target platform.\n* You want to control how your \"logic\" is accessed.\n* You want to control how error control happens off your library.\n* Performance and end user experience is your primary concern.\n\nHTTP APIs following [**REST**](rest.md) tend to be used more often for **public APIs**.\n\n## Disadvantage(s): RPC\n\n* RPC clients become **tightly coupled** to the service implementation.\n* A **new API must be defined for every new operation** or use case.\n* It can be **difficult to debug** RPC.\n* You might not be able to leverage existing technologies out of the box. For example, it might\n  require additional effort to ensure\n  [RPC calls are properly cached](https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)\n  on caching servers such as [Squid](http://www.squid-cache.org/).\n\n## Source(s) and further reading\n\nSee [REST and RPC](rest.md#sources-and-further-reading-rest-and-rpc).\n\n## Self-check\n\n1. Walk through the six steps of an RPC call from client program to server procedure.\n2. What does RPC expose that REST does not, and where is each typically used?\n3. Name four disadvantages of RPC.\n4. When would you ship a native SDK rather than a public HTTP API?\n"
+}

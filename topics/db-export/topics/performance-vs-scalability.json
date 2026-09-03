@@ -1,0 +1,37 @@
+{
+  "id": "performance-vs-scalability",
+  "title": "Performance vs Scalability",
+  "module_id": "fundamentals",
+  "order": 20,
+  "is_index": false,
+  "path": "fundamentals/performance-vs-scalability.md",
+  "est_minutes": 3,
+  "summary": "Is my system slow, or slow *under load*?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "tradeoffs",
+    "scalability",
+    "performance"
+  ],
+  "prerequisites": [
+    "start-here"
+  ],
+  "related": [
+    "latency-vs-throughput",
+    "cap-theorem",
+    "load-balancer"
+  ],
+  "sections": [
+    "Why the distinction matters",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 243,
+  "source": "https://github.com/donnemartin/system-design-primer#performance-vs-scalability",
+  "body": "# Performance vs Scalability\n\nA service is **scalable** if it results in increased **performance** in a manner proportional to\nresources added. Generally, increasing performance means serving more units of work, but it can\nalso be to handle larger units of work, such as when datasets grow.<sup>[1](http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html)</sup>\n\nAnother way to look at performance vs scalability:\n\n* If you have a **performance** problem, your system is **slow for a single user**.\n* If you have a **scalability** problem, your system is **fast for a single user but slow under heavy load**.\n\n## Why the distinction matters\n\nThe two problems have different fixes, and applying the wrong one wastes effort:\n\n* A performance problem is usually addressed in the code path itself — a bad query, a missing\n  [index](../data/sql-tuning.md#use-good-indices), an N+1 round trip, a synchronous call that should\n  be [asynchronous](../application/asynchronism.md).\n* A scalability problem is addressed structurally — [horizontal scaling](../networking/load-balancer.md#horizontal-scaling),\n  [caching](../caching/README.md), [sharding](../data/sharding.md), [federation](../data/federation.md).\n\nAdding servers to a system that is slow for one user makes it slow for many users on more hardware.\n\n## Source(s) and further reading\n\n* [A word on scalability](http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html)\n* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)\n\n## Self-check\n\n1. Define \"scalable\" in terms of resources added and performance gained.\n2. Your API responds in 3 seconds with one user and 3 seconds with a thousand. Performance problem or scalability problem?\n3. Your API responds in 50 ms with one user and 8 seconds at peak. Which is it, and what class of fix applies?\n"
+}

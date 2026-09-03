@@ -1,0 +1,8 @@
+{
+  "id": "security",
+  "title": "Security",
+  "module_order": 70,
+  "parent_module_id": null,
+  "topic_count": 1,
+  "overview": "# Security\n\n> The primer notes this section could use updates and invites\n> [contributions](https://github.com/donnemartin/system-design-primer#contributing).\n"
+}

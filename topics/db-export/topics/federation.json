@@ -1,0 +1,38 @@
+{
+  "id": "federation",
+  "title": "Federation (Functional Partitioning)",
+  "module_id": "data",
+  "order": 30,
+  "is_index": false,
+  "path": "data/federation.md",
+  "est_minutes": 4,
+  "summary": "Splitting databases **by function",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "scaling",
+    "partitioning"
+  ],
+  "prerequisites": [
+    "rdbms"
+  ],
+  "related": [
+    "sharding",
+    "replication",
+    "denormalization"
+  ],
+  "sections": [
+    "Disadvantage(s): federation",
+    "Source(s) and further reading: federation",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 232,
+  "source": "https://github.com/donnemartin/system-design-primer#federation",
+  "body": "# Federation (Functional Partitioning)\n\n<p align=\"center\">\n  <img src=\"../assets/images/U3qV33e.png\" alt=\"Federation\">\n  <br/>\n  <i><a href=\"https://www.youtube.com/watch?v=kKjm4ehYiMs\">Source: Scaling up to your first 10 million users</a></i>\n</p>\n\nFederation (or functional partitioning) **splits up databases by function**. For example, instead of\na single, monolithic database, you could have three databases: **forums**, **users**, and\n**products**.\n\nThe benefits chain together:\n\n* Less read and write traffic to each database, and therefore **less replication lag**\n* Smaller databases mean **more data fits in memory**, which means **more cache hits** due to improved cache locality\n* With **no single central master serializing writes**, you can write in parallel, **increasing throughput**\n\nFederation splits by *function*; [sharding](sharding.md) splits the same function's data by *key*.\nThey are complementary and often used together.\n\n## Disadvantage(s): federation\n\n* Federation is **not effective if your schema requires huge functions or tables**.\n* You'll need to **update your application logic** to determine which database to read from and write to.\n* Joining data from two databases is more complex with a\n  [server link](http://stackoverflow.com/questions/5145637/querying-data-by-joining-two-tables-in-two-database-on-different-servers).\n* Federation adds **more hardware and additional complexity**.\n\n## Source(s) and further reading: federation\n\n* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=kKjm4ehYiMs)\n\n## Self-check\n\n1. On what axis does federation split data, and how does that differ from sharding?\n2. Trace the chain from \"smaller database\" to \"more cache hits\".\n3. Why does removing the single central master increase write throughput?\n4. When is federation ineffective?\n"
+}

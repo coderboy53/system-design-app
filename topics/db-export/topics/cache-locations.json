@@ -1,0 +1,43 @@
+{
+  "id": "cache-locations",
+  "title": "Where to Cache",
+  "module_id": "caching",
+  "order": 20,
+  "is_index": false,
+  "path": "caching/cache-locations.md",
+  "est_minutes": 5,
+  "summary": "Client, CDN, web server, database, or application?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "caching",
+    "architecture",
+    "redis",
+    "memcached"
+  ],
+  "prerequisites": [
+    "caching-overview"
+  ],
+  "related": [
+    "cdn",
+    "reverse-proxy",
+    "key-value-store",
+    "what-to-cache"
+  ],
+  "sections": [
+    "Client caching",
+    "CDN caching",
+    "Web server caching",
+    "Database caching",
+    "Application caching",
+    "Levels of caching",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 358,
+  "source": "https://github.com/donnemartin/system-design-primer#client-caching",
+  "body": "# Where to Cache\n\nCaches can be located on the **client side** (OS or browser), **server side**, or in a **distinct\ncache layer**.\n\n## Client caching\n\nCaches on the client — the OS or the browser. Free to you, but you control invalidation only\nindirectly, through headers and TTLs.\n\n## CDN caching\n\n[CDNs](../networking/cdn.md) are considered a type of cache. Push and pull CDNs are two different\ncache-population strategies for the same layer.\n\n## Web server caching\n\n[Reverse proxies](../networking/reverse-proxy.md) and caches such as\n[Varnish](https://www.varnish-cache.org/) can serve **static and dynamic content directly**. Web\nservers can also cache requests, returning responses **without having to contact application\nservers**.\n\n## Database caching\n\nYour database usually includes some level of caching in a default configuration, optimized for a\ngeneric use case. **Tweaking these settings for specific usage patterns** can further boost\nperformance. See also [tuning the query cache](../data/sql-tuning.md#tune-the-query-cache).\n\n## Application caching\n\nIn-memory caches such as **Memcached** and **Redis** are [key-value stores](../data/key-value-store.md)\nbetween your application and your data storage. Since the data is held in RAM, it is **much faster\nthan typical databases** where data is stored on disk.\n\nRAM is more limited than disk, so [cache invalidation](https://en.wikipedia.org/wiki/Cache_algorithms)\nalgorithms such as [least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU))\ncan help invalidate 'cold' entries and keep 'hot' data in RAM. (Implement one yourself in the\n[LRU cache exercise](../exercises/object-oriented-design/lru-cache.md).)\n\n**Redis** has the following additional features over Memcached:\n\n* Persistence option\n* Built-in data structures such as sorted sets and lists\n\n## Levels of caching\n\nThere are multiple levels you can cache, falling into two general categories —\n**[database queries](what-to-cache.md#caching-at-the-database-query-level)** and\n**[objects](what-to-cache.md#caching-at-the-object-level)**:\n\n* Row level\n* Query-level\n* Fully-formed serializable objects\n* Fully-rendered HTML\n\nGenerally, you should **try to avoid file-based caching**, as it makes cloning and auto-scaling more\ndifficult — the same reason [horizontally scaled servers must be stateless](../networking/load-balancer.md#horizontal-scaling).\n\n## Self-check\n\n1. List the five places a cache can live, from closest to the user to closest to the data.\n2. What does a web server cache save you that an application cache does not?\n3. What two features does Redis add over Memcached?\n4. Why is file-based caching discouraged?\n5. What role does LRU play in an in-memory cache?\n"
+}

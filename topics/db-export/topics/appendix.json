@@ -1,0 +1,33 @@
+{
+  "id": "appendix",
+  "title": "Appendix",
+  "module_id": "appendix",
+  "order": 0,
+  "is_index": true,
+  "path": "appendix/README.md",
+  "est_minutes": 2,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "index",
+    "reference"
+  ],
+  "prerequisites": [],
+  "related": [
+    "powers-of-two",
+    "latency-numbers",
+    "back-of-the-envelope"
+  ],
+  "sections": [
+    "Reference tables",
+    "Practice and reading"
+  ],
+  "has_self_check": false,
+  "word_count": 238,
+  "source": "https://github.com/donnemartin/system-design-primer#appendix",
+  "body": "# Appendix\n\nYou'll sometimes be asked to do **'back-of-the-envelope' estimates**. For example, you might need to\ndetermine how long it will take to generate 100 image thumbnails from disk, or how much memory a\ndata structure will take. The **powers of two table** and **latency numbers every programmer should\nknow** are handy references.\n"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "wide-column-store",
+  "title": "Wide Column Store",
+  "module_id": "data",
+  "order": 100,
+  "is_index": false,
+  "path": "data/wide-column-store.md",
+  "est_minutes": 4,
+  "summary": "Abstraction: nested map of column families",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "nosql",
+    "wide-column",
+    "bigtable",
+    "cassandra"
+  ],
+  "prerequisites": [
+    "nosql"
+  ],
+  "related": [
+    "key-value-store",
+    "document-store",
+    "real-world-architectures"
+  ],
+  "sections": [
+    "Source(s) and further reading: wide column store",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 220,
+  "source": "https://github.com/donnemartin/system-design-primer#wide-column-store",
+  "body": "# Wide Column Store\n\n<p align=\"center\">\n  <img src=\"../assets/images/n16iOGk.png\" alt=\"Wide column store\">\n  <br/>\n  <i><a href=\"http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html\">Source: SQL & NoSQL, a brief history</a></i>\n</p>\n\n> **Abstraction: nested map** `ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>>`\n\nA wide column store's basic unit of data is a **column** (name/value pair). A column can be grouped\nin **column families** (analogous to a SQL table). **Super column families** further group column\nfamilies. You can access each column independently with a **row key**, and columns with the same row\nkey form a **row**. Each value contains a **timestamp for versioning and for conflict resolution**.\n\nGoogle introduced [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)\nas the first wide column store, which influenced the open-source\n[HBase](https://www.edureka.co/blog/hbase-architecture/) often used in the Hadoop ecosystem, and\n[Cassandra](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html) from\nFacebook. Stores such as BigTable, HBase, and Cassandra maintain keys in **lexicographic order**,\nallowing efficient retrieval of selective key ranges.\n\nWide column stores offer **high availability and high scalability**. They are often used for **very\nlarge data sets**.\n\n## Source(s) and further reading: wide column store\n\n* [SQL & NoSQL, a brief history](http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html)\n* [Bigtable architecture](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)\n* [HBase architecture](https://www.edureka.co/blog/hbase-architecture/)\n* [Cassandra architecture](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html)\n\n## Self-check\n\n1. Write out the nested-map abstraction and name each level.\n2. What is a column family analogous to in SQL?\n3. What is the timestamp on each value used for?\n4. What does maintaining lexicographic key order buy you here?\n"
+}

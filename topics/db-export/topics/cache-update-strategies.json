@@ -1,0 +1,45 @@
+{
+  "id": "cache-update-strategies",
+  "title": "When to Update the Cache",
+  "module_id": "caching",
+  "order": 40,
+  "is_index": false,
+  "path": "caching/cache-update-strategies.md",
+  "est_minutes": 8,
+  "summary": "Cache-aside, write-through, write-behind, refresh-ahead",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "caching",
+    "invalidation",
+    "patterns",
+    "cache-aside",
+    "write-through",
+    "write-behind",
+    "refresh-ahead"
+  ],
+  "prerequisites": [
+    "what-to-cache"
+  ],
+  "related": [
+    "consistency-patterns",
+    "caching-overview",
+    "cache-locations",
+    "cdn"
+  ],
+  "sections": [
+    "Cache-aside",
+    "Write-through",
+    "Write-behind (write-back)",
+    "Refresh-ahead",
+    "At a glance",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 714,
+  "source": "https://github.com/donnemartin/system-design-primer#when-to-update-the-cache",
+  "body": "# When to Update the Cache\n\nSince you can only store a **limited amount of data** in cache, you'll need to determine which cache\nupdate strategy works best for your use case.\n\n## Cache-aside\n\n<p align=\"center\">\n  <img src=\"../assets/images/ONjORqk.png\" alt=\"Cache-aside\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast\">Source: From cache to in-memory data grid</a></i>\n</p>\n\nThe **application** is responsible for reading and writing from storage. **The cache does not\ninteract with storage directly.** The application does the following:\n\n* Look for entry in cache, resulting in a cache miss\n* Load entry from the database\n* Add entry to cache\n* Return entry\n\n```python\ndef get_user(self, user_id):\n    user = cache.get(\"user.{0}\", user_id)\n    if user is None:\n        user = db.query(\"SELECT * FROM users WHERE user_id = {0}\", user_id)\n        if user is not None:\n            key = \"user.{0}\".format(user_id)\n            cache.set(key, json.dumps(user))\n    return user\n```\n\n[Memcached](https://memcached.org/) is generally used in this manner.\n\nSubsequent reads of data added to cache are fast. Cache-aside is also referred to as **lazy\nloading**. Only requested data is cached, which **avoids filling up the cache with data that isn't\nrequested**.\n\n### Disadvantage(s): cache-aside\n\n* Each cache miss results in **three trips**, which can cause a noticeable delay.\n* Data can become **stale** if it is updated in the database. This issue is mitigated by setting a\n  **time-to-live (TTL)** which forces an update of the cache entry, or by using write-through.\n* When a node fails, it is replaced by a **new, empty node**, increasing latency.\n\n## Write-through\n\n<p align=\"center\">\n  <img src=\"../assets/images/0vBc0hN.png\" alt=\"Write-through\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/jboner/scalability-availability-stability-patterns/\">Source: Scalability, availability, stability, patterns</a></i>\n</p>\n\nThe application uses the **cache as the main data store**, reading and writing data to it, while the\n**cache is responsible** for reading and writing to the database:\n\n* Application adds/updates entry in cache\n* Cache **synchronously** writes entry to data store\n* Return\n\nApplication code:\n\n```python\nset_user(12345, {\"foo\":\"bar\"})\n```\n\nCache code:\n\n```python\ndef set_user(user_id, values):\n    user = db.query(\"UPDATE Users WHERE id = {0}\", user_id, values)\n    cache.set(user_id, user)\n```\n\nWrite-through is a **slow overall operation** due to the write operation, but **subsequent reads of\njust-written data are fast**. Users are generally more tolerant of latency when updating data than\nwhen reading data. **Data in the cache is not stale.**\n\n### Disadvantage(s): write-through\n\n* When a new node is created due to failure or scaling, the new node will **not cache entries until\n  the entry is updated in the database**. Cache-aside in conjunction with write-through can mitigate\n  this issue.\n* **Most data written might never be read**, which can be minimized with a TTL.\n\n## Write-behind (write-back)\n\n<p align=\"center\">\n  <img src=\"../assets/images/rgSrvjG.png\" alt=\"Write-behind\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/jboner/scalability-availability-stability-patterns/\">Source: Scalability, availability, stability, patterns</a></i>\n</p>\n\nIn write-behind, the application does the following:\n\n* Add/update entry in cache\n* **Asynchronously** write entry to the data store, improving write performance\n\nThis is [asynchronism](../application/asynchronism.md) applied to the write path — same trade, same\nrisk.\n\n### Disadvantage(s): write-behind\n\n* There could be **data loss** if the cache goes down prior to its contents hitting the data store.\n* It is **more complex to implement** write-behind than it is to implement cache-aside or write-through.\n\n## Refresh-ahead\n\n<p align=\"center\">\n  <img src=\"../assets/images/kxtjqgE.png\" alt=\"Refresh-ahead\">\n  <br/>\n  <i><a href=\"http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast\">Source: From cache to in-memory data grid</a></i>\n</p>\n\nYou can configure the cache to **automatically refresh any recently accessed cache entry prior to\nits expiration**.\n\nRefresh-ahead can result in **reduced latency** vs read-through **if the cache can accurately\npredict** which items are likely to be needed in the future.\n\n### Disadvantage(s): refresh-ahead\n\n* **Not accurately predicting** which items are likely to be needed in the future can result in\n  **reduced performance** than without refresh-ahead.\n\n## At a glance\n\n| Strategy | Who writes to the DB | Write latency | Staleness | Main risk |\n|---|---|---|---|---|\n| **Cache-aside** | application | normal | possible, bounded by TTL | 3 trips on a miss; cold node after failure |\n| **Write-through** | cache, synchronously | high | none | writes data that may never be read |\n| **Write-behind** | cache, asynchronously | low | none in cache | data loss if cache dies before flush |\n| **Refresh-ahead** | (paired with a read strategy) | — | low if prediction is good | wasted refreshes on bad prediction |\n\n## Self-check\n\n1. In cache-aside, what are the four steps on a cache miss, and why is it called lazy loading?\n2. Which strategy guarantees the cache is never stale, and what does it cost?\n3. Why is a freshly replaced node a problem for write-through, and what mitigates it?\n4. What is the failure mode of write-behind?\n5. When does refresh-ahead make things worse rather than better?\n6. Which two strategies are often combined, and why?\n"
+}

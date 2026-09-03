@@ -1,0 +1,38 @@
+{
+  "id": "study-guide",
+  "title": "Study Guide",
+  "module_id": "study-guide",
+  "order": 0,
+  "is_index": true,
+  "path": "study-guide/README.md",
+  "est_minutes": 6,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "meta",
+    "interview-prep",
+    "planning"
+  ],
+  "prerequisites": [],
+  "related": [
+    "short-timeline",
+    "medium-timeline",
+    "long-timeline",
+    "interview-approach"
+  ],
+  "sections": [
+    "Q: For interviews, do I need to know everything here?",
+    "The three tracks",
+    "What each track covers",
+    "Also in this module",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 502,
+  "source": "https://github.com/donnemartin/system-design-primer#study-guide",
+  "body": "# Study Guide\n\n> Suggested topics to review based on your interview timeline (short, medium, long).\n\n![Study guide](../assets/images/OfVllex.png)\n\n## Q: For interviews, do I need to know everything here?\n\n**A: No, you don't need to know everything here to prepare for the interview.**\n\nWhat you are asked in an interview depends on variables such as:\n\n* How much experience you have\n* What your technical background is\n* What positions you are interviewing for\n* Which companies you are interviewing with\n* Luck\n\nMore experienced candidates are generally expected to know more about system design. Architects or\nteam leads might be expected to know more than individual contributors. Top tech companies are\nlikely to have one or more design interview rounds.\n\n**Start broad and go deeper in a few areas.** It helps to know a little about various key system\ndesign topics. Adjust the following guide based on your timeline, experience, what positions you\nare interviewing for, and which companies you are interviewing with.\n\n## The three tracks\n\n* **[Short timeline](short-timeline.md)** — Aim for **breadth** with system design topics. Practice by solving **some** interview questions.\n* **[Medium timeline](medium-timeline.md)** — Aim for **breadth** and **some depth** with system design topics. Practice by solving **many** interview questions.\n* **[Long timeline](long-timeline.md)** — Aim for **breadth** and **more depth** with system design topics. Practice by solving **most** interview questions.\n\n## What each track covers\n\nNotice what is **identical across all three tracks**: the breadth pass over the topics, the\nengineering blogs, the real world architectures, and the interview framework. Those are the floor.\nThe tracks differ only in **how many exercises you work through** — and, implicitly, how much depth\nyou develop by working them.\n\n## Also in this module\n\n* **[How to approach a system design interview question](interview-approach.md)** — the four-step framework\n* **[Anki flashcards](flashcards.md)** — spaced repetition decks\n* **[Additional resources for interview prep](../appendix/README.md)**\n\n## Self-check\n\n1. Name the four activities that appear in every timeline, regardless of how much time you have.\n2. What is the only dimension along which the short, medium, and long tracks actually differ?\n3. Why does the guide recommend \"start broad and go deeper in a few areas\" rather than mastering everything?\n"
+}

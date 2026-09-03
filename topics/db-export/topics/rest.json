@@ -1,0 +1,42 @@
+{
+  "id": "rest",
+  "title": "Representational State Transfer (REST)",
+  "module_id": "networking",
+  "order": 80,
+  "is_index": false,
+  "path": "networking/rest.md",
+  "est_minutes": 6,
+  "summary": "Exposing **data**; typical for public APIs",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "networking",
+    "communication",
+    "rest",
+    "apis"
+  ],
+  "prerequisites": [
+    "http",
+    "rpc"
+  ],
+  "related": [
+    "rpc",
+    "http",
+    "load-balancer"
+  ],
+  "sections": [
+    "Four qualities of a RESTful interface",
+    "Sample REST calls",
+    "Disadvantage(s): REST",
+    "RPC and REST calls comparison",
+    "Source(s) and further reading: REST and RPC",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 629,
+  "source": "https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest",
+  "body": "# Representational State Transfer (REST)\n\nREST is an **architectural style** enforcing a client/server model where the client acts on a set of\n**resources** managed by the server. The server provides a representation of resources and actions\nthat can either manipulate or get a new representation of resources. All communication must be\n**stateless and cacheable**.\n\n## Four qualities of a RESTful interface\n\n* **Identify resources (URI in HTTP)** — use the same URI regardless of any operation.\n* **Change with representations (verbs in HTTP)** — use verbs, headers, and body.\n* **Self-descriptive error message (status response in HTTP)** — use status codes, don't reinvent the wheel.\n* **[HATEOAS](http://restcookbook.com/Basics/hateoas/) (HTML interface for HTTP)** — your web service should be fully accessible in a browser.\n\n## Sample REST calls\n\n```\nGET /someresources/anId\n\nPUT /someresources/anId\n{\"anotherdata\": \"another value\"}\n```\n\n**REST is focused on exposing data.** It minimizes the coupling between client/server and is often\nused for **public HTTP APIs**. REST uses a more generic and uniform method of exposing resources\nthrough URIs, [representation through headers](https://github.com/for-GET/know-your-http-well/blob/master/headers.md),\nand actions through [verbs](http.md#common-http-verbs) such as GET, POST, PUT, DELETE, and PATCH.\n\nBeing **stateless**, REST is great for [horizontal scaling](load-balancer.md#horizontal-scaling) and\npartitioning.\n\n## Disadvantage(s): REST\n\n* With REST being focused on exposing data, it might **not be a good fit if resources are not\n  naturally organized or accessed in a simple hierarchy**. For example, returning all updated\n  records from the past hour matching a particular set of events is not easily expressed as a path.\n  With REST, it is likely to be implemented with a combination of URI path, query parameters, and\n  possibly the request body.\n* REST typically relies on a **few verbs** which sometimes don't fit your use case. For example,\n  moving expired documents to the archive folder might not cleanly fit within these verbs.\n* Fetching complicated resources with nested hierarchies requires **multiple round trips** between\n  the client and server to render single views — e.g. fetching a blog entry and its comments. For\n  mobile applications operating in variable network conditions, these multiple round trips are\n  highly undesirable.\n* Over time, more fields might be added to an API response and **older clients will receive all new\n  data fields**, even those they do not need, bloating payload size and leading to larger latencies.\n\n## RPC and REST calls comparison\n\nThe same seven operations expressed both ways. [RPC](rpc.md) names the *operation*; REST names the\n*resource* and lets the verb carry the operation.\n\n| Operation | RPC | REST |\n|---|---|---|\n| Signup | **POST** /signup | **POST** /persons |\n| Resign | **POST** /resign<br/>{<br/>\"personid\": \"1234\"<br/>} | **DELETE** /persons/1234 |\n| Read a person | **GET** /readPerson?personid=1234 | **GET** /persons/1234 |\n| Read a person's items list | **GET** /readUsersItemsList?personid=1234 | **GET** /persons/1234/items |\n| Add an item to a person's items | **POST** /addItemToUsersItemsList<br/>{<br/>\"personid\": \"1234\";<br/>\"itemid\": \"456\"<br/>} | **POST** /persons/1234/items<br/>{<br/>\"itemid\": \"456\"<br/>} |\n| Update an item | **POST** /modifyItem<br/>{<br/>\"itemid\": \"456\";<br/>\"key\": \"value\"<br/>} | **PUT** /items/456<br/>{<br/>\"key\": \"value\"<br/>} |\n| Delete an item | **POST** /removeItem<br/>{<br/>\"itemid\": \"456\"<br/>} | **DELETE** /items/456 |\n\n<p align=\"center\">\n  <i><a href=\"https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/\">Source: Do you really know why you prefer REST over RPC</a></i>\n</p>\n\n## Source(s) and further reading: REST and RPC\n\n* [Do you really know why you prefer REST over RPC](https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/)\n* [When are RPC-ish approaches more appropriate than REST?](http://programmers.stackexchange.com/a/181186)\n* [REST vs JSON-RPC](http://stackoverflow.com/questions/15056878/rest-vs-json-rpc)\n* [Debunking the myths of RPC and REST](https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)\n* [What are the drawbacks of using REST](https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs)\n* [Crack the system design interview](http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview)\n* [Thrift](https://code.facebook.com/posts/1468950976659943/)\n* [Why REST for internal use and not RPC](http://arstechnica.com/civis/viewtopic.php?t=1190508)\n\n## Self-check\n\n1. List the four qualities of a RESTful interface.\n2. Why does statelessness make REST a good fit for horizontal scaling?\n3. Give two cases where REST's resource model fits badly, and say what you would do instead.\n4. Express \"add an item to a person's list\" as both an RPC call and a REST call.\n"
+}

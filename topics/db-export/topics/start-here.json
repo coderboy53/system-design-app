@@ -1,0 +1,36 @@
+{
+  "id": "start-here",
+  "title": "System Design Topics: Start Here",
+  "module_id": "fundamentals",
+  "order": 10,
+  "is_index": false,
+  "path": "fundamentals/start-here.md",
+  "est_minutes": 5,
+  "summary": "Where do I begin if I know nothing?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "foundations",
+    "scalability",
+    "orientation"
+  ],
+  "prerequisites": [],
+  "related": [
+    "performance-vs-scalability",
+    "latency-vs-throughput",
+    "cap-theorem"
+  ],
+  "sections": [
+    "Step 1: Review the scalability video lecture",
+    "Step 2: Review the scalability article",
+    "Next steps",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 202,
+  "source": "https://github.com/donnemartin/system-design-primer#system-design-topics-start-here",
+  "body": "# System Design Topics: Start Here\n\nNew to system design?\n\nFirst, you'll need a basic understanding of common principles: what they are, how they are used,\nand their pros and cons.\n\n## Step 1: Review the scalability video lecture\n\n[Scalability Lecture at Harvard](https://www.youtube.com/watch?v=-W9F__D3oY4)\n\nTopics covered:\n\n* [Vertical scaling](../networking/load-balancer.md#horizontal-scaling) — scaling *up* a single server on more expensive hardware\n* [Horizontal scaling](../networking/load-balancer.md#horizontal-scaling) — scaling *out* using commodity machines\n* [Caching](../caching/README.md)\n* [Load balancing](../networking/load-balancer.md)\n* [Database replication](../data/replication.md)\n* Database partitioning — see [sharding](../data/sharding.md) and [federation](../data/federation.md)\n\n## Step 2: Review the scalability article\n\n[Scalability](https://web.archive.org/web/20221030091841/http://www.lecloud.net/tagged/scalability/chrono)\n\nTopics covered:\n\n* [Clones](https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones) — see [horizontal scaling](../networking/load-balancer.md#horizontal-scaling)\n* [Databases](https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database) — see [data](../data/README.md)\n* [Caches](https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache) — see [caching](../caching/README.md)\n* [Asynchronism](https://web.archive.org/web/20220926171507/https://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism) — see [asynchronism](../application/asynchronism.md)\n\n## Next steps\n\nNext, we'll look at high-level trade-offs:\n\n* **Performance** vs **scalability** → [module](performance-vs-scalability.md)\n* **Latency** vs **throughput** → [module](latency-vs-throughput.md)\n* **Availability** vs **consistency** → [module](cap-theorem.md)\n\nKeep in mind that **everything is a trade-off**.\n\nThen we'll dive into more specific topics such as [DNS](../networking/dns.md),\n[CDNs](../networking/cdn.md), and [load balancers](../networking/load-balancer.md).\n\n## Self-check\n\n1. What is the difference between vertical and horizontal scaling?\n2. Name the four \"scalability for dummies\" pillars covered by the article.\n3. What are the three high-level trade-offs you look at before diving into specific components?\n"
+}

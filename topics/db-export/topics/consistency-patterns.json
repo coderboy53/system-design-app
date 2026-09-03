@@ -1,0 +1,41 @@
+{
+  "id": "consistency-patterns",
+  "title": "Consistency Patterns",
+  "module_id": "fundamentals",
+  "order": 50,
+  "is_index": false,
+  "path": "fundamentals/consistency-patterns.md",
+  "est_minutes": 5,
+  "summary": "How synchronized do my copies need to be?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "consistency",
+    "distributed-systems",
+    "tradeoffs"
+  ],
+  "prerequisites": [
+    "cap-theorem"
+  ],
+  "related": [
+    "availability-patterns",
+    "replication",
+    "nosql",
+    "cache-update-strategies"
+  ],
+  "sections": [
+    "Weak consistency",
+    "Eventual consistency",
+    "Strong consistency",
+    "At a glance",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 386,
+  "source": "https://github.com/donnemartin/system-design-primer#consistency-patterns",
+  "body": "# Consistency Patterns\n\nWith multiple copies of the same data, we are faced with options on how to synchronize them so\nclients have a consistent view of the data. Recall the definition of consistency from the\n[CAP theorem](cap-theorem.md) — every read receives the most recent write or an error.\n\n## Weak consistency\n\nAfter a write, reads **may or may not** see it. A best effort approach is taken.\n\nThis approach is seen in systems such as **memcached**. Weak consistency works well in real time use\ncases such as **VoIP, video chat, and realtime multiplayer games**. For example, if you are on a\nphone call and lose reception for a few seconds, when you regain connection you do not hear what was\nspoken during connection loss.\n\nCompare with [UDP](../networking/tcp-and-udp.md#user-datagram-protocol-udp), which makes the same\nbargain at the protocol level: late data is worse than lost data.\n\n## Eventual consistency\n\nAfter a write, reads will **eventually** see it (typically within milliseconds). Data is replicated\n**asynchronously**.\n\nThis approach is seen in systems such as [**DNS**](../networking/dns.md) and **email**. Eventual consistency works well in\n**highly available** systems.\n\nThis is the consistency model of [AP systems](cap-theorem.md#ap--availability-and-partition-tolerance),\nof [BASE / NoSQL stores](../data/nosql.md), and of\n[master-slave replication](../data/replication.md#master-slave-replication) with async replicas.\n\n## Strong consistency\n\nAfter a write, reads **will** see it. Data is replicated **synchronously**.\n\nThis approach is seen in **file systems and RDBMSes**. Strong consistency works well in systems\nthat need **transactions**.\n\nSee [ACID](../data/rdbms.md) and [CP systems](cap-theorem.md#cp--consistency-and-partition-tolerance).\n\n## At a glance\n\n| Pattern | After a write, reads… | Replication | Seen in | Good for |\n|---|---|---|---|---|\n| **Weak** | may or may not see it | best effort | memcached | VoIP, video chat, realtime games |\n| **Eventual** | eventually see it (ms) | asynchronous | DNS, email | highly available systems |\n| **Strong** | see it | synchronous | file systems, RDBMS | systems needing transactions |\n\n## Source(s) and further reading\n\n* [Transactions across data centers](http://snarfed.org/transactions_across_datacenters_io.html)\n\n## Self-check\n\n1. Order the three patterns from weakest to strongest guarantee, and give the replication style of each.\n2. Why is weak consistency acceptable for a phone call but not for a bank balance?\n3. Which consistency pattern does DNS use, and which does an RDBMS use?\n4. Which pattern does an [AP system](cap-theorem.md) tend toward, and which does a [CP system](cap-theorem.md)?\n"
+}

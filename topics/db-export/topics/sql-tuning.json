@@ -1,0 +1,45 @@
+{
+  "id": "sql-tuning",
+  "title": "SQL Tuning",
+  "module_id": "data",
+  "order": 60,
+  "is_index": false,
+  "path": "data/sql-tuning.md",
+  "est_minutes": 7,
+  "summary": "Schema, indices, joins, partitioning, query cache",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "performance",
+    "indices",
+    "schema",
+    "benchmarking"
+  ],
+  "prerequisites": [
+    "rdbms"
+  ],
+  "related": [
+    "denormalization",
+    "sharding",
+    "caching-overview",
+    "performance-vs-scalability"
+  ],
+  "sections": [
+    "Tighten up the schema",
+    "Use good indices",
+    "Avoid expensive joins",
+    "Partition tables",
+    "Tune the query cache",
+    "Source(s) and further reading: SQL tuning",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 490,
+  "source": "https://github.com/donnemartin/system-design-primer#sql-tuning",
+  "body": "# SQL Tuning\n\nSQL tuning is a broad topic and many\n[books](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning)\nhave been written as reference.\n\nIt's important to **benchmark** and **profile** to simulate and uncover bottlenecks.\n\n* **Benchmark** — simulate high-load situations with tools such as [ab](http://httpd.apache.org/docs/2.2/programs/ab.html).\n* **Profile** — enable tools such as the [slow query log](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) to help track performance issues.\n\nBenchmarking and profiling might point you to the following optimizations. This is the first rung of\nthe [scaling ladder](README.md#the-scaling-ladder) — do it before adding hardware.\n\n## Tighten up the schema\n\n* MySQL dumps to disk in contiguous blocks for fast access.\n* Use `CHAR` instead of `VARCHAR` for fixed-length fields.\n    * `CHAR` effectively allows for fast, random access, whereas with `VARCHAR`, you must find the end of a string before moving on to the next one.\n* Use `TEXT` for large blocks of text such as blog posts. `TEXT` also allows for boolean searches. Using a `TEXT` field results in storing a pointer on disk that is used to locate the text block.\n* Use `INT` for larger numbers up to 2^32 or 4 billion.\n* Use `DECIMAL` for currency to avoid floating point representation errors.\n* Avoid storing large `BLOBS`; store the location of where to get the object instead.\n* `VARCHAR(255)` is the largest number of characters that can be counted in an 8 bit number, often maximizing the use of a byte in some RDBMS.\n* Set the `NOT NULL` constraint where applicable to\n  [improve search performance](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search).\n\n## Use good indices\n\n* Columns that you are querying (`SELECT`, `GROUP BY`, `ORDER BY`, `JOIN`) could be faster with indices.\n* Indices are usually represented as self-balancing [B-trees](https://en.wikipedia.org/wiki/B-tree)\n  that keep data sorted and allow searches, sequential access, insertions, and deletions in\n  **logarithmic time**.\n* Placing an index can **keep the data in memory**, requiring more space.\n* **Writes could also be slower** since the index also needs to be updated.\n* When loading large amounts of data, it might be faster to **disable indices, load the data, then rebuild** the indices.\n\n## Avoid expensive joins\n\n* [Denormalize](denormalization.md) where performance demands it.\n\n## Partition tables\n\n* Break up a table by putting **hot spots in a separate table** to help keep it in memory.\n\n## Tune the query cache\n\n* In some cases, the [query cache](https://dev.mysql.com/doc/refman/5.7/en/query-cache.html) could\n  lead to [performance issues](https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/).\n\n## Source(s) and further reading: SQL tuning\n\n* [Tips for optimizing MySQL queries](http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/)\n* [Is there a good reason I see VARCHAR(255) used so often?](http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l)\n* [How do null values affect performance?](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)\n* [Slow query log](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)\n\n## Self-check\n\n1. What is the difference between benchmarking and profiling, and which tool does each?\n2. Why is `CHAR` faster than `VARCHAR` for fixed-length fields?\n3. Why must currency be `DECIMAL` rather than a float?\n4. What data structure backs a typical index, and what complexity does it give you?\n5. Name the two costs of adding an index.\n6. Why is bulk-loading faster with indices disabled?\n"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "graph-database",
+  "title": "Graph Database",
+  "module_id": "data",
+  "order": 110,
+  "is_index": false,
+  "path": "data/graph-database.md",
+  "est_minutes": 3,
+  "summary": "Abstraction: graph",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "nosql",
+    "graph",
+    "relationships"
+  ],
+  "prerequisites": [
+    "nosql"
+  ],
+  "related": [
+    "key-value-store",
+    "rest",
+    "sql-or-nosql"
+  ],
+  "sections": [
+    "Source(s) and further reading: graph",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 173,
+  "source": "https://github.com/donnemartin/system-design-primer#graph-database",
+  "body": "# Graph Database\n\n<p align=\"center\">\n  <img src=\"../assets/images/fNcl65g.png\" alt=\"Graph database\">\n  <br/>\n  <i><a href=\"https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png\">Source: Graph database</a></i>\n</p>\n\n> **Abstraction: graph**\n\nIn a graph database, **each node is a record** and **each arc is a relationship** between two nodes.\nGraph databases are optimized to represent **complex relationships with many foreign keys or\nmany-to-many relationships**.\n\nGraph databases offer **high performance for data models with complex relationships**, such as a\nsocial network. They are relatively new and are **not yet widely used**; it might be more difficult\nto find development tools and resources. Many graphs can only be accessed with\n[REST APIs](../networking/rest.md).\n\nFor a worked example of modeling a social network — including when *not* to reach for a graph\ndatabase — see [design the data structures for a social network](../exercises/system-design/social-graph/README.md).\n\n## Source(s) and further reading: graph\n\n* [Graph database](https://en.wikipedia.org/wiki/Graph_database)\n* [Neo4j](https://neo4j.com/)\n* [FlockDB](https://blog.twitter.com/2010/introducing-flockdb)\n\n## Self-check\n\n1. What do nodes and arcs represent?\n2. What data shape are graph databases optimized for, and give an example product.\n3. Name two practical drawbacks of choosing a graph database today.\n"
+}

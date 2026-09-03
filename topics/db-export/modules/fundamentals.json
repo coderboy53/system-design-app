@@ -1,0 +1,8 @@
+{
+  "id": "fundamentals",
+  "title": "Fundamentals",
+  "module_order": 20,
+  "parent_module_id": null,
+  "topic_count": 6,
+  "overview": "# Fundamentals\n\n> **Everything is a trade-off.**\n\nThe high-level trade-offs that every later module refers back to. Read these in order — the\nnetworking, application, data, and caching modules all assume this vocabulary.\n\n## Where this leads\n\n* Consistency and availability choices drive the [database](../data/README.md) and [caching](../caching/README.md) modules.\n* Fail-over and replication reappear as [master-slave](../data/replication.md#master-slave-replication) and [master-master](../data/replication.md#master-master-replication) replication.\n* The latency/throughput distinction is what [asynchronism](../application/asynchronism.md) trades between.\n"
+}

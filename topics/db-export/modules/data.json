@@ -1,0 +1,8 @@
+{
+  "id": "data",
+  "title": "Data",
+  "module_order": 50,
+  "parent_module_id": null,
+  "topic_count": 12,
+  "overview": "# Data\n\n<p align=\"center\">\n  <img src=\"../assets/images/Xkm5CXz.png\" alt=\"Database\">\n  <br/>\n  <i><a href=\"https://www.youtube.com/watch?v=kKjm4ehYiMs\">Source: Scaling up to your first 10 million users</a></i>\n</p>\n\nWhere the state lives. Most system design interviews spend most of their time here — this is the\ncomponent that is hardest to scale and hardest to change later.\n\n## The scaling ladder\n\nThe relational modules are roughly in the order you would apply them:\n\n1. **Tune what you have** — [SQL tuning](sql-tuning.md): indices, schema, query cache.\n2. **Add read capacity** — [master-slave replication](replication.md#master-slave-replication) plus a [cache](../caching/README.md).\n3. **Add write capacity / availability** — [master-master replication](replication.md#master-master-replication).\n4. **Split by function** — [federation](federation.md).\n5. **Split by key** — [sharding](sharding.md).\n6. **Stop joining** — [denormalization](denormalization.md).\n7. **Move the workloads that don't fit** — [NoSQL](nosql.md).\n\nEvery step adds hardware and complexity. Do not skip to step 5 in an interview.\n"
+}

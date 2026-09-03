@@ -1,0 +1,8 @@
+{
+  "id": "application",
+  "title": "Application Layer",
+  "module_order": 40,
+  "parent_module_id": null,
+  "topic_count": 4,
+  "overview": "# Application Layer\n\n<p align=\"center\">\n  <img src=\"../assets/images/yB5SYwm.png\" alt=\"Application layer\">\n  <br/>\n  <i><a href=\"http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer\">Source: Intro to architecting systems for scale</a></i>\n</p>\n\nWhat sits behind the [load balancer](../networking/load-balancer.md): the platform tier, how it is\ndecomposed into services, how those services find each other, and how work gets pushed off the\nrequest path.\n\n## Where this leads\n\n* Services are stateless so they can be [horizontally scaled](../networking/load-balancer.md#horizontal-scaling); state moves to the [database](../data/README.md) or a [cache](../caching/README.md).\n* Internal service calls typically use [RPC](../networking/rpc.md); public ones use [REST](../networking/rest.md).\n* Asynchronism is the main lever for trading [latency for throughput](../fundamentals/latency-vs-throughput.md).\n"
+}

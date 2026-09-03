@@ -1,0 +1,32 @@
+{
+  "id": "flashcards",
+  "title": "Anki Flashcards and Spaced Repetition",
+  "module_id": "study-guide",
+  "order": 40,
+  "is_index": false,
+  "path": "study-guide/flashcards.md",
+  "est_minutes": 2,
+  "summary": "",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "meta",
+    "resources",
+    "spaced-repetition"
+  ],
+  "prerequisites": [],
+  "related": [
+    "study-guide"
+  ],
+  "sections": [
+    "Coding resource: Interactive Coding Challenges",
+    "In-app review queue"
+  ],
+  "has_self_check": false,
+  "word_count": 133,
+  "source": "https://github.com/donnemartin/system-design-primer#anki-flashcards",
+  "body": "# Anki Flashcards and Spaced Repetition\n\n![Anki flashcards](../assets/images/zdCAkB3.png)\n\nThe primer provides [Anki flashcard decks](https://apps.ankiweb.net/) that use **spaced repetition**\nto help you retain key system design concepts. Great for use while on-the-go.\n\n* [System design deck](https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design.apkg)\n* [System design exercises deck](https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design%20Exercises.apkg)\n* [Object oriented design exercises deck](https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/OO%20Design.apkg)\n\n## Coding resource: Interactive Coding Challenges\n\n![Interactive coding challenges](../assets/images/b4YtAEN.png)\n\nLooking for resources to prep for the [coding interview](https://github.com/donnemartin/interactive-coding-challenges)?\nThe sister repo [**Interactive Coding Challenges**](https://github.com/donnemartin/interactive-coding-challenges)\ncontains an additional deck:\n\n* [Coding deck](https://github.com/donnemartin/interactive-coding-challenges/tree/master/anki_cards/Coding.apkg)\n\n## In-app review queue\n\nEvery concept module in this path ends with a **Self-check** section. Those questions are written to\nbe liftable directly into a review queue — one card per question, with the module body as the\nanswer. The frontmatter `id` gives each card a stable deck key, and `tags` gives it a deck grouping.\n"
+}

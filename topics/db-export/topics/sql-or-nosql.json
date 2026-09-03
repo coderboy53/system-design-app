@@ -1,0 +1,43 @@
+{
+  "id": "sql-or-nosql",
+  "title": "SQL or NoSQL",
+  "module_id": "data",
+  "order": 120,
+  "is_index": false,
+  "path": "data/sql-or-nosql.md",
+  "est_minutes": 4,
+  "summary": "Which one, and how do I defend the choice?",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "database",
+    "sql",
+    "nosql",
+    "tradeoffs",
+    "decision"
+  ],
+  "prerequisites": [
+    "rdbms",
+    "nosql"
+  ],
+  "related": [
+    "rdbms",
+    "nosql",
+    "cap-theorem",
+    "key-value-store"
+  ],
+  "sections": [
+    "Reasons for SQL",
+    "Reasons for NoSQL",
+    "Sample data well-suited for NoSQL",
+    "Source(s) and further reading: SQL or NoSQL",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 245,
+  "source": "https://github.com/donnemartin/system-design-primer#sql-or-nosql",
+  "body": "# SQL or NoSQL\n\n<p align=\"center\">\n  <img src=\"../assets/images/wXGqG5f.png\" alt=\"SQL vs NoSQL\">\n  <br/>\n  <i><a href=\"https://www.infoq.com/articles/Transition-RDBMS-NoSQL/\">Source: Transitioning from RDBMS to NoSQL</a></i>\n</p>\n\n## Reasons for SQL\n\n* Structured data\n* Strict schema\n* Relational data\n* Need for complex joins\n* Transactions\n* Clear patterns for scaling\n* More established: developers, community, code, tools, etc\n* Lookups by index are very fast\n\n## Reasons for NoSQL\n\n* Semi-structured data\n* Dynamic or flexible schema\n* Non-relational data\n* No need for complex joins\n* Store many TB (or PB) of data\n* Very data intensive workload\n* Very high throughput for IOPS\n\n## Sample data well-suited for NoSQL\n\n* Rapid ingest of clickstream and log data\n* Leaderboard or scoring data\n* Temporary data, such as a shopping cart\n* Frequently accessed ('hot') tables\n* Metadata/lookup tables\n\n> In an interview, the answer is rarely \"all of one\". A realistic design keeps transactional data in\n> [SQL](rdbms.md) and moves the clickstream, session, and hot-lookup workloads to\n> [NoSQL](nosql.md) — that's what the pastebin, Twitter, and Mint exercises all end up doing.\n\n## Source(s) and further reading: SQL or NoSQL\n\n* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=kKjm4ehYiMs)\n* [SQL vs NoSQL differences](https://www.sitepoint.com/sql-vs-nosql-differences/)\n\n## Self-check\n\n1. Give four reasons to choose SQL and four to choose NoSQL.\n2. Name three data shapes that are well suited to NoSQL, and say why for each.\n3. Your system has transactional orders plus a high-volume clickstream. What do you propose?\n"
+}

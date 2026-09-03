@@ -1,0 +1,40 @@
+{
+  "id": "interview-approach",
+  "title": "How to Approach a System Design Interview Question",
+  "module_id": "study-guide",
+  "order": 5,
+  "is_index": false,
+  "path": "study-guide/interview-approach.md",
+  "est_minutes": 8,
+  "summary": "✔",
+  "timelines": [
+    "short",
+    "medium",
+    "long"
+  ],
+  "tags": [
+    "interview-prep",
+    "framework",
+    "process"
+  ],
+  "prerequisites": [],
+  "related": [
+    "study-guide",
+    "back-of-the-envelope",
+    "powers-of-two",
+    "latency-numbers"
+  ],
+  "sections": [
+    "Step 1: Outline use cases, constraints, and assumptions",
+    "Step 2: Create a high level design",
+    "Step 3: Design core components",
+    "Step 4: Scale the design",
+    "Back-of-the-envelope calculations",
+    "Source(s) and further reading",
+    "Self-check"
+  ],
+  "has_self_check": true,
+  "word_count": 484,
+  "source": "https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question",
+  "body": "# How to Approach a System Design Interview Question\n\n> How to tackle a system design interview question.\n\nThe system design interview is an **open-ended conversation**. **You are expected to lead it.**\n\nUse the following steps to guide the discussion. To solidify the process, work through the\n[system design exercises](../exercises/system-design/README.md) using these steps.\n\n## Step 1: Outline use cases, constraints, and assumptions\n\nGather requirements and scope the problem. Ask questions to clarify use cases and constraints.\nDiscuss assumptions.\n\n* Who is going to use it?\n* How are they going to use it?\n* How many users are there?\n* What does the system do?\n* What are the inputs and outputs of the system?\n* How much data do we expect to handle?\n* How many requests per second do we expect?\n* What is the expected read to write ratio?\n\n## Step 2: Create a high level design\n\nOutline a high level design with all important components.\n\n* Sketch the main components and connections\n* Justify your ideas\n\n## Step 3: Design core components\n\nDive into details for each core component. For example, if you were asked to\n[design a url shortening service](../exercises/system-design/pastebin/README.md), discuss:\n\n* Generating and storing a hash of the full url\n    * [MD5](../exercises/system-design/pastebin/README.md) and [Base62](../exercises/system-design/pastebin/README.md)\n    * Hash collisions\n    * [SQL or NoSQL](../data/sql-or-nosql.md)\n    * Database schema\n* Translating a hashed url to the full url\n    * Database lookup\n* API and object-oriented design\n\n## Step 4: Scale the design\n\nIdentify and address bottlenecks, given the constraints. For example, do you need the following to\naddress scalability issues?\n\n* [Load balancer](../networking/load-balancer.md)\n* [Horizontal scaling](../networking/load-balancer.md#horizontal-scaling)\n* [Caching](../caching/README.md)\n* [Database sharding](../data/sharding.md)\n\nDiscuss potential solutions and trade-offs. **Everything is a trade-off.** Address bottlenecks using\n[principles of scalable system design](../README.md#index-of-system-design-topics).\n\n> Do not jump straight to the final design. State that you would do this iteratively:\n> 1) **benchmark / load test**, 2) **profile** for bottlenecks, 3) address bottlenecks while\n> evaluating alternatives and trade-offs, and 4) repeat. See\n> [scaling to millions of users on AWS](../exercises/system-design/scaling-aws/README.md) for a\n> worked example of iterative scaling.\n\n## Back-of-the-envelope calculations\n\nYou might be asked to do some estimates by hand. Refer to:\n\n* [Back-of-the-envelope calculations](../appendix/back-of-the-envelope.md)\n* [Powers of two table](../appendix/powers-of-two.md)\n* [Latency numbers every programmer should know](../appendix/latency-numbers.md)\n* [Use back of the envelope calculations](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)\n\n## Source(s) and further reading\n\nCheck out the following links to get a better idea of what to expect:\n\n* [How to ace a systems design interview](https://web.archive.org/web/20210505130322/https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)\n* [The system design interview](http://www.hiredintech.com/system-design)\n* [Intro to Architecture and Systems Design Interviews](https://www.youtube.com/watch?v=ZgdS0EUmn70)\n* [System design template](https://leetcode.com/discuss/career/229177/My-System-Design-Template)\n\n## Self-check\n\n1. List the four steps in order, and the one-line goal of each.\n2. Name five clarifying questions you would ask in step 1 for any product-shaped question.\n3. Why is jumping straight to the scaled design a mistake even if the final design is correct?\n4. What are the four stages of the iterative scaling loop?\n"
+}
