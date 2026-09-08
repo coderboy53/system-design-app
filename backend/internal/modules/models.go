@@ -13,7 +13,7 @@ type Module struct {
 type Topic struct {
 	Id            string         `json:"id"`
 	Title         string         `json:"title"`
-	Module        string         `json:"module"`
+	ModuleId      string         `json:"module"`
 	Order         int16          `json:"order"`
 	Minutes       int16          `json:"est_minutes"`
 	Timelines     pq.StringArray `json:"timelines"`

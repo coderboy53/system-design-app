@@ -17,24 +17,39 @@ func NewHandlers(db *sql.DB) *Handler {
 
 // tmp endpoints to just push data
 func (h *Handler) AddModules(c *gin.Context) {
-	var body Module
+	var body []Module
 	if err := c.ShouldBindJSON(&body); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message":"Invalid body passed"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid body passed"})
 	}
-	AddModules(h.Db, body)
+	for _, module := range body {
+		err := AddModules(h.Db, module)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Error occurred while adding module"})
+			return
+		}
+	}
+	c.JSON(http.StatusCreated, gin.H{"message": "Added all modules successfully"})
 }
 
 func (h *Handler) AddTopics(c *gin.Context) {
-	var body Topic
+	var body []Topic
 	if err := c.ShouldBindJSON(&body); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message":"Invalid body passed"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid body passed"})
 	}
-	AddTopics(h.Db, body)
+	for _, topic := range body {
+		err := AddTopics(h.Db, topic)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Error occurred while adding topic"})
+			break
+		}
+	}
+	c.JSON(http.StatusCreated, gin.H{"message": "Added all topics successfully"})
 }
+
 
 // production endpoints start here
 func (h *Handler) GetModules(c *gin.Context) {
-	
+
 }
 
 func (h *Handler) GetModule(c *gin.Context) {
