@@ -1,0 +1,58 @@
+[
+    {
+        "id": "appendix",
+        "title": "Appendix",
+        "module_order": 80,
+        "topic_count": 8,
+        "overview": "# Appendix\n\nYou'll sometimes be asked to do **'back-of-the-envelope' estimates**. For example, you might need to\ndetermine how long it will take to generate 100 image thumbnails from disk, or how much memory a\ndata structure will take. The **powers of two table** and **latency numbers every programmer should\nknow** are handy references.\n"
+    },
+    {
+        "id": "application",
+        "title": "Application Layer",
+        "module_order": 40,
+        "topic_count": 4,
+        "overview": "# Application Layer\n\n<p align=\"center\">\n  <img src=\"../assets/images/yB5SYwm.png\" alt=\"Application layer\">\n  <br/>\n  <i><a href=\"http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer\">Source: Intro to architecting systems for scale</a></i>\n</p>\n\nWhat sits behind the [load balancer](../networking/load-balancer.md): the platform tier, how it is\ndecomposed into services, how those services find each other, and how work gets pushed off the\nrequest path.\n\n## Where this leads\n\n* Services are stateless so they can be [horizontally scaled](../networking/load-balancer.md#horizontal-scaling); state moves to the [database](../data/README.md) or a [cache](../caching/README.md).\n* Internal service calls typically use [RPC](../networking/rpc.md); public ones use [REST](../networking/rest.md).\n* Asynchronism is the main lever for trading [latency for throughput](../fundamentals/latency-vs-throughput.md).\n"
+    },
+    {
+        "id": "caching",
+        "title": "Caching",
+        "module_order": 60,
+        "topic_count": 4,
+        "overview": "# Caching\n\n<p align=\"center\">\n  <img src=\"../assets/images/Q6z24La.png\" alt=\"Cache\">\n  <br/>\n  <i><a href=\"http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html\">Source: Scalable system design patterns</a></i>\n</p>\n\nThe cheapest way to make a system faster, and the hardest thing to keep correct.\n\n## The three questions\n\nEvery caching decision decomposes into the same three questions, which is why the modules are split\nthis way:\n\n1. **Where** does the cache live? → [cache-locations.md](cache-locations.md)\n2. **What** granularity do you store? → [what-to-cache.md](what-to-cache.md)\n3. **When** does it get written or invalidated? → [cache-update-strategies.md](cache-update-strategies.md)\n\n## Where this leads\n\n* A [CDN](../networking/cdn.md) is a cache; push vs pull is its update strategy.\n* A [reverse proxy](../networking/reverse-proxy.md) is a web server cache.\n* [Redis and Memcached](../data/key-value-store.md) are the usual application cache.\n* Cache consistency is a direct application of [consistency patterns](../fundamentals/consistency-patterns.md).\n"
+    },
+    {
+        "id": "data",
+        "title": "Data",
+        "module_order": 50,
+        "topic_count": 12,
+        "overview": "# Data\n\n<p align=\"center\">\n  <img src=\"../assets/images/Xkm5CXz.png\" alt=\"Database\">\n  <br/>\n  <i><a href=\"https://www.youtube.com/watch?v=kKjm4ehYiMs\">Source: Scaling up to your first 10 million users</a></i>\n</p>\n\nWhere the state lives. Most system design interviews spend most of their time here — this is the\ncomponent that is hardest to scale and hardest to change later.\n\n## The scaling ladder\n\nThe relational modules are roughly in the order you would apply them:\n\n1. **Tune what you have** — [SQL tuning](sql-tuning.md): indices, schema, query cache.\n2. **Add read capacity** — [master-slave replication](replication.md#master-slave-replication) plus a [cache](../caching/README.md).\n3. **Add write capacity / availability** — [master-master replication](replication.md#master-master-replication).\n4. **Split by function** — [federation](federation.md).\n5. **Split by key** — [sharding](sharding.md).\n6. **Stop joining** — [denormalization](denormalization.md).\n7. **Move the workloads that don't fit** — [NoSQL](nosql.md).\n\nEvery step adds hardware and complexity. Do not skip to step 5 in an interview.\n"
+    },
+    {
+        "id": "fundamentals",
+        "title": "Fundamentals",
+        "module_order": 20,
+        "topic_count": 6,
+        "overview": "# Fundamentals\n\n> **Everything is a trade-off.**\n\nThe high-level trade-offs that every later module refers back to. Read these in order — the\nnetworking, application, data, and caching modules all assume this vocabulary.\n\n## Where this leads\n\n* Consistency and availability choices drive the [database](../data/README.md) and [caching](../caching/README.md) modules.\n* Fail-over and replication reappear as [master-slave](../data/replication.md#master-slave-replication) and [master-master](../data/replication.md#master-master-replication) replication.\n* The latency/throughput distinction is what [asynchronism](../application/asynchronism.md) trades between.\n"
+    },
+    {
+        "id": "networking",
+        "title": "Networking & Edge",
+        "module_order": 30,
+        "topic_count": 8,
+        "overview": "# Networking & Edge\n\n<p align=\"center\">\n  <img src=\"../assets/images/5KeocQs.jpg\" alt=\"OSI 7 layer model\">\n  <br/>\n  <i><a href=\"http://www.escotal.com/osilayer.html\">Source: OSI 7 layer model</a></i>\n</p>\n\nEverything between the user typing a URL and your application code running: name resolution, edge\ncaching, traffic distribution, and the protocols services use to talk to each other.\n\n## Where this leads\n\n* [Layer 4 vs layer 7 load balancing](load-balancer.md#layer-4-load-balancing) only makes sense once you know [TCP](tcp-and-udp.md#transmission-control-protocol-tcp) and [HTTP](http.md).\n* CDNs are a kind of [cache](../caching/cache-locations.md#cdn-caching).\n* Reverse proxies are also [web server caches](../caching/cache-locations.md#web-server-caching).\n* Behind the load balancer sits the [application layer](../application/application-layer.md).\n"
+    },
+    {
+        "id": "security",
+        "title": "Security",
+        "module_order": 70,
+        "topic_count": 1,
+        "overview": "# Security\n\n> The primer notes this section could use updates and invites\n> [contributions](https://github.com/donnemartin/system-design-primer#contributing).\n"
+    },
+    {
+        "id": "study-guide",
+        "title": "Study Guide",
+        "module_order": 10,
+        "topic_count": 5,
+        "overview": "# Study Guide\n\n> Suggested topics to review based on your interview timeline (short, medium, long).\n\n![Study guide](../assets/images/OfVllex.png)\n\n## Q: For interviews, do I need to know everything here?\n\n**A: No, you don't need to know everything here to prepare for the interview.**\n\nWhat you are asked in an interview depends on variables such as:\n\n* How much experience you have\n* What your technical background is\n* What positions you are interviewing for\n* Which companies you are interviewing with\n* Luck\n\nMore experienced candidates are generally expected to know more about system design. Architects or\nteam leads might be expected to know more than individual contributors. Top tech companies are\nlikely to have one or more design interview rounds.\n\n**Start broad and go deeper in a few areas.** It helps to know a little about various key system\ndesign topics. Adjust the following guide based on your timeline, experience, what positions you\nare interviewing for, and which companies you are interviewing with.\n\n## The three tracks\n\n* **[Short timeline](short-timeline.md)** — Aim for **breadth** with system design topics. Practice by solving **some** interview questions.\n* **[Medium timeline](medium-timeline.md)** — Aim for **breadth** and **some depth** with system design topics. Practice by solving **many** interview questions.\n* **[Long timeline](long-timeline.md)** — Aim for **breadth** and **more depth** with system design topics. Practice by solving **most** interview questions.\n\n## What each track covers\n\nNotice what is **identical across all three tracks**: the breadth pass over the topics, the\nengineering blogs, the real world architectures, and the interview framework. Those are the floor.\nThe tracks differ only in **how many exercises you work through** — and, implicitly, how much depth\nyou develop by working them.\n\n## Also in this module\n\n* **[How to approach a system design interview question](interview-approach.md)** — the four-step framework\n* **[Anki flashcards](flashcards.md)** — spaced repetition decks\n* **[Additional resources for interview prep](../appendix/README.md)**\n\n## Self-check\n\n1. Name the four activities that appear in every timeline, regardless of how much time you have.\n2. What is the only dimension along which the short, medium, and long tracks actually differ?\n3. Why does the guide recommend \"start broad and go deeper in a few areas\" rather than mastering everything?\n"
+    }
+]
