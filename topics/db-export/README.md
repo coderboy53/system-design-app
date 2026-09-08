@@ -8,21 +8,28 @@ content change instead of patching JSON here directly.
 python3 topics/scripts/generate_db_export.py
 ```
 
-## Scope: theory only, exercises deferred
+## Scope: theory only, exercises are not modules
 
 `exercises`, `exercises/system-design`, and `exercises/object-oriented-design`
-(3 modules, 17 topics) are **excluded** — interactive exercises are a later
-feature, not part of this load. `EXCLUDED_MODULE_PREFIXES` in the generator
-controls this; any prerequisite/related edge that pointed at an excluded topic
-is dropped rather than left dangling (checked: none existed pointing *into*
-exercises from the theory modules, so nothing needed rewriting on that side).
+(3 modules, 17 topics) are **excluded** — this is a theory-only app, and
+exercises are not part of the module content. `EXCLUDED_MODULE_PREFIXES` in the
+generator controls this; any prerequisite/related edge that pointed at an
+excluded topic is dropped rather than left dangling (checked: none existed
+pointing *into* exercises from the theory modules, so nothing needed rewriting
+on that side).
+
+Exercises are **not** coming back as modules. If interactive exercises are ever
+built they will be a separate, unattached feature with their own tables and
+their own shape — not the primer's `exercises/*` module tree. So `modules` is a
+flat list: no `parent_module_id`, no parent/child nesting, and nothing in the
+schema anticipates exercises.
 
 ## Layout
 
 - `modules/<id>.json` — one file per module (9, after excluding exercises).
-  `/` in an id (there are none left post-exclusion, but the generator still
-  handles it) is written as `--` in the filename; the `id` field inside keeps
-  the real value.
+  No remaining module id contains a `/` (the excluded `exercises/*` ones were the
+  only ones); the generator still writes `/` as `--` in filenames defensively,
+  but nothing relies on it.
 - `topics/<id>.json` — one file per topic, **including** each module's order:0 index
   entry (58 total: 49 "real" topics + 9 index entries).
 - `schema.sql` — the Postgres tables these map onto.
@@ -31,7 +38,6 @@ exercises from the theory modules, so nothing needed rewriting on that side).
 
 | JSON field | Points at | DB shape |
 |---|---|---|
-| `modules[].parent_module_id` | `modules[].id` | `modules.parent_module_id -> modules.id` (nullable; unused now that the `exercises/*` sub-modules are excluded, but kept in the schema for when exercises come back) |
 | `topics[].module_id` | `modules[].id` | `topics.module_id -> modules.id` |
 | `topics[].prerequisites[]` | `topics[].id` | rows in `topic_prerequisites(topic_id, prereq_id)` |
 | `topics[].related[]` | `topics[].id` | rows in `topic_related(topic_id, related_id)` |
@@ -53,8 +59,8 @@ it out at query time: `WHERE module_id = $1 AND sort_order > 0`.
 
 ## Load order (respects FKs)
 
-1. `modules/*.json`, sorted by `module_order` ascending (matters again once
-   exercises come back and a sub-module needs its parent inserted first).
+1. `modules/*.json`, any order (they FK to nothing) — `module_order` ascending
+   is still the natural choice since it's the display order.
 2. `topics/*.json`, any order (each only FKs to an already-inserted module).
 3. For every topic, its `prerequisites[]` → `topic_prerequisites` rows, and
    `related[]` → `topic_related` rows — last, since these FK topic-to-topic and

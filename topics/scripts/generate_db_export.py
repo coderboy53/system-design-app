@@ -2,10 +2,12 @@
 """Generate per-module / per-topic JSON fixtures from topics/manifest.json + the
 markdown files themselves, for bulk-loading into Postgres via a temporary API.
 
-Theory-only phase: modules under EXCLUDED_MODULE_PREFIXES (currently `exercises`,
-covering exercises/system-design and exercises/object-oriented-design) are skipped
-entirely, and any prerequisite/related edge pointing at a skipped topic is dropped.
-Interactive exercises come back once that feature is built.
+This app is theory-only: modules under EXCLUDED_MODULE_PREFIXES (currently
+`exercises`, covering exercises/system-design and exercises/object-oriented-design)
+are skipped entirely, and any prerequisite/related edge pointing at a skipped topic
+is dropped. Exercises are not a module and will not become one -- if they are ever
+built they get their own tables, unattached to this tree, so `modules` is a flat
+list with no parent/child nesting.
 
 Reads: topics/manifest.json, topics/**/*.md
 Writes: topics/db-export/modules/*.json, topics/db-export/topics/*.json
@@ -18,8 +20,9 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TOPICS = os.path.dirname(SCRIPT_DIR)
 OUT = os.path.join(TOPICS, "db-export")
 
-# Theory-only phase: interactive exercises come later. Any module id equal to or
-# nested under one of these is skipped entirely (modules + their topics).
+# Theory-only app: the exercises tree is not part of the module content. Any module
+# id equal to or nested under one of these is skipped entirely (modules + their
+# topics). These are the only ids with a `/` in them, so `modules` stays flat.
 EXCLUDED_MODULE_PREFIXES = ("exercises",)
 
 
@@ -38,12 +41,6 @@ def strip_frontmatter(raw):
     if not m:
         raise ValueError("no frontmatter")
     return m.group(2).lstrip("\n")
-
-
-def parent_module_id(module_id):
-    if "/" in module_id:
-        return module_id.rsplit("/", 1)[0]
-    return None
 
 
 def resolve_link_target(current_dir, target):
@@ -181,7 +178,6 @@ def main():
             "id": module_id,
             "title": meta["title"],
             "module_order": meta["module_order"],
-            "parent_module_id": parent_module_id(module_id),
             "topic_count": meta["count"] - 1 if index_entry is not None else meta["count"],
             "overview": overview,
         }
