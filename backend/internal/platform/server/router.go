@@ -37,6 +37,12 @@ func (app *App) handlerRoutes() {
 	)
 	app.Router.GET(
 		"/api/module",
-		.GetModules,
-	)	
+		h.GetModules,
+	)
+	app.Router.GET(
+		"/api/module/:id",
+		h.GetModules,
+	)
+
+		
 }
