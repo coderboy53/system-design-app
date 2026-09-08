@@ -2,3 +2,4 @@ backend/.env
 postman
 .postman
 .vscode
+backend/internal/platform/db/global-bundle.pem
