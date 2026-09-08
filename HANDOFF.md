@@ -108,10 +108,12 @@ deletions — because array position and `module_order` agree today.
 | 110 | `exercises/object-oriented-design` | Object-Oriented Design Exercises | 7 |
 
 - **`root` is not a module card.** It's `topics/README.md` — landing-page copy.
-- **9 top-level cards:** Study Guide → Fundamentals → Networking & Edge → Application Layer → Data →
-  Caching → Security → Appendix → Exercises.
-- **`exercises` is the odd one out** — its two sub-modules mean that one card drills into *modules*,
-  not topics. Open decision (see below).
+- **8 top-level cards:** Study Guide → Fundamentals → Networking & Edge → Application Layer → Data →
+  Caching → Security → Appendix.
+- **The `exercises` tree (rows 90/100/110) is out of scope.** This is a theory-only app; those 3
+  modules / 17 topics are excluded from `topics/db-export/` and are not modelled as modules.
+  Interactive exercises, if ever built, are a separate unattached feature with their own shape — so
+  **`modules` is a flat list**, no parent/child nesting, and no card drills into sub-modules.
 - Common confusion: **`dns` is not a top-level module.** It's a topic at `order: 10` inside
   `networking`, with `cdn`, `load-balancer`, `reverse-proxy`, `http`, `tcp-and-udp`, `rpc`, `rest`.
 
@@ -137,20 +139,16 @@ data/README.md         prerequisites: [fundamentals]
 caching/README.md      prerequisites: [data]
 ```
 
-⚠️ **The field is polymorphic by accident.** For 10 of 12 modules the index topic's `id` is
+⚠️ **The field is polymorphic by accident.** For all 9 in-scope modules the index topic's `id` is
 byte-identical to the module `id` (module `caching`, index topic `caching`), which is why
-`prerequisites: [fundamentals]` reads as a module but resolves as a topic. The two exercise
-sub-modules break the pattern:
+`prerequisites: [fundamentals]` reads as a module but resolves as a topic. (The only two manifest
+entries that diverged — `exercises/system-design` → `system-design-exercises` and
+`exercises/object-oriented-design` → `ood-exercises` — are in the excluded exercises tree.)
 
-```
-exercises/system-design           → index topic id  system-design-exercises
-exercises/object-oriented-design  → index topic id  ood-exercises
-```
-
-So: **resolve prerequisites against topic ids only**, and never add a constraint that assumes
-`module.id == index_topic.id`. Four leaf topics point at module-id lookalikes
-(`short-timeline`/`medium-timeline`/`long-timeline` → `study-guide`, `caching-overview` → `data`);
-they resolve fine as topic ids and need no cleanup.
+So: **resolve prerequisites against topic ids only**, and don't add a constraint that assumes
+`module.id == index_topic.id` — the collision is a coincidence of naming, not a rule. Four leaf
+topics point at module-id lookalikes (`short-timeline`/`medium-timeline`/`long-timeline` →
+`study-guide`, `caching-overview` → `data`); they resolve fine as topic ids and need no cleanup.
 
 ### Bodies and assets
 
@@ -344,8 +342,10 @@ now.
 
 1. **`overview` arrives table-free.** If a contents table shows up in it, that's a backend bug to
    report — don't hide it with CSS.
-2. **`summary` is `""` for 4 modules'** topics (`exercises`, `study-guide`, both `exercises/*`). The
-   topic row must look right without a subtitle.
+2. **`summary` is `""` for 14 of 58 topic rows** — every module's order:0 index entry (which the
+   module-detail query filters out anyway), plus all of `root` and 5 of 6 `study-guide` topics,
+   since those READMEs have no contents table to lift a summary from. The topic row must look right
+   without a subtitle.
 3. **`body` and `overview` are server-rendered HTML with links already rewritten.** Confirm before
    adding a markdown renderer — if they arrive as raw markdown instead, that changes your deps.
 4. **Bodies contain raw inline HTML** — `<p align="center">`, `<img>`, deprecated `align` attributes,
@@ -372,8 +372,10 @@ now.
 **Frontend:** router, state management, styling approach (nothing installed yet).
 
 **Shared:**
-- Are the `exercises` sub-modules a special-cased screen, or do modules become a 2-level tree with
-  `Module.ParentId`?
+- ~~Are the `exercises` sub-modules a special-cased screen, or do modules become a 2-level tree with
+  `Module.ParentId`?~~ **Decided: neither.** Theory-only app; exercises are excluded from the module
+  tree entirely and `modules` stays flat. Any future exercises feature is unattached, with its own
+  tables and its own approach — not the primer's `exercises/*` tree.
 - Is `body` HTML or markdown over the wire?
 - Asset URL scheme for `topics/assets/images/`.
 
