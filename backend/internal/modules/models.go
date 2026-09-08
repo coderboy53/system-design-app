@@ -3,12 +3,11 @@ package modules
 import "github.com/lib/pq"
 
 type Module struct {
-	Id          string `json:"id"`
-	Title       string `json:"title"`
-	Module      string `json:"module"`
-	ModuleOrder int16  `json:"module_order"`
-	TopicCount  int16  `json:"topic_count"`
-	Overview    string `json:"overview"`
+	Id          string `json:"id" db:"id"`
+	Title       string `json:"title" db:"title"`
+	ModuleOrder int16  `json:"module_order" db:"module_order"`
+	TopicCount  int16  `json:"topic_count" db:"topic_count"`
+	Overview    string `json:"overview" db:"overview"`
 }
 
 type Topic struct {
