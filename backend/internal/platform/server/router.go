@@ -43,6 +43,4 @@ func (app *App) handlerRoutes() {
 		"/api/module/:id",
 		h.GetModules,
 	)
-
-		
 }

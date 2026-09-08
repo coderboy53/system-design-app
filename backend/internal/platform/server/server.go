@@ -34,7 +34,7 @@ func StartServer() {
 func initializeRedis() redis.Store {
 	store, err := redis.NewStoreWithDB(20, "tcp", "localhost:6379", "", "", "", []byte(os.Getenv("REDIS_AUTH_KEY")))
 	if err != nil {
-		logrus.Error("Failed to create session store with error: ", err)
+		logrus.Fatal("Failed to create session store with error: ", err)
 		return nil
 	}
 	store.Options(sessions.Options{
@@ -44,5 +44,6 @@ func initializeRedis() redis.Store {
 		Secure:   false,
 		SameSite: http.SameSiteLaxMode,
 	})
+	logrus.Info("Cache connection initiated successfully")
 	return store
 }
